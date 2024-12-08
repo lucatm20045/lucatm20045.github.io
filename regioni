@@ -1,0 +1,35 @@
+<html>
+    <head>
+    <body>
+        <form>
+            <p>Nome</p><input type="text"> <p>Cognome</p><input type="text"> <p>Data di nascita</p><input type="date">
+            <p>Email</p><input type="email"> <p>Password</p><input type="password">
+            <p>Scegli una regione</p><select name="regione">
+                <option value="Lom">Lombardia</option>
+                <option value="Sic">Sicilia</option>
+                <option value="Cal">Calabria</option>
+                <option value="Pie">Piemonte</option>
+                <option value="Val">Val d'Aosta</option>
+                <option value="Ven">Veneto</option>
+                <option value="Fri">Friuli-Venezia-Giulia</option>
+                <option value="Emi">Emilia-Romagna</option>
+                <option value="Cam">Campania</option>
+                <option value="Mol">Molise</option>
+                <option value="Pug">Puglia</option>
+                <option value="Lig">Liguria</option>
+            </select><br>
+            <label for="sesso">Sesso:</label><br>
+            <input type="radio" id="maschio" name="sesso">
+            <label for="maschio">Maschio</label>
+            <br>
+            <input type="radio" id="femmina" name="sesso">
+            <label for="femmina">Femmina</label>
+            <br>
+            <input type="checkbox" name="acconsento" id="acconsento">Acconsento alla privacy</p>
+            <p>Note:</p><br><input type="text area"><br>
+            <strong>Invia CV:</strong><input type="file"><br>
+            <input type="submit">
+        </form>
+    </body>
+    </head>
+</html>
