@@ -1,0 +1,41 @@
+<html>
+    <head>
+    <body>
+        <title>CONCESSIONARIO</title><br>
+        <img src="Lamborghini.jpg" alt="Immagine non caricata"><br>
+        <table align="center" cellspacing="10" cellpadding="5" width="20%">
+            <tr>
+                <td colspan="2" bgcolor="#F7B01A">Lamborghini Aventador</td>
+            </tr>
+            <tr>
+                <td>Prezzo</td> 
+                <td>Alimentazione</td>
+            </tr>
+            <tr>
+                <td>330.000€</td> 
+                <td>Benzina</td>
+            </tr>
+        </table><br>
+        <p>Optional:</p> 
+        <ul type="square">
+            <li><span style="#F7B01A">Rosso lamborghini</span></li>
+            <li><span style="#FCE963">Giallo miura</span></li>
+            <li><span style="#EAEAC9">Bianco perlato</span></li>
+            <li><span style="#003399">Blu oceano</span></li>
+        </ul>
+        <p>
+            La Lamborghini Aventador è una supercar iconica, dotata di un potente motore V12 da 6.5 litri che sprigiona fino a 770 CV, consentendo un'accelerazione da 0 a 100 km/h in soli 2,8 secondi. Caratterizzata da un design aggressivo e aerodinamico, offre prestazioni mozzafiato abbinate a tecnologie all'avanguardia. È un simbolo di lusso e velocità, pensata per chi cerca il massimo dell'esperienza di guida.
+        </p>
+        <form>
+            <p>Concessionario Sant'agata Bolognese</p><br>
+            <input type="checkbox" name="acconsento" id="acconsento">Acconsento al trattamento dei dati<br>
+            <select>
+                <option value="Spi">Performante</option>
+                <option value="Per">Pista</option>
+                <option value="Str">Rally</option>
+            </select><br>
+            <input type="submit">
+        </form>
+    </body>
+    </head>
+</html>
