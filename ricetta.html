@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ricetta: Pasta alla Carbonara</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pasta alla Carbonara</h1>
+    <img src="carbonara.jpg" alt="Piatto di pasta alla carbonara" width="400">
+    
+    <table>
+        <tr>
+            <th>Difficoltà</th>
+            <td>Media</td>
+        </tr>
+        <tr>
+            <th>Costo</th>
+            <td>Basso</td>
+        </tr>
+        <tr>
+            <th>Tempo di realizzazione</th>
+            <td>30 minuti</td>
+        </tr>
+    </table>
+    
+    <h2>Ingredienti</h2>
+    <ul>
+        <li>Spaghetti</li>
+        <li>Guanciale</li>
+        <li>Uova</li>
+        <li>Pecorino Romano</li>
+        <li>Pepe nero</li>
+        <li>Sale</li>
+    </ul>
+    
+    <h2>Preparazione</h2>
+    <p>Cuocere la pasta in abbondante acqua salata. Nel frattempo, rosolare il guanciale in una padella senza aggiungere olio. In una ciotola, sbattere le uova con il pecorino e il pepe. Scolare la pasta e mescolarla con il guanciale, quindi aggiungere il composto di uova e pecorino fuori dal fuoco, mescolando bene fino a ottenere una crema. Servire subito.</p>
+    
+    <p><a href="https://www.giallozafferano.it/ricetta-originale">Vedi la ricetta originale</a></p>
+    
+    <h2>Lascia un Feedback</h2>
+    <form action="#" method="post">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        
+        <input type="checkbox" id="consenso" name="consenso" required>
+        <label for="consenso">Acconsento al trattamento dei dati</label><br><br>
+        
+        <label for="gradimento">Gradimento:</label>
+        <select id="gradimento" name="gradimento">
+            <option value="ottimo">Ottimo</option>
+            <option value="buono">Buono</option>
+            <option value="sufficiente">Sufficiente</option>
+            <option value="scarso">Scarso</option>
+        </select><br><br>
+        
+        <button type="submit">Invia</button>
+    </form>
+</body>
+</html>
