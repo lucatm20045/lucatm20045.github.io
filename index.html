@@ -1,22 +1,73 @@
-<html>
-  <head></head>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Link Flottanti</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f9f9f9;
+    }
+
+    .container {
+      overflow: hidden;
+    }
+
+    .link-box {
+      float: left;
+      width: 30%;
+      margin: 1.5%;
+      padding: 20px;
+      background-color: #e3f2fd;
+      border: 1px solid #90caf9;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+      transition: background-color 0.3s;
+    }
+
+    .link-box:hover {
+      background-color: #bbdefb;
+    }
+
+    .link-box a {
+      text-decoration: none;
+      color: #0d47a1;
+      font-weight: bold;
+    }
+
+    @media screen and (max-width: 768px) {
+      .link-box {
+        width: 46%;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .link-box {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
 <body>
-  <h1>Sito di Luca Rolla</h1>
-  <h2>ad uso didattico</h2>
-  <ul>
-    <li><a href="tabella.html" target="_blank">esercizio voti in tabella</a></li>
-    <li><a href="tag_formattazione.html" target="_blank">esercizio formattazione dei tag</a></li>
-    <li><a href="liste.html"  target="_blank">esercizio liste</a></li>
-    <li><a href="lista_e_immagine.html"  target="_blank">esercizio lista e immagine</a></li>
-    <li><a href="lamborghini.html"  target="_blank">esercizio macchina</a></li>
-    <li><a href="regioni.html"  target="_blank">esercizio sulle regioni</a></li>
-    <li><a href="tabella_colorata.html"  target="_blank">esercizio tabella colorata con puntatore di cella</a></li>
-    <li><a href="ricetta.html"  target="_blank">esercizio ricetta carbonara</a></li>
-    <li><a href="box_flottanti.html"  target="_blank">esercizio box flottanti</a></li>
-    <li><a href="video.html"  target="_blank">esercizio video nei box flottanti</a></li>
-    <li><a href="Bootstrap.html"  target="_blank">esercizio iniziale bootstrap 5</a></li>
-    <li><a href="modal.html"  target="_blank">esercizio modal bootstrap 5</a></li>
-    
-  </ul>
+
+  <h1>I miei link</h1>
+  <div class="container">
+    <div class="link-box"><a href="tabella.html" target="_blank">esercizio voti in tabella</a></div>
+    <div class="link-box"><a href="tag_formattazione.html" target="_blank">esercizio formattazione dei tag</a></div>
+    <div class="link-box"><a href="liste.html"  target="_blank">esercizio liste</a></div>
+    <div class="link-box"><a href="lista_e_immagine.html"  target="_blank">esercizio lista e immagine</a></div>
+    <div class="link-box"><a href="lamborghini.html"  target="_blank">esercizio macchina</a></div>
+    <div class="link-box"><a href="regioni.html"  target="_blank">esercizio sulle regioni</a></div>
+    <div class="link-box"><a href="tabella_colorata.html"  target="_blank">esercizio tabella colorata con puntatore di cella</a></div>
+    <div class="link-box"><a href="ricetta.html"  target="_blank">esercizio ricetta carbonara</a></div>
+    <div class="link-box"><a href="box_flottanti.html"  target="_blank">esercizio box flottanti</a></div>
+    <div class="link-box"><a href="video.html"  target="_blank">esercizio video nei box flottanti</a></div>
+    <div class="link-box"><a href="Bootstrap.html"  target="_blank">esercizio iniziale bootstrap 5</a></div>
+    <div class="link-box"><a href="modal.html"  target="_blank">esercizio modal bootstrap 5</a></div>
+  </div>
+
 </body>
 </html>
