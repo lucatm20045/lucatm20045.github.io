@@ -1,77 +1,94 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabella Alternata</title>
-    <style>
-        table {
-            width: 100%;
-            height: 100%;
-            border-collapse: collapse;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tabella Alternata Migliorata</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f4f8;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
 
-        td {
-            width: 10%;
-            height: 50px;
-            border: 1px solid #000;
-        }
-        td:hover {
-            background-color: red;
-        }
+    table {
+      width: 90%;
+      max-width: 1000px;
+      border-collapse: collapse;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
 
-        .white {
-            background-color: white;
-        }
+    td {
+      border: 1px solid #ccc;
+      padding: 12px 15px;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      font-size: 0.95rem;
+      color: #333;
+      user-select: none;
+    }
 
-        .gray {
-            background-color: #d3d3d3;
-        }
-    </style>
+    td:hover {
+      background-color: #ff6b6b;
+      color: white;
+    }
+
+    .white {
+      background-color: #ffffff;
+    }
+
+    .gray {
+      background-color: #e9ecef;
+    }
+  </style>
 </head>
 <body>
-    <table>
-      
-        <tr class="white">
-            <td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td>
-            <td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td>
-        </tr>
-        <tr class="gray">
-            <td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td>
-            <td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td>
-        </tr>
-        <tr class="white">
-            <td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td>
-            <td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td>
-        </tr>
-        <tr class="gray">
-            <td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td>
-            <td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td>
-        </tr>
-        <tr class="white">
-            <td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td>
-            <td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td>
-        </tr>
-        <tr class="gray">
-            <td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td>
-            <td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td>
-        </tr>
-        <tr class="white">
-            <td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td>
-            <td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td>
-        </tr>
-        <tr class="gray">
-            <td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td>
-            <td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td>
-        </tr>
-        <tr class="white">
-            <td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td>
-            <td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td>
-        </tr>
-        <tr class="gray">
-            <td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td>
-            <td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td><td>lorem ipsum</td>
-        </tr>
-    </table>
+  <table>
+    <tr class="white">
+      <td>Gennaio</td><td>Febbraio</td><td>Marzo</td><td>Aprile</td><td>Maggio</td>
+      <td>Giugno</td><td>Luglio</td><td>Agosto</td><td>Settembre</td><td>Ottobre</td>
+    </tr>
+    <tr class="gray">
+      <td>Lunedì</td><td>Martedì</td><td>Mercoledì</td><td>Giovedì</td><td>Venerdì</td>
+      <td>Sabato</td><td>Domenica</td><td>Festa</td><td>Vacanza</td><td>Eventi</td>
+    </tr>
+    <tr class="white">
+      <td>Roma</td><td>Milano</td><td>Torino</td><td>Napoli</td><td>Firenze</td>
+      <td>Bologna</td><td>Venezia</td><td>Genova</td><td>Palermo</td><td>Bari</td>
+    </tr>
+    <tr class="gray">
+      <td>Sport</td><td>Musica</td><td>Arte</td><td>Teatro</td><td>Cinema</td>
+      <td>Letteratura</td><td>Scienza</td><td>Storia</td><td>Viaggi</td><td>Cucina</td>
+    </tr>
+    <tr class="white">
+      <td>HTML</td><td>CSS</td><td>JavaScript</td><td>Python</td><td>Java</td>
+      <td>C#</td><td>PHP</td><td>SQL</td><td>Ruby</td><td>Go</td>
+    </tr>
+    <tr class="gray">
+      <td>Mela</td><td>Banana</td><td>Arancia</td><td>Pera</td><td>Uva</td>
+      <td>Fragola</td><td>Kiwi</td><td>Ananas</td><td>Cocco</td><td>Mango</td>
+    </tr>
+    <tr class="white">
+      <td>Auto</td><td>Bicicletta</td><td>Treno</td><td>Aereo</td><td>Nave</td>
+      <td>Autobus</td><td>Metro</td><td>Taxi</td><td>Camion</td><td>Motocicletta</td>
+    </tr>
+    <tr class="gray">
+      <td>Primavera</td><td>Estate</td><td>Autunno</td><td>Inverno</td><td>Mattina</td>
+      <td>Pomeriggio</td><td>Sera</td><td>Notte</td><td>Weekend</td><td>Festivo</td>
+    </tr>
+    <tr class="white">
+      <td>Pane</td><td>Burro</td><td>Formaggio</td><td>Prosciutto</td><td>Uova</td>
+      <td>Latte</td><td>Caffè</td><td>Tè</td><td>Acqua</td><td>Succo</td>
+    </tr>
+    <tr class="gray">
+      <td>Calcio</td><td>Basket</td><td>Pallavolo</td><td>Rugby</td><td>Tennis</td>
+      <td>Golf</td><td>Nuoto</td><td>Corsa</td><td>Ciclismo</td><td>Boxe</td>
+    </tr>
+  </table>
 </body>
 </html>
