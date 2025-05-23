@@ -1,81 +1,92 @@
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>portale con video</title>
-    <style>
-   
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: white;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portale con Video</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: white;
+    }
 
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
 
-        .row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-        .rectangle {
-            border: 3px solid black;
-        }
+    .rectangle {
+      border: 3px solid black;
+    }
 
-        .top {
-            width:620px;
-            height: 75px;
-            background-color: orange;
-        }
+    .top {
+      width: 620px;
+      height: 75px;
+      background-color: orange;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-        .bottom {
-            width: 620px;
-            height: 50px;
-            background-color: limegreen;
-            border-color: orange;
-        }
+    .top p {
+      margin: 0;
+      color: black;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
 
-        .center {
-            width: 500px;
-            height: 315px;
-            background-color: steelblue;
+    .bottom {
+      width: 620px;
+      height: 50px;
+      background-color: limegreen;
+      border-color: orange;
+    }
 
-        }
+    .center {
+      width: 500px;
+      height: 315px;
+      background-color: steelblue;
+    }
 
-        .side {
-            width: 50px;
-            height: 315px;
-        }
+    .side {
+      width: 50px;
+      height: 315px;
+    }
 
-        .left {
-            background-color: lightblue;
-        }
+    .left {
+      background-color: lightblue;
+    }
 
-        .right {
-            background-color: purple;
-        }
-    </style>
+    .right {
+      background-color: purple;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="rectangle top"><p style="text-align:center"; color="black";>video tutorial css</p> </div>
-        <div class="row">
-            <div class="rectangle side left"></div>
-            <div class="rectangle center"><iframe width="500" height="315" src="https://youtu.be/Z4pCqK-V_Wo?feature=shared" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-            <div class="rectangle side right"></div>
-        </div>
-        <div class="rectangle bottom"></div>
+  <div class="container">
+    <div class="rectangle top">
+      <p>Video Tutorial CSS</p>
     </div>
+    <div class="row">
+      <div class="rectangle side left"></div>
+      <div class="rectangle center">
+        <iframe width="500" height="315" src="https://www.youtube.com/embed/HwkD5lRe0jw" title="CSS3 Tutorial Italiano 01 - Introduzione approfondita a CSS" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <div class="rectangle side right"></div>
+    </div>
+    <div class="rectangle bottom"></div>
+  </div>
 </body>
 </html>
