@@ -8,7 +8,7 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    background-color: #f0f6fb; /* azzurro tenue */
+    background-color: #f0f6fb;
 }
 
 header {
@@ -40,10 +40,9 @@ nav a:hover {
     display: none;
     padding: 40px;
     max-width: 1100px;
-    margin: auto;
+    margin: 30px auto;
     background: rgba(255,255,255,0.9);
     border-radius: 15px;
-    margin-top: 30px;
 }
 
 .section.active {
@@ -55,19 +54,16 @@ nav a:hover {
     background-image: url("https://images.unsplash.com/photo-1502877338535-766e1452684a");
     background-size: cover;
     background-position: center;
-    color: white;
-
     min-height: 85vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-
     padding: 60px;
     border-radius: 15px;
+    color: white;
 }
 
-.hero h1,
-.hero p {
+.hero h1, .hero p {
     background: rgba(0,0,0,0.45);
     padding: 15px 20px;
     border-radius: 8px;
@@ -98,21 +94,7 @@ nav a:hover {
     padding: 15px;
 }
 
-button {
-    background-color: #3498db;
-    border: none;
-    color: white;
-    padding: 10px;
-    width: 100%;
-    font-size: 16px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #2980b9;
-}
-
+/* FORM */
 label {
     display: block;
     margin-top: 15px;
@@ -124,6 +106,22 @@ input, select {
     padding: 8px;
     margin-top: 5px;
     font-size: 16px;
+}
+
+button {
+    background-color: #3498db;
+    border: none;
+    color: white;
+    padding: 12px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #2980b9;
 }
 
 .result {
@@ -143,8 +141,7 @@ input, select {
     <nav>
         <a href="#" onclick="showSection('home')">Home</a>
         <a href="#" onclick="showSection('veicoli')">Veicoli</a>
-        <a href="#" onclick="showSection('noleggio')">Noleggio</a>
-        <a href="#" onclick="showSection('restituzione')">Restituzione</a>
+        <a href="#" onclick="showSection('prenota')">Prenota ora</a>
     </nav>
 </header>
 
@@ -152,10 +149,10 @@ input, select {
 <section id="home" class="section active">
     <div class="hero">
         <h1>Noleggia il veicolo più adatto alle tue esigenze</h1>
-        <p><br>
-            Auto compatte, furgoni e berline per ogni esigenza.
-            Prezzi chiari, assicurazione opzionale e gestione semplice.
-    </br></p>
+        <p>
+            Auto compatte, berline e furgoni.
+            Prezzi chiari e prenotazione semplice.
+        </p>
     </div>
 </section>
 
@@ -165,7 +162,7 @@ input, select {
     <div class="vehicles">
 
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2">
+            <img src="https://cdn.pixabay.com/photo/2017/01/06/19/15/fiat-panda-1957036_1280.jpg">
             <div>
                 <h3>Fiat Panda</h3>
                 <p>Targa: AB123CD<br>Chilometraggio: 46.458 km</p>
@@ -173,7 +170,7 @@ input, select {
         </div>
 
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1549921296-3cce13a16bdb">
+            <img src="https://cdn.pixabay.com/photo/2018/05/18/21/42/bmw-3413015_1280.jpg">
             <div>
                 <h3>BMW Serie 3</h3>
                 <p>Targa: EF456GH<br>Chilometraggio: 27.824 km</p>
@@ -181,7 +178,7 @@ input, select {
         </div>
 
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1616788494707-ec28f08f06d6">
+            <img src="https://cdn.pixabay.com/photo/2016/11/22/23/44/ford-transit-1850181_1280.jpg">
             <div>
                 <h3>Ford Transit</h3>
                 <p>Targa: IJ789KL<br>Chilometraggio: 125.479 km</p>
@@ -191,11 +188,13 @@ input, select {
     </div>
 </section>
 
-<!-- NOLEGGIO -->
-<section id="noleggio" class="section">
-    <h2>Noleggio veicolo</h2>
+<!-- PRENOTA ORA -->
+<section id="prenota" class="section">
+    <h2>Prenota il tuo veicolo</h2>
 
-    <label>Seleziona veicolo</label>
+    <h3>1️⃣ Noleggio</h3>
+
+    <label>Veicolo</label>
     <select id="veicolo">
         <option>Fiat Panda</option>
         <option>BMW Serie 3</option>
@@ -212,29 +211,26 @@ input, select {
 
     <button onclick="calcolaTariffa()">Calcola tariffa</button>
 
-    <div class="result" id="tariffa">
-        Tariffa base: --
-    </div>
-</section>
+    <div class="result" id="tariffa">Tariffa base: --</div>
 
-<!-- RESTITUZIONE -->
-<section id="restituzione" class="section">
-    <h2>Restituzione veicolo</h2>
+    <button onclick="mostraRestituzione()">Procedi alla restituzione →</button>
 
-    <label>
-        <input type="checkbox" id="danni">
-        Presenza di danni (+100 €)
-    </label>
+    <div id="restituzione" style="display:none">
+        <h3 style="margin-top:30px">2️⃣ Restituzione</h3>
 
-    <label>
-        <input type="checkbox" id="carburante">
-        Carburante mancante (+50 €)
-    </label>
+        <label>
+            <input type="checkbox" id="danni">
+            Presenza di danni (+100 €)
+        </label>
 
-    <button onclick="calcolaTotale()">Calcola totale</button>
+        <label>
+            <input type="checkbox" id="carburante">
+            Carburante mancante (+50 €)
+        </label>
 
-    <div class="result" id="totale">
-        Totale da pagare: --
+        <button onclick="calcolaTotale()">Calcola totale</button>
+
+        <div class="result" id="totale">Totale da pagare: --</div>
     </div>
 </section>
 
@@ -256,12 +252,15 @@ function calcolaTariffa() {
         "Tariffa base: " + tariffaBase + " €";
 }
 
-function calcolaTotale() {
+function mostraRestituzione() {
     if (tariffaBase === 0) {
-        alert("Calcola prima la tariffa di noleggio!");
+        alert("Calcola prima la tariffa!");
         return;
     }
+    document.getElementById("restituzione").style.display = "block";
+}
 
+function calcolaTotale() {
     let totale = tariffaBase;
     if (document.getElementById("danni").checked) totale += 100;
     if (document.getElementById("carburante").checked) totale += 50;
