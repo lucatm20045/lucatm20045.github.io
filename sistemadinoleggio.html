@@ -1,87 +1,196 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <title>Sistema di Noleggio Veicoli</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f6f8;
-            margin: 0;
-            padding: 0;
-        }
+<meta charset="UTF-8">
+<title>Noleggio EasyCar</title>
 
-        header {
-            background-color: #2c3e50;
-            color: white;
-            padding: 15px;
-            text-align: center;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f6f8;
+}
 
-        .container {
-            max-width: 800px;
-            margin: 30px auto;
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
+header {
+    background-color: #1f2a36;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        h2 {
-            color: #2c3e50;
-        }
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
 
-        label {
-            display: block;
-            margin-top: 15px;
-            font-weight: bold;
-        }
+nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
 
-        input, select, button {
-            margin-top: 5px;
-            padding: 8px;
-            width: 100%;
-            font-size: 16px;
-        }
+nav a:hover {
+    text-decoration: underline;
+}
 
-        button {
-            background-color: #3498db;
-            color: white;
-            border: none;
-            margin-top: 20px;
-            cursor: pointer;
-            border-radius: 4px;
-        }
+.section {
+    display: none;
+    padding: 40px;
+    max-width: 1100px;
+    margin: auto;
+}
 
-        button:hover {
-            background-color: #2980b9;
-        }
+.section.active {
+    display: block;
+}
 
-        .result {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #ecf0f1;
-            border-radius: 5px;
-            font-size: 18px;
-        }
+.hero {
+    background-image: url("https://images.unsplash.com/photo-1502877338535-766e1452684a");
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 100px 40px;
+    border-radius: 10px;
+}
 
-        .divider {
-            margin: 40px 0;
-            border-top: 2px solid #ddd;
-        }
-    </style>
+.hero h2 {
+    font-size: 40px;
+}
+
+.hero p {
+    font-size: 20px;
+    max-width: 500px;
+}
+
+.vehicles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card div {
+    padding: 15px;
+}
+
+button {
+    background-color: #3498db;
+    border: none;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+input, select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    font-size: 16px;
+}
+
+.result {
+    margin-top: 20px;
+    background-color: #ecf0f1;
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 5px;
+}
+</style>
 </head>
+
 <body>
 
 <header>
-    <h1>Sistema di Noleggio Veicoli</h1>
+    <h1>🚗 EasyCar Noleggio</h1>
+    <nav>
+        <a href="#" onclick="showSection('home')">Home</a>
+        <a href="#" onclick="showSection('veicoli')">Veicoli</a>
+        <a href="#" onclick="showSection('noleggio')">Noleggio</a>
+        <a href="#" onclick="showSection('restituzione')">Restituzione</a>
+    </nav>
 </header>
 
-<div class="container">
+<!-- HOME -->
+<section id="home" class="section active">
+    <div class="hero">
+        <h2>Noleggia il tuo veicolo ideale</h2>
+        <p>Auto moderne, furgoni e SUV per ogni esigenza.
+           Prezzi chiari, assicurazioni opzionali e gestione semplice.</p>
+    </div>
+</section>
 
-    <h2>Noleggio Veicolo</h2>
+<!-- VEICOLI -->
+<section id="veicoli" class="section">
+    <h2>La nostra flotta</h2>
+    <div class="vehicles">
 
-    <label for="giorni">Durata del noleggio (giorni)</label>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1549924231-f129b911e442">
+            <div>
+                <h3>Fiat Panda</h3>
+                <p>Targa: AB123CD<br>Chilometraggio: 45.000 km</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70">
+            <div>
+                <h3>BMW Serie 3</h3>
+                <p>Targa: EF456GH<br>Chilometraggio: 32.000 km</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a">
+            <div>
+                <h3>Furgone Ducato</h3>
+                <p>Targa: IJ789KL<br>Chilometraggio: 60.000 km</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- NOLEGGIO -->
+<section id="noleggio" class="section">
+    <h2>Noleggio veicolo</h2>
+
+    <label>Seleziona veicolo</label>
+    <select id="veicolo">
+        <option>Fiat Panda</option>
+        <option>BMW Serie 3</option>
+        <option>Furgone Ducato</option>
+    </select>
+
+    <label>Durata (giorni)</label>
     <input type="number" id="giorni" min="1" value="1">
 
     <label>
@@ -91,13 +200,14 @@
 
     <button onclick="calcolaTariffa()">Calcola tariffa</button>
 
-    <div class="result" id="tariffaBase">
+    <div class="result" id="tariffa">
         Tariffa base: --
     </div>
+</section>
 
-    <div class="divider"></div>
-
-    <h2>Restituzione Veicolo</h2>
+<!-- RESTITUZIONE -->
+<section id="restituzione" class="section">
+    <h2>Restituzione veicolo</h2>
 
     <label>
         <input type="checkbox" id="danni">
@@ -114,39 +224,33 @@
     <div class="result" id="totale">
         Totale da pagare: --
     </div>
-
-</div>
+</section>
 
 <script>
-    let tariffaBase = 0;
+let tariffaBase = 0;
 
-    function calcolaTariffa() {
-        const giorni = parseInt(document.getElementById("giorni").value);
-        const assicurazione = document.getElementById("assicurazione").checked;
+function showSection(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+}
 
-        const costoGiornaliero = 50;
-        const costoAssicurazione = assicurazione ? 20 : 0;
+function calcolaTariffa() {
+    const giorni = parseInt(document.getElementById("giorni").value);
+    const assicurazione = document.getElementById("assicurazione").checked;
 
-        tariffaBase = (giorni * costoGiornaliero) + costoAssicurazione;
+    tariffaBase = (giorni * 50) + (assicurazione ? 20 : 0);
+    document.getElementById("tariffa").innerText =
+        "Tariffa base: " + tariffaBase + " €";
+}
 
-        document.getElementById("tariffaBase").innerText =
-            "Tariffa base: " + tariffaBase + " €";
-    }
+function calcolaTotale() {
+    let totale = tariffaBase;
+    if (document.getElementById("danni").checked) totale += 100;
+    if (document.getElementById("carburante").checked) totale += 50;
 
-    function calcolaTotale() {
-        let totale = tariffaBase;
-
-        if (document.getElementById("danni").checked) {
-            totale += 100;
-        }
-
-        if (document.getElementById("carburante").checked) {
-            totale += 50;
-        }
-
-        document.getElementById("totale").innerText =
-            "Totale da pagare: " + totale + " €";
-    }
+    document.getElementById("totale").innerText =
+        "Totale da pagare: " + totale + " €";
+}
 </script>
 
 </body>
