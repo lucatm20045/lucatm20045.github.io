@@ -8,7 +8,7 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    background-color: #f4f6f8;
+    background-color: #f0f6fb; /* azzurro tenue */
 }
 
 header {
@@ -41,30 +41,40 @@ nav a:hover {
     padding: 40px;
     max-width: 1100px;
     margin: auto;
+    background: rgba(255,255,255,0.9);
+    border-radius: 15px;
+    margin-top: 30px;
 }
 
 .section.active {
     display: block;
 }
 
+/* HERO */
 .hero {
     background-image: url("https://images.unsplash.com/photo-1502877338535-766e1452684a");
     background-size: cover;
     background-position: center;
     color: white;
-    padding: 100px 40px;
-    border-radius: 10px;
+
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 60px;
+    border-radius: 15px;
 }
 
-.hero h2 {
-    font-size: 40px;
-}
-
+.hero h1,
 .hero p {
-    font-size: 20px;
-    max-width: 500px;
+    background: rgba(0,0,0,0.45);
+    padding: 15px 20px;
+    border-radius: 8px;
+    max-width: 600px;
 }
 
+/* VEICOLI */
 .vehicles {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -142,8 +152,10 @@ input, select {
 <section id="home" class="section active">
     <div class="hero">
         <h1>Noleggia il veicolo più adatto alle tue esigenze</h1>
-        <p>Auto compatte, furgoni e supercar per ogni esigenza.
-           Prezzi chiari, possibilità di assicurazione e gestione semplice.</p>
+        <p>
+            Auto compatte, furgoni e berline per ogni esigenza.
+            Prezzi chiari, assicurazione opzionale e gestione semplice.
+        </p>
     </div>
 </section>
 
@@ -153,7 +165,7 @@ input, select {
     <div class="vehicles">
 
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1549924231-f129b911e442">
+            <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2">
             <div>
                 <h3>Fiat Panda</h3>
                 <p>Targa: AB123CD<br>Chilometraggio: 46.458 km</p>
@@ -161,7 +173,7 @@ input, select {
         </div>
 
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70">
+            <img src="https://images.unsplash.com/photo-1549921296-3cce13a16bdb">
             <div>
                 <h3>BMW Serie 3</h3>
                 <p>Targa: EF456GH<br>Chilometraggio: 27.824 km</p>
@@ -169,7 +181,7 @@ input, select {
         </div>
 
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a">
+            <img src="https://images.unsplash.com/photo-1616788494707-ec28f08f06d6">
             <div>
                 <h3>Ford Transit</h3>
                 <p>Targa: IJ789KL<br>Chilometraggio: 125.479 km</p>
@@ -239,11 +251,17 @@ function calcolaTariffa() {
     const assicurazione = document.getElementById("assicurazione").checked;
 
     tariffaBase = (giorni * 50) + (assicurazione ? 20 : 0);
+
     document.getElementById("tariffa").innerText =
         "Tariffa base: " + tariffaBase + " €";
 }
 
 function calcolaTotale() {
+    if (tariffaBase === 0) {
+        alert("Calcola prima la tariffa di noleggio!");
+        return;
+    }
+
     let totale = tariffaBase;
     if (document.getElementById("danni").checked) totale += 100;
     if (document.getElementById("carburante").checked) totale += 50;
