@@ -2,156 +2,389 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<title>Rolla & Anile Rent</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rolla & Anile Rent - Noleggio Auto e Furgoni</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-* { box-sizing: border-box; }
+* { 
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
 body {
-    margin: 0;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg,#eef3f8,#dfe9f3);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
 }
 
 /* HEADER */
 header {
-    background: linear-gradient(135deg,#1f2a36,#2c3e50);
-    color: white;
-    padding: 15px 40px;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    padding: 20px 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: sticky;
     top: 0;
-    z-index: 10;
-    box-shadow: 0 4px 15px rgba(0,0,0,.3);
+    z-index: 100;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+header h2 {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+nav {
+    display: flex;
+    gap: 15px;
 }
 
 nav a {
-    color: white;
-    margin-left: 25px;
+    color: #2d3748;
     text-decoration: none;
     font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
     position: relative;
 }
 
-nav a::after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 2px;
-    background: #3498db;
-    left: 0;
-    bottom: -5px;
-    transition: .3s;
+nav a:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    transform: translateY(-2px);
 }
-
-nav a:hover::after { width: 100%; }
 
 /* SECTION */
 .section {
     display: none;
-    padding: 45px;
-    max-width: 1150px;
+    padding: 50px 30px;
+    max-width: 1200px;
     margin: 40px auto;
-    background: rgba(255,255,255,0.92);
-    border-radius: 18px;
-    box-shadow: 0 15px 40px rgba(0,0,0,.15);
-    animation: fade .4s ease;
+    animation: fadeIn 0.5s ease;
 }
 
-.section.active { display: block; }
+.section.active { 
+    display: block; 
+}
 
-@keyframes fade {
-    from {opacity:0; transform:translateY(15px);}
-    to {opacity:1; transform:translateY(0);}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* HERO */
 .hero {
-    background-image: url("https://images.unsplash.com/photo-1502877338535-766e1452684a");
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                url("https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1200&h=800&fit=crop");
     background-size: cover;
     background-position: center;
-    min-height: 80vh;
+    min-height: 75vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 70px;
-    border-radius: 18px;
+    align-items: center;
+    padding: 80px 40px;
+    border-radius: 24px;
     color: white;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 
-.hero h1, .hero p {
-    background: rgba(0,0,0,0.55);
-    padding: 18px 25px;
-    border-radius: 10px;
-    max-width: 650px;
+.hero h1 {
+    font-size: 56px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 22px;
+    font-weight: 300;
+    max-width: 600px;
+    line-height: 1.6;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.hero-cta {
+    margin-top: 35px;
+    padding: 16px 45px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+}
+
+.hero-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
 }
 
 /* VEICOLI */
+.vehicles-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.vehicles-header h2 {
+    font-size: 42px;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.vehicles-header p {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
 .vehicles {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 35px;
 }
 
 .card {
     background: white;
-    border-radius: 14px;
-    box-shadow: 0 8px 20px rgba(0,0,0,.15);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
     overflow: hidden;
-    transition: .3s;
+    transition: all 0.4s ease;
+    cursor: pointer;
 }
 
 .card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 15px 30px rgba(0,0,0,.25);
+    transform: translateY(-12px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.card-image {
+    position: relative;
+    overflow: hidden;
+    height: 220px;
 }
 
 .card img {
     width: 100%;
-    height: 190px;
+    height: 100%;
     object-fit: cover;
+    transition: transform 0.4s ease;
 }
 
-.card div { padding: 18px; }
+.card:hover img {
+    transform: scale(1.1);
+}
 
-/* FORM */
-label {
-    display: block;
-    margin-top: 18px;
+.card-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
     font-weight: 600;
 }
 
-input, select {
-    width: 100%;
-    padding: 10px;
-    margin-top: 6px;
+.card-content {
+    padding: 25px;
+}
+
+.card-content h3 {
+    font-size: 24px;
+    color: #2d3748;
+    margin-bottom: 10px;
+}
+
+.card-content .features {
+    display: flex;
+    gap: 15px;
+    margin: 15px 0;
+    font-size: 14px;
+    color: #718096;
+}
+
+.card-content .feature {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.card-price {
+    font-size: 32px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.card-price span {
+    font-size: 16px;
+    color: #718096;
+}
+
+/* FORM */
+.booking-container {
+    background: white;
+    padding: 45px;
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.booking-container h2 {
+    font-size: 36px;
+    color: #2d3748;
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 10px;
     font-size: 15px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+}
+
+input[type="number"], 
+input[type="date"],
+select {
+    width: 100%;
+    padding: 14px 18px;
+    font-size: 16px;
+    border-radius: 12px;
+    border: 2px solid #e2e8f0;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+input[type="number"]:focus,
+input[type="date"]:focus,
+select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+    padding: 15px;
+    background: #f7fafc;
+    border-radius: 12px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.checkbox-group label {
+    margin: 0;
+    cursor: pointer;
 }
 
 button {
-    background: linear-gradient(135deg,#3498db,#2980b9);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     border: none;
     color: white;
-    padding: 13px;
+    padding: 16px;
     width: 100%;
-    font-size: 16px;
-    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 12px;
     cursor: pointer;
-    margin-top: 22px;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+}
+
+button:active {
+    transform: translateY(0);
 }
 
 .result {
-    margin-top: 22px;
-    background: #ecf0f1;
-    padding: 16px;
-    font-size: 18px;
-    border-radius: 10px;
+    margin-top: 25px;
+    background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+    padding: 25px;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 12px;
+    text-align: center;
+    color: #2d3748;
+    border: 2px solid #e2e8f0;
+}
+
+.result-highlight {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    font-size: 28px;
+}
+
+#restituzione {
+    margin-top: 35px;
+    padding-top: 35px;
+    border-top: 2px solid #e2e8f0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header {
+        padding: 15px 25px;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .hero h1 {
+        font-size: 36px;
+    }
+    
+    .hero p {
+        font-size: 18px;
+    }
+    
+    .vehicles {
+        grid-template-columns: 1fr;
+    }
+    
+    .booking-container {
+        padding: 30px 20px;
+    }
 }
 </style>
 </head>
@@ -170,70 +403,112 @@ button {
 <section id="home" class="section active">
     <div class="hero">
         <h1>Noleggia il veicolo perfetto</h1>
-        <p>Auto e furgoni con prezzi chiari e prenotazione veloce.</p>
+        <p>Auto e furgoni con prezzi chiari, prenotazione veloce e assistenza dedicata. La tua avventura inizia qui.</p>
+        <button class="hero-cta" onclick="showSection('prenota')">Prenota Ora</button>
     </div>
 </section>
 
 <section id="veicoli" class="section">
-    <h2>La nostra flotta</h2>
+    <div class="vehicles-header">
+        <h2>La nostra flotta</h2>
+        <p>Veicoli moderni, sicuri e perfettamente manutenuti</p>
+    </div>
+    
     <div class="vehicles">
-
         <div class="card">
-            <img src="https://cdn.pixabay.com/photo/2017/01/06/19/15/fiat-panda-1957036_1280.jpg">
-            <div>
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1581267416365-5f5c2a3f2f10?w=600&h=400&fit=crop" alt="Fiat Panda">
+                <span class="card-badge">Economica</span>
+            </div>
+            <div class="card-content">
                 <h3>Fiat Panda</h3>
-                <p>45 € / giorno</p>
+                <div class="features">
+                    <span class="feature">👤 5 posti</span>
+                    <span class="feature">🎒 2 bagagli</span>
+                    <span class="feature">⚙️ Manuale</span>
+                </div>
+                <div class="card-price">45€ <span>/ giorno</span></div>
             </div>
         </div>
 
         <div class="card">
-            <img src="https://cdn.pixabay.com/photo/2019/09/05/18/52/bmw-4455878_1280.jpg">
-            <div>
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=600&h=400&fit=crop" alt="BMW Serie 3">
+                <span class="card-badge">Premium</span>
+            </div>
+            <div class="card-content">
                 <h3>BMW Serie 3</h3>
-                <p>90 € / giorno</p>
+                <div class="features">
+                    <span class="feature">👤 5 posti</span>
+                    <span class="feature">🎒 3 bagagli</span>
+                    <span class="feature">⚙️ Automatico</span>
+                </div>
+                <div class="card-price">90€ <span>/ giorno</span></div>
             </div>
         </div>
 
         <div class="card">
-            <img src="https://cdn.pixabay.com/photo/2016/11/22/23/44/ford-transit-1850181_1280.jpg">
-            <div>
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1527786356703-4b100091cd2c?w=600&h=400&fit=crop" alt="Ford Transit">
+                <span class="card-badge">Furgone</span>
+            </div>
+            <div class="card-content">
                 <h3>Ford Transit</h3>
-                <p>70 € / giorno</p>
+                <div class="features">
+                    <span class="feature">👤 3 posti</span>
+                    <span class="feature">📦 Grande carico</span>
+                    <span class="feature">⚙️ Manuale</span>
+                </div>
+                <div class="card-price">70€ <span>/ giorno</span></div>
             </div>
         </div>
-
     </div>
 </section>
 
 <section id="prenota" class="section">
-    <h2>Prenota</h2>
+    <div class="booking-container">
+        <h2>Prenota il tuo veicolo</h2>
 
-    <label>Veicolo</label>
-    <select id="veicolo">
-        <option value="45">Fiat Panda - 45€</option>
-        <option value="90">BMW Serie 3 - 90€</option>
-        <option value="70">Ford Transit - 70€</option>
-    </select>
+        <div class="form-group">
+            <label>Seleziona veicolo</label>
+            <select id="veicolo">
+                <option value="45">Fiat Panda - 45€/giorno</option>
+                <option value="90">BMW Serie 3 - 90€/giorno</option>
+                <option value="70">Ford Transit - 70€/giorno</option>
+            </select>
+        </div>
 
-    <label>Giorni</label>
-    <input type="number" id="giorni" min="1" value="1">
+        <div class="form-group">
+            <label>Numero di giorni</label>
+            <input type="number" id="giorni" min="1" value="1" placeholder="Inserisci i giorni">
+        </div>
 
-    <label>
-        <input type="checkbox" id="assicurazione">
-        Assicurazione (+20€)
-    </label>
+        <div class="checkbox-group">
+            <input type="checkbox" id="assicurazione">
+            <label for="assicurazione">Aggiungi assicurazione completa (+20€)</label>
+        </div>
 
-    <button onclick="calcolaTariffa()">Calcola tariffa</button>
-    <div class="result" id="tariffa">Tariffa: --</div>
+        <button onclick="calcolaTariffa()">💰 Calcola tariffa</button>
+        <div class="result" id="tariffa">Seleziona un veicolo e calcola la tariffa</div>
 
-    <button onclick="mostraRestituzione()">Procedi</button>
+        <button onclick="mostraRestituzione()" style="margin-top: 20px;">➡️ Procedi alla restituzione</button>
 
-    <div id="restituzione" style="display:none">
-        <label><input type="checkbox" id="danni"> Danni (+100€)</label>
-        <label><input type="checkbox" id="carburante"> Carburante (+50€)</label>
+        <div id="restituzione" style="display:none">
+            <h3 style="margin-bottom: 20px; color: #2d3748;">Condizioni di restituzione</h3>
+            
+            <div class="checkbox-group">
+                <input type="checkbox" id="danni">
+                <label for="danni">Riparazione danni (+100€)</label>
+            </div>
 
-        <button onclick="calcolaTotale()">Totale</button>
-        <div class="result" id="totale">Totale: --</div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="carburante">
+                <label for="carburante">Rifornimento carburante (+50€)</label>
+            </div>
+
+            <button onclick="calcolaTotale()">✅ Calcola totale finale</button>
+            <div class="result result-highlight" id="totale">Totale: --</div>
+        </div>
     </div>
 </section>
 
@@ -243,6 +518,7 @@ let tariffaBase = 0;
 function showSection(id) {
     document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function calcolaTariffa() {
@@ -250,20 +526,49 @@ function calcolaTariffa() {
     const prezzo = parseInt(document.getElementById("veicolo").value);
     const assicurazione = document.getElementById("assicurazione").checked;
 
+    if (giorni < 1) {
+        alert("⚠️ Inserisci almeno 1 giorno di noleggio");
+        return;
+    }
+
     tariffaBase = (giorni * prezzo) + (assicurazione ? 20 : 0);
-    document.getElementById("tariffa").innerText = "Tariffa: " + tariffaBase + " €";
+    
+    const dettaglio = `
+        Tariffa base: ${giorni} × ${prezzo}€ = ${giorni * prezzo}€
+        ${assicurazione ? '+ Assicurazione: 20€' : ''}
+        ━━━━━━━━━━━━━━━━
+        Totale: ${tariffaBase}€
+    `;
+    
+    document.getElementById("tariffa").innerHTML = dettaglio.replace(/\n/g, '<br>');
 }
 
 function mostraRestituzione() {
-    if (tariffaBase === 0) return alert("Calcola prima la tariffa");
+    if (tariffaBase === 0) {
+        alert("⚠️ Calcola prima la tariffa di noleggio");
+        return;
+    }
     document.getElementById("restituzione").style.display = "block";
+    document.getElementById("restituzione").scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
 function calcolaTotale() {
     let totale = tariffaBase;
-    if (danni.checked) totale += 100;
-    if (carburante.checked) totale += 50;
-    document.getElementById("totale").innerText = "Totale: " + totale + " €";
+    const danniChecked = document.getElementById("danni").checked;
+    const carburanteChecked = document.getElementById("carburante").checked;
+    
+    if (danniChecked) totale += 100;
+    if (carburanteChecked) totale += 50;
+    
+    const dettaglio = `
+        Tariffa noleggio: ${tariffaBase}€
+        ${danniChecked ? '+ Danni: 100€' : ''}
+        ${carburanteChecked ? '+ Carburante: 50€' : ''}
+        ━━━━━━━━━━━━━━━━
+        TOTALE FINALE: ${totale}€
+    `;
+    
+    document.getElementById("totale").innerHTML = dettaglio.replace(/\n/g, '<br>');
 }
 </script>
 
