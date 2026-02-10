@@ -68,7 +68,7 @@ nav a:hover {
 .section {
     display: none;
     padding: 50px 30px;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 40px auto;
     animation: fadeIn 0.5s ease;
 }
@@ -141,6 +141,34 @@ nav a:hover {
     box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
 }
 
+/* FILTRI VEICOLI */
+.filter-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 12px 28px;
+    background: white;
+    border: 2px solid transparent;
+    color: #2d3748;
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    transform: translateY(-2px);
+}
+
 /* VEICOLI */
 .vehicles-header {
     text-align: center;
@@ -160,8 +188,8 @@ nav a:hover {
 
 .vehicles {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 35px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
 }
 
 .card {
@@ -223,6 +251,7 @@ nav a:hover {
     margin: 15px 0;
     font-size: 14px;
     color: #718096;
+    flex-wrap: wrap;
 }
 
 .card-content .feature {
@@ -414,10 +443,20 @@ button:active {
         <p>Veicoli moderni, sicuri e perfettamente manutenuti</p>
     </div>
     
-    <div class="vehicles">
-        <div class="card">
+    <div class="filter-container">
+        <button class="filter-btn active" onclick="filterVehicles('tutti')">Tutti</button>
+        <button class="filter-btn" onclick="filterVehicles('economica')">Economiche</button>
+        <button class="filter-btn" onclick="filterVehicles('media')">Medie</button>
+        <button class="filter-btn" onclick="filterVehicles('premium')">Premium</button>
+        <button class="filter-btn" onclick="filterVehicles('suv')">SUV</button>
+        <button class="filter-btn" onclick="filterVehicles('furgone')">Furgoni</button>
+    </div>
+    
+    <div class="vehicles" id="vehicleGrid">
+        <!-- ECONOMICHE -->
+        <div class="card" data-category="economica">
             <div class="card-image">
-                <img src="https://images.unsplash.com/photo-1581267416365-5f5c2a3f2f10?w=600&h=400&fit=crop" alt="Fiat Panda">
+                <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=600&h=400&fit=crop&q=80" alt="Fiat Panda">
                 <span class="card-badge">Economica</span>
             </div>
             <div class="card-content">
@@ -431,9 +470,123 @@ button:active {
             </div>
         </div>
 
-        <div class="card">
+        <div class="card" data-category="economica">
             <div class="card-image">
-                <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=600&h=400&fit=crop" alt="BMW Serie 3">
+                <img src="https://images.unsplash.com/photo-1609521263047-f8f205293f24?w=600&h=400&fit=crop&q=80" alt="Fiat 500">
+                <span class="card-badge">Economica</span>
+            </div>
+            <div class="card-content">
+                <h3>Fiat 500</h3>
+                <div class="features">
+                    <span class="feature">👤 4 posti</span>
+                    <span class="feature">🎒 2 bagagli</span>
+                    <span class="feature">⚙️ Manuale</span>
+                </div>
+                <div class="card-price">40€ <span>/ giorno</span></div>
+            </div>
+        </div>
+
+        <div class="card" data-category="economica">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1590362891991-f776e747a588?w=600&h=400&fit=crop&q=80" alt="Toyota Aygo">
+                <span class="card-badge">Economica</span>
+            </div>
+            <div class="card-content">
+                <h3>Toyota Aygo</h3>
+                <div class="features">
+                    <span class="feature">👤 4 posti</span>
+                    <span class="feature">🎒 2 bagagli</span>
+                    <span class="feature">⚙️ Manuale</span>
+                </div>
+                <div class="card-price">42€ <span>/ giorno</span></div>
+            </div>
+        </div>
+
+        <div class="card" data-category="economica">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=600&h=400&fit=crop&q=80" alt="Renault Clio">
+                <span class="card-badge">Economica</span>
+            </div>
+            <div class="card-content">
+                <h3>Renault Clio</h3>
+                <div class="features">
+                    <span class="feature">👤 5 posti</span>
+                    <span class="feature">🎒 3 bagagli</span>
+                    <span class="feature">⚙️ Manuale</span>
+                </div>
+                <div class="card-price">48€ <span>/ giorno</span></div>
+            </div>
+        </div>
+
+        <!-- MEDIE -->
+        <div class="card" data-category="media">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=600&h=400&fit=crop&q=80" alt="Volkswagen Golf">
+                <span class="card-badge">Media</span>
+            </div>
+            <div class="card-content">
+                <h3>Volkswagen Golf</h3>
+                <div class="features">
+                    <span class="feature">👤 5 posti</span>
+                    <span class="feature">🎒 4 bagagli</span>
+                    <span class="feature">⚙️ Automatico</span>
+                </div>
+                <div class="card-price">65€ <span>/ giorno</span></div>
+            </div>
+        </div>
+
+        <div class="card" data-category="media">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=600&h=400&fit=crop&q=80" alt="Ford Focus">
+                <span class="card-badge">Media</span>
+            </div>
+            <div class="card-content">
+                <h3>Ford Focus</h3>
+                <div class="features">
+                    <span class="feature">👤 5 posti</span>
+                    <span class="feature">🎒 4 bagagli</span>
+                    <span class="feature">⚙️ Automatico</span>
+                </div>
+                <div class="card-price">62€ <span>/ giorno</span></div>
+            </div>
+        </div>
+
+        <div class="card" data-category="media">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=600&h=400&fit=crop&q=80" alt="Peugeot 308">
+                <span class="card-badge">Media</span>
+            </div>
+            <div class="card-content">
+                <h3>Peugeot 308</h3>
+                <div class="features">
+                    <span class="feature">👤 5 posti</span>
+                    <span class="feature">🎒 4 bagagli</span>
+                    <span class="feature">⚙️ Automatico</span>
+                </div>
+                <div class="card-price">60€ <span>/ giorno</span></div>
+            </div>
+        </div>
+
+        <div class="card" data-category="media">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=600&h=400&fit=crop&q=80" alt="Opel Astra">
+                <span class="card-badge">Media</span>
+            </div>
+            <div class="card-content">
+                <h3>Opel Astra</h3>
+                <div class="features">
+                    <span class="feature">👤 5 posti</span>
+                    <span class="feature">🎒 4 bagagli</span>
+                    <span class="feature">⚙️ Manuale</span>
+                </div>
+                <div class="card-price">58€ <span>/ giorno</span></div>
+            </div>
+        </div>
+
+        <!-- PREMIUM -->
+        <div class="card" data-category="premium">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=600&h=400&fit=crop&q=80" alt="BMW Serie 3">
                 <span class="card-badge">Premium</span>
             </div>
             <div class="card-content">
@@ -447,21 +600,248 @@ button:active {
             </div>
         </div>
 
-        <div class="card">
+        <div class="card" data-category="premium">
             <div class="card-image">
-                <img src="https://images.unsplash.com/photo-1527786356703-4b100091cd2c?w=600&h=400&fit=crop" alt="Ford Transit">
+                <img src="https://images.unsplash.com/photo-1617531653520-bd466303e4e6?w=600&h=400&fit=crop&q=80" alt="Audi A4">
+                <span class="card-badge">Premium</span>
+            </div>
+            <div class="card-content">
+                <h3>Audi A4</h3>
+                <div class="features">
+                    <span class="feature">👤 5 posti</span>
+                    <span class="feature">🎒 4 bagagli</span>
+                    <span class="feature">⚙️ Automatico</span>
+                </div>
+                <div class="card-price">95€ <span>/ giorno</span></div>
+            </div>
+        </div>
+
+        <div class="card" data-category="premium">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=600&h=400&fit=crop&q=80" alt="Mercedes Classe C">
+                <span class="card-badge">Premium</span>
+            </div>
+            <div class="card-content">
+                <h3>Mercedes Classe C</h3>
+                <div class="features">
+                    <span class="feature">👤 5 posti</span>
+                    <span class="feature">🎒 4 bagagli</span>
+                    <span class="feature">⚙️ Automatico</span>
+                </div>
+                <div class="card-price">100€ <span>/ giorno</span></div>
+            </div>
+        </div>
+
+        <div class="card" data-category="premium">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1563720360172-67b8f3dce741?w=600&h=400&fit=crop&q=80" alt="Alfa Romeo Giulia">
+                <span class="card-badge">Premium</span>
+            </div>
+            <div class="card-content">
+                <h3>Alfa Romeo Giulia</h3>
+                <div class="features">
+                    <span class="feature">👤 5 posti</span>
+                    <span class="feature">🎒 3 bagagli</span>
+                    <span class="feature">⚙️ Automatico</span>
+                </div>
+                <div class="card-price">85€ <span>/ giorno</span></div>
+            </div>
+        </div>
+
+        <div class="card" data-category="premium">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=600&h=400&fit=crop&q=80" alt="Tesla Model 3">
+                <span class="card-badge">Premium</span>
+            </div>
+            <div class="card-content">
+                <h3>Tesla Model 3</h3>
+                <div class="features">
+                    <span class="feature">👤 5 posti</span>
+                    <span class="feature">🎒 4 bagagli</span>
+                    <span class="feature">⚡ Elettrica</span>
+                </div>
+                <div class="card-price">110€ <span>/ giorno</span></div>
+            </div>
+        </div>
+
+        <!-- SUV -->
+        <div class="card" data-category="suv">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600&h=400&fit=crop&q=80" alt="Nissan Qashqai">
+                <span class="card-badge">SUV</span>
+            </div>
+            <div class="card-content">
+                <h3>Nissan Qashqai</h3>
+                <div class="features">
+                    <span class="feature">👤 5 posti</span>
+                    <span class="feature">🎒 5 bagagli</span>
+                    <span class="feature">⚙️ Automatico</span>
+                </div>
+                <div class="card-price">75€ <span>/ giorno</span></div>
+            </div>
+        </div>
+
+        <div class="card" data-category="suv">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=600&h=400&fit=crop&q=80" alt="Jeep Renegade">
+                <span class="card-badge">SUV</span>
+            </div>
+            <div class="card-content">
+                <h3>Jeep Renegade</h3>
+                <div class="features">
+                    <span class="feature">👤 5 posti</span>
+                    <span class="feature">🎒 4 bagagli</span>
+                    <span class="feature">⚙️ Automatico</span>
+                </div>
+                <div class="card-price">78€ <span>/ giorno</span></div>
+            </div>
+        </div>
+
+        <div class="card" data-category="suv">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=600&h=400&fit=crop&q=80" alt="BMW X3">
+                <span class="card-badge">SUV Premium</span>
+            </div>
+            <div class="card-content">
+                <h3>BMW X3</h3>
+                <div class="features">
+                    <span class="feature">👤 5 posti</span>
+                    <span class="feature">🎒 5 bagagli</span>
+                    <span class="feature">⚙️ Automatico</span>
+                </div>
+                <div class="card-price">105€ <span>/ giorno</span></div>
+            </div>
+        </div>
+
+        <div class="card" data-category="suv">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1581540222194-0def2dda95b8?w=600&h=400&fit=crop&q=80" alt="Audi Q5">
+                <span class="card-badge">SUV Premium</span>
+            </div>
+            <div class="card-content">
+                <h3>Audi Q5</h3>
+                <div class="features">
+                    <span class="feature">👤 5 posti</span>
+                    <span class="feature">🎒 5 bagagli</span>
+                    <span class="feature">⚙️ Automatico</span>
+                </div>
+                <div class="card-price">110€ <span>/ giorno</span></div>
+            </div>
+        </div>
+
+        <div class="card" data-category="suv">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=600&h=400&fit=crop&q=80" alt="Tesla Model Y">
+                <span class="card-badge">SUV Elettrico</span>
+            </div>
+            <div class="card-content">
+                <h3>Tesla Model Y</h3>
+                <div class="features">
+                    <span class="feature">👤 7 posti</span>
+                    <span class="feature">🎒 5 bagagli</span>
+                    <span class="feature">⚡ Elettrica</span>
+                </div>
+                <div class="card-price">125€ <span>/ giorno</span></div>
+            </div>
+        </div>
+
+        <div class="card" data-category="suv">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?w=600&h=400&fit=crop&q=80" alt="Range Rover Evoque">
+                <span class="card-badge">SUV Premium</span>
+            </div>
+            <div class="card-content">
+                <h3>Range Rover Evoque</h3>
+                <div class="features">
+                    <span class="feature">👤 5 posti</span>
+                    <span class="feature">🎒 5 bagagli</span>
+                    <span class="feature">⚙️ Automatico</span>
+                </div>
+                <div class="card-price">120€ <span>/ giorno</span></div>
+            </div>
+        </div>
+
+        <!-- FURGONI -->
+        <div class="card" data-category="furgone">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1527786356703-4b100091cd2c?w=600&h=400&fit=crop&q=80" alt="Ford Transit">
                 <span class="card-badge">Furgone</span>
             </div>
             <div class="card-content">
                 <h3>Ford Transit</h3>
                 <div class="features">
                     <span class="feature">👤 3 posti</span>
-                    <span class="feature">📦 Grande carico</span>
+                    <span class="feature">📦 12 m³</span>
                     <span class="feature">⚙️ Manuale</span>
                 </div>
                 <div class="card-price">70€ <span>/ giorno</span></div>
             </div>
         </div>
+
+        <div class="card" data-category="furgone">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=600&h=400&fit=crop&q=80" alt="Mercedes Sprinter">
+                <span class="card-badge">Furgone</span>
+            </div>
+            <div class="card-content">
+                <h3>Mercedes Sprinter</h3>
+                <div class="features">
+                    <span class="feature">👤 3 posti</span>
+                    <span class="feature">📦 15 m³</span>
+                    <span class="feature">⚙️ Automatico</span>
+                </div>
+                <div class="card-price">85€ <span>/ giorno</span></div>
+            </div>
+        </div>
+
+        <div class="card" data-category="furgone">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=600&h=400&fit=crop&q=80" alt="Fiat Ducato">
+                <span class="card-badge">Furgone</span>
+            </div>
+            <div class="card-content">
+                <h3>Fiat Ducato</h3>
+                <div class="features">
+                    <span class="feature">👤 3 posti</span>
+                    <span class="feature">📦 13 m³</span>
+                    <span class="feature">⚙️ Manuale</span>
+                </div>
+                <div class="card-price">72€ <span>/ giorno</span></div>
+            </div>
+        </div>
+
+        <div class="card" data-category="furgone">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1622084990546-13c66e8f0c80?w=600&h=400&fit=crop&q=80" alt="Renault Master">
+                <span class="card-badge">Furgone</span>
+            </div>
+            <div class="card-content">
+                <h3>Renault Master</h3>
+                <div class="features">
+                    <span class="feature">👤 3 posti</span>
+                    <span class="feature">📦 14 m³</span>
+                    <span class="feature">⚙️ Manuale</span>
+                </div>
+                <div class="card-price">75€ <span>/ giorno</span></div>
+            </div>
+        </div>
+
+        <div class="card" data-category="furgone">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=600&h=400&fit=crop&q=80" alt="Volkswagen Transporter">
+                <span class="card-badge">Furgone</span>
+            </div>
+            <div class="card-content">
+                <h3>Volkswagen Transporter</h3>
+                <div class="features">
+                    <span class="feature">👤 3 posti</span>
+                    <span class="feature">📦 9 m³</span>
+                    <span class="feature">⚙️ Manuale</span>
+                </div>
+                <div class="card-price">68€ <span>/ giorno</span></div>
+            </div>
+        </div>
+
     </div>
 </section>
 
@@ -472,9 +852,40 @@ button:active {
         <div class="form-group">
             <label>Seleziona veicolo</label>
             <select id="veicolo">
-                <option value="45">Fiat Panda - 45€/giorno</option>
-                <option value="90">BMW Serie 3 - 90€/giorno</option>
-                <option value="70">Ford Transit - 70€/giorno</option>
+                <optgroup label="Economiche">
+                    <option value="40">Fiat 500 - 40€/giorno</option>
+                    <option value="42">Toyota Aygo - 42€/giorno</option>
+                    <option value="45">Fiat Panda - 45€/giorno</option>
+                    <option value="48">Renault Clio - 48€/giorno</option>
+                </optgroup>
+                <optgroup label="Medie">
+                    <option value="58">Opel Astra - 58€/giorno</option>
+                    <option value="60">Peugeot 308 - 60€/giorno</option>
+                    <option value="62">Ford Focus - 62€/giorno</option>
+                    <option value="65">Volkswagen Golf - 65€/giorno</option>
+                </optgroup>
+                <optgroup label="Premium">
+                    <option value="85">Alfa Romeo Giulia - 85€/giorno</option>
+                    <option value="90">BMW Serie 3 - 90€/giorno</option>
+                    <option value="95">Audi A4 - 95€/giorno</option>
+                    <option value="100">Mercedes Classe C - 100€/giorno</option>
+                    <option value="110">Tesla Model 3 - 110€/giorno</option>
+                </optgroup>
+                <optgroup label="SUV">
+                    <option value="75">Nissan Qashqai - 75€/giorno</option>
+                    <option value="78">Jeep Renegade - 78€/giorno</option>
+                    <option value="105">BMW X3 - 105€/giorno</option>
+                    <option value="110">Audi Q5 - 110€/giorno</option>
+                    <option value="120">Range Rover Evoque - 120€/giorno</option>
+                    <option value="125">Tesla Model Y - 125€/giorno</option>
+                </optgroup>
+                <optgroup label="Furgoni">
+                    <option value="68">Volkswagen Transporter - 68€/giorno</option>
+                    <option value="70">Ford Transit - 70€/giorno</option>
+                    <option value="72">Fiat Ducato - 72€/giorno</option>
+                    <option value="75">Renault Master - 75€/giorno</option>
+                    <option value="85">Mercedes Sprinter - 85€/giorno</option>
+                </optgroup>
             </select>
         </div>
 
@@ -519,6 +930,22 @@ function showSection(id) {
     document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function filterVehicles(category) {
+    const cards = document.querySelectorAll('.card');
+    const buttons = document.querySelectorAll('.filter-btn');
+    
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+    
+    cards.forEach(card => {
+        if (category === 'tutti' || card.dataset.category === category) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
 }
 
 function calcolaTariffa() {
