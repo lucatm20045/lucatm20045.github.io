@@ -97,7 +97,6 @@ footer{background:#111;color:white;text-align:center;padding:30px}
 
 <!-- HOME -->
 <div id="home">
-
 <section class="hero">
 <h1>Ricambi 3D Performance</h1>
 <button onclick="scrollToProducts()">Scopri ora</button>
@@ -107,7 +106,6 @@ footer{background:#111;color:white;text-align:center;padding:30px}
 <h2 style="text-align:center;margin-bottom:40px">I Nostri Prodotti</h2>
 <div class="products" id="product-list"></div>
 </section>
-
 </div>
 
 <!-- PRODUCT PAGE -->
@@ -130,7 +128,6 @@ footer{background:#111;color:white;text-align:center;padding:30px}
 <div class="price" id="product-price"></div>
 <button onclick="addCurrentToCart()">Aggiungi al carrello</button>
 </div>
-
 </div>
 </div>
 </section>
@@ -147,28 +144,24 @@ footer{background:#111;color:white;text-align:center;padding:30px}
 
 <script>
 const products=[
-{
-id:1,
-name:"Supporto Racing",
-price:29.99,
+{ id:1, name:"Supporto Racing", price:29.99,
 description:"Supporto ad alte prestazioni stampato in 3D con materiale resistente.",
-images:[
-"https://picsum.photos/600/400?1",
-"https://picsum.photos/600/400?11",
-"https://picsum.photos/600/400?12"
-]
-},
-{
-id:2,
-name:"Cover Protezione",
-price:19.99,
+images:["https://picsum.photos/600/400?1","https://picsum.photos/600/400?11","https://picsum.photos/600/400?12"]},
+{ id:2, name:"Cover Protezione", price:19.99,
 description:"Cover leggera e resistente per protezione avanzata.",
-images:[
-"https://picsum.photos/600/400?2",
-"https://picsum.photos/600/400?21",
-"https://picsum.photos/600/400?22"
-]
-}
+images:["https://picsum.photos/600/400?2","https://picsum.photos/600/400?21","https://picsum.photos/600/400?22"]},
+{ id:3, name:"Staffa Rinforzata Pro", price:39.99,
+description:"Staffa rinforzata progettata per applicazioni ad alto carico.",
+images:["https://picsum.photos/600/400?3","https://picsum.photos/600/400?31","https://picsum.photos/600/400?32"]},
+{ id:4, name:"Kit Montaggio Advanced", price:49.99,
+description:"Kit completo per installazioni professionali con componenti premium.",
+images:["https://picsum.photos/600/400?4","https://picsum.photos/600/400?41","https://picsum.photos/600/400?42"]},
+{ id:5, name:"Clip Tecnica Ultra", price:14.99,
+description:"Clip tecnica resistente a vibrazioni e alte temperature.",
+images:["https://picsum.photos/600/400?5","https://picsum.photos/600/400?51","https://picsum.photos/600/400?52"]},
+{ id:6, name:"Struttura Performance X", price:59.99,
+description:"Struttura stampata in 3D con design ottimizzato per performance.",
+images:["https://picsum.photos/600/400?6","https://picsum.photos/600/400?61","https://picsum.photos/600/400?62"]}
 ];
 
 let cart=JSON.parse(localStorage.getItem("cart"))||[];
@@ -194,15 +187,12 @@ container.appendChild(div);
 function openProduct(id){
 currentProduct=products.find(p=>p.id===id);
 currentImageIndex=0;
-
 document.getElementById("home").style.display="none";
 document.getElementById("product-page").style.display="block";
-
 document.getElementById("product-title").innerText=currentProduct.name;
 document.getElementById("product-description").innerText=currentProduct.description;
 document.getElementById("product-price").innerText="€"+currentProduct.price.toFixed(2);
 document.getElementById("main-image").src=currentProduct.images[0];
-
 window.scrollTo(0,0);
 }
 
@@ -212,25 +202,21 @@ document.getElementById("product-page").style.display="none";
 }
 
 function nextImage(){
-if(!currentProduct) return;
 currentImageIndex=(currentImageIndex+1)%currentProduct.images.length;
 document.getElementById("main-image").src=currentProduct.images[currentImageIndex];
 }
 
 function prevImage(){
-if(!currentProduct) return;
 currentImageIndex--;
 if(currentImageIndex<0) currentImageIndex=currentProduct.images.length-1;
 document.getElementById("main-image").src=currentProduct.images[currentImageIndex];
 }
 
 function addCurrentToCart(){
-if(currentProduct){
 cart.push(currentProduct.id);
 localStorage.setItem("cart",JSON.stringify(cart));
 updateCart();
 alert("Aggiunto al carrello!");
-}
 }
 
 function updateCart(){
