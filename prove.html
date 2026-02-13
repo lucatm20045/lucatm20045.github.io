@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RB components</title>
+<title>RB Components</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial,Helvetica,sans-serif;background:#f5f5f5}
+body{font-family:Arial,Helvetica,sans-serif;background:#f4f4f4;color:#111}
 a{text-decoration:none;color:inherit;cursor:pointer}
 
 header{
@@ -20,124 +20,112 @@ display:flex;justify-content:space-between;align-items:center;
 z-index:1000;transition:.3s}
 header.scrolled{background:#000;padding:10px 40px}
 
-.logo{font-weight:bold;font-size:22px}
-nav a{margin-left:20px;font-size:14px}
-.cart-btn{cursor:pointer}
+.logo{font-weight:bold;font-size:22px;letter-spacing:1px}
+nav a{margin-left:25px;font-size:14px;font-weight:500}
 
 section{padding:100px 40px}
 
 .hero{
-height:100vh;background:linear-gradient(135deg,#111,#333);
-color:white;display:flex;flex-direction:column;
+height:100vh;
+background:linear-gradient(135deg,#111,#333);
+color:white;
+display:flex;flex-direction:column;
 justify-content:center;align-items:center;text-align:center}
-.hero h1{font-size:48px;margin-bottom:20px}
-.hero button{padding:12px 30px;background:#ff3c3c;border:none;color:white;cursor:pointer}
-
-/* CONTATTI */
-.contact-section{background:white}
-
-.contact-container{
-max-width:800px;
-margin:auto;
-display:flex;
-flex-direction:column;
-gap:25px;
-font-size:18px;
-}
-
-.contact-item{
-display:flex;
-align-items:center;
-gap:15px;
-padding:15px;
-background:#f9f9f9;
-border-radius:10px;
-box-shadow:0 3px 10px rgba(0,0,0,.05);
-}
-
-.contact-item i{
-font-size:22px;
-color:#ff3c3c;
-}
-
-/* FORM */
-.contact-form{
-display:flex;
-flex-direction:column;
-gap:15px;
-margin-top:30px;
-}
-
-.contact-form input,
-.contact-form textarea{
-padding:12px;
-border-radius:8px;
-border:1px solid #ccc;
-font-size:14px;
-width:100%;
-}
-
-.contact-form textarea{
-min-height:120px;
-resize:vertical;
-}
-
-.contact-form button{
-padding:12px;
-background:#28a745;
+.hero h1{font-size:50px;margin-bottom:20px;letter-spacing:2px}
+.hero button{
+padding:14px 35px;
+background:#ff3c3c;
 border:none;
 color:white;
-font-size:16px;
+font-weight:bold;
 cursor:pointer;
-border-radius:8px;
-}
+border-radius:6px;
+transition:.3s}
+.hero button:hover{background:#e03232}
 
-/* resto shop invariato */
+/* PRODUCTS */
 .products{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px}
+gap:30px}
 
 .card{
-background:white;border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,.1);
+background:white;border-radius:12px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
 overflow:hidden;transition:.3s}
-.card:hover{transform:translateY(-5px)}
-.card img{width:100%;height:200px;object-fit:cover}
-.card-content{padding:15px}
+.card:hover{transform:translateY(-6px)}
+.card img{width:100%;height:220px;object-fit:cover}
+.card-content{padding:20px}
+.card-content h3{margin-bottom:10px}
+.card-content p{margin-bottom:15px;font-weight:bold}
 .card-content button{
-width:100%;padding:10px;background:black;color:white;border:none;cursor:pointer}
+width:100%;padding:12px;background:#111;color:white;border:none;border-radius:6px;cursor:pointer}
 
+/* PRODUCT PAGE */
 .product-page{display:none;animation:fade .4s ease}
-.product-layout{display:flex;gap:40px;flex-wrap:wrap}
+.product-layout{display:flex;gap:50px;flex-wrap:wrap}
 .product-gallery{flex:1;min-width:300px}
 .product-gallery img{
-width:100%;height:400px;object-fit:cover;border-radius:10px}
-.slider-controls{display:flex;justify-content:space-between;margin-top:10px}
+width:100%;height:450px;object-fit:cover;border-radius:12px}
+.slider-controls{
+display:flex;justify-content:space-between;margin-top:10px}
 .slider-controls button{
-padding:8px 15px;border:none;background:black;color:white;cursor:pointer}
+padding:10px 18px;border:none;background:#111;color:white;border-radius:6px;cursor:pointer}
 
 .product-info{flex:1;min-width:300px}
-.product-info h2{margin-bottom:15px}
-.product-info p{margin-bottom:20px;color:#555}
+.product-info h2{margin-bottom:15px;font-size:28px}
+.product-info p{margin-bottom:25px;color:#555}
 
 .price-box{
-background:white;padding:20px;border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,.1)}
-.price{font-size:24px;margin-bottom:15px}
+background:white;padding:25px;border-radius:12px;
+box-shadow:0 8px 20px rgba(0,0,0,.08)}
+.price{font-size:28px;margin-bottom:15px;font-weight:bold}
 .price-box button{
-width:100%;padding:12px;background:#28a745;border:none;color:white;cursor:pointer}
+width:100%;padding:14px;background:#28a745;border:none;color:white;font-size:16px;border-radius:6px;cursor:pointer}
 
-.back-btn{margin-bottom:20px;display:inline-block}
+.back-btn{margin-bottom:20px;display:inline-block;font-weight:bold}
 
+/* CART */
 .cart-sidebar{
 position:fixed;right:-400px;top:0;width:350px;height:100%;
 background:white;box-shadow:-5px 0 20px rgba(0,0,0,.2);
-padding:20px;transition:.4s;z-index:2000;overflow:auto}
+padding:25px;transition:.4s;z-index:2000;overflow:auto}
 .cart-sidebar.open{right:0}
-.cart-item{display:flex;justify-content:space-between;margin-bottom:10px}
+.cart-item{display:flex;justify-content:space-between;margin-bottom:15px}
+.cart-sidebar button{
+margin-top:20px;padding:12px;background:#111;color:white;border:none;border-radius:6px;cursor:pointer}
 
-footer{background:#111;color:white;text-align:center;padding:30px}
+/* CONTACT */
+.contact-section{background:white}
+.contact-container{
+max-width:800px;margin:auto;
+display:flex;flex-direction:column;gap:25px}
+
+.contact-item{
+display:flex;align-items:center;gap:15px;
+padding:18px;background:#f9f9f9;border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,.05);
+font-size:18px}
+.contact-item i{color:#ff3c3c;font-size:22px}
+
+.contact-form{
+display:flex;flex-direction:column;gap:15px;margin-top:20px}
+.contact-form input,.contact-form textarea{
+padding:14px;border-radius:8px;border:1px solid #ccc;font-size:14px}
+.contact-form textarea{min-height:130px}
+.contact-form button{
+padding:14px;background:#111;color:white;border:none;border-radius:8px;font-weight:bold;cursor:pointer}
+.success-message{
+display:none;
+padding:15px;
+background:#28a745;
+color:white;
+border-radius:8px;
+margin-top:15px;
+text-align:center;
+}
+
+footer{background:#111;color:white;text-align:center;padding:35px;margin-top:80px}
 
 @keyframes fade{from{opacity:0}to{opacity:1}}
 
@@ -152,8 +140,8 @@ footer{background:#111;color:white;text-align:center;padding:30px}
 <header id="header">
 <div class="logo" onclick="showHome()">RB COMPONENTS</div>
 <nav>
-<a onclick="scrollToContacts()">Contatti</a>
-<a class="cart-btn" onclick="toggleCart()">Carrello (<span id="cart-count">0</span>)</a>
+<a onclick="goToContacts()">Contatti</a>
+<a onclick="toggleCart()">Carrello (<span id="cart-count">0</span>)</a>
 </nav>
 </header>
 
@@ -161,15 +149,14 @@ footer{background:#111;color:white;text-align:center;padding:30px}
 <div id="home">
 <section class="hero">
 <h1>RB COMPONENTS</h1>
-<button onclick="scrollToProducts()">Scopri ora tutti i nostri prodotti</button>
+<button onclick="scrollToProducts()">Scopri i prodotti</button>
 </section>
 
 <section id="products">
-<h2 style="text-align:center;margin-bottom:40px">I Nostri Prodotti</h2>
+<h2 style="text-align:center;margin-bottom:50px">I Nostri Prodotti</h2>
 <div class="products" id="product-list"></div>
 </section>
 
-<!-- CONTATTI -->
 <section id="contacts" class="contact-section">
 <h2 style="text-align:center;margin-bottom:40px">Contatti</h2>
 
@@ -177,56 +164,187 @@ footer{background:#111;color:white;text-align:center;padding:30px}
 
 <div class="contact-item">
 <i class="fas fa-envelope"></i>
-<span>email@rbcomponents.com</span>
+<a href="mailto:email@rbcomponents.com">email@rbcomponents.com</a>
 </div>
 
 <div class="contact-item">
 <i class="fab fa-instagram"></i>
-<span>@rbcomponents</span>
+<a href="https://instagram.com/rbcomponents" target="_blank">@rbcomponents</a>
 </div>
 
-<form class="contact-form"
+<form id="contactForm" class="contact-form"
 action="https://formspree.io/f/xzdaewla"
 method="POST">
 
 <input type="text" name="nome" placeholder="Nome" required>
 <input type="text" name="cognome" placeholder="Cognome" required>
-<input type="email" name="email" placeholder="La tua Email" required>
-
-<input type="tel"
-name="telefono"
-placeholder="Numero di cellulare"
-pattern="[0-9+ ]{6,15}"
-title="Inserisci un numero valido"
-required>
-
-<textarea name="messaggio"
-placeholder="Scrivi qui il tuo messaggio..."
-required></textarea>
+<input type="email" name="email" placeholder="Email" required>
+<input type="tel" name="telefono" placeholder="Numero di cellulare"
+pattern="[0-9+ ]{6,15}" required>
+<textarea name="messaggio" placeholder="Scrivi il tuo messaggio..." required></textarea>
 
 <button type="submit">Invia Messaggio</button>
 
-</form>
+<div class="success-message" id="successMessage">
+Messaggio inviato con successo!
+</div>
 
+</form>
+</div>
+</section>
+</div>
+
+<!-- PRODUCT PAGE -->
+<section class="product-page" id="product-page">
+<a class="back-btn" onclick="showHome()">← Torna ai prodotti</a>
+<div class="product-layout">
+<div class="product-gallery">
+<img id="main-image">
+<div class="slider-controls">
+<button onclick="prevImage()">←</button>
+<button onclick="nextImage()">→</button>
+</div>
+</div>
+
+<div class="product-info">
+<h2 id="product-title"></h2>
+<p id="product-description"></p>
+<div class="price-box">
+<div class="price" id="product-price"></div>
+<button onclick="addCurrentToCart()">Aggiungi al carrello</button>
+</div>
+</div>
 </div>
 </section>
 
+<!-- CART -->
+<div class="cart-sidebar" id="cart">
+<h3>Carrello</h3>
+<div id="cart-items"></div>
+<h4 id="cart-total"></h4>
+<button onclick="checkout()">Checkout</button>
 </div>
 
-<footer>RB components</footer>
+<footer>RB Components © 2026</footer>
 
 <script>
 
-/* ARRAY PRODOTTI */
-const products=[ ... ]; // (lascia il tuo array invariato qui)
+/* PRODOTTI */
+const products=[
+{ id:1,name:"Tamponi perno ruota",price:35,description:"Tamponi CNC professionali.",images:["https://picsum.photos/600/400?1","https://picsum.photos/600/400?11","https://picsum.photos/600/400?12"]},
+{ id:2,name:"Tamponi stampa 3D",price:30,description:"Versione personalizzabile 3D.",images:["https://picsum.photos/600/400?2","https://picsum.photos/600/400?21","https://picsum.photos/600/400?22"]}
+];
 
-/* LOGICA SHOP (rimane tutta invariata) */
+/* SHOP LOGIC */
+let cart=JSON.parse(localStorage.getItem("cart"))||[];
+let currentProduct=null;
+let currentImageIndex=0;
 
-function scrollToContacts(){
-document.getElementById("contacts").scrollIntoView({behavior:"smooth"});
+function renderProducts(){
+const container=document.getElementById("product-list");
+products.forEach(product=>{
+const div=document.createElement("div");
+div.className="card";
+div.innerHTML=`
+<img src="${product.images[0]}">
+<div class="card-content">
+<h3>${product.name}</h3>
+<p>€${product.price.toFixed(2)}</p>
+<button onclick="openProduct(${product.id})">Visualizza</button>
+</div>`;
+container.appendChild(div);
+});
 }
 
-/* resto JS invariato */
+function openProduct(id){
+currentProduct=products.find(p=>p.id===id);
+currentImageIndex=0;
+document.getElementById("home").style.display="none";
+document.getElementById("product-page").style.display="block";
+document.getElementById("product-title").innerText=currentProduct.name;
+document.getElementById("product-description").innerText=currentProduct.description;
+document.getElementById("product-price").innerText="€"+currentProduct.price.toFixed(2);
+document.getElementById("main-image").src=currentProduct.images[0];
+window.scrollTo(0,0);
+}
+
+function showHome(){
+document.getElementById("home").style.display="block";
+document.getElementById("product-page").style.display="none";
+window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function nextImage(){
+currentImageIndex=(currentImageIndex+1)%currentProduct.images.length;
+document.getElementById("main-image").src=currentProduct.images[currentImageIndex];
+}
+function prevImage(){
+currentImageIndex=(currentImageIndex-1+currentProduct.images.length)%currentProduct.images.length;
+document.getElementById("main-image").src=currentProduct.images[currentImageIndex];
+}
+
+function addCurrentToCart(){
+cart.push(currentProduct.id);
+localStorage.setItem("cart",JSON.stringify(cart));
+updateCart();
+alert("Aggiunto al carrello");
+}
+
+function updateCart(){
+document.getElementById("cart-count").innerText=cart.length;
+const items=document.getElementById("cart-items");
+items.innerHTML="";
+let total=0;
+cart.forEach(id=>{
+const product=products.find(p=>p.id===id);
+total+=product.price;
+items.innerHTML+=`<div class="cart-item">
+<span>${product.name}</span>
+<span>€${product.price.toFixed(2)}</span>
+</div>`;
+});
+document.getElementById("cart-total").innerText="Totale: €"+total.toFixed(2);
+}
+
+function toggleCart(){
+document.getElementById("cart").classList.toggle("open");
+}
+
+function checkout(){
+alert("Checkout simulato");
+cart=[];
+localStorage.removeItem("cart");
+updateCart();
+toggleCart();
+}
+
+function scrollToProducts(){
+document.getElementById("products").scrollIntoView({behavior:"smooth"});
+}
+
+function goToContacts(){
+showHome();
+setTimeout(()=>{
+document.getElementById("contacts").scrollIntoView({behavior:"smooth"});
+},150);
+}
+
+/* FORM SUCCESS */
+document.getElementById("contactForm").addEventListener("submit",function(){
+setTimeout(()=>{
+document.getElementById("successMessage").style.display="block";
+},300);
+});
+
+window.addEventListener("scroll",()=>{
+if(window.scrollY>50)
+document.getElementById("header").classList.add("scrolled");
+else
+document.getElementById("header").classList.remove("scrolled");
+});
+
+renderProducts();
+updateCart();
 
 </script>
 </body>
