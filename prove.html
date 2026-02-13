@@ -134,13 +134,26 @@ action="https://formspree.io/f/xzdaewla"
 method="POST">
 
 <input type="text" name="nome" placeholder="Nome" required>
+
 <input type="text" name="cognome" placeholder="Cognome" required>
+
 <input type="email" name="email" placeholder="La tua Email" required>
-<textarea name="messaggio" placeholder="Scrivi qui il tuo messaggio..." required></textarea>
+
+<input type="tel"
+       name="telefono"
+       placeholder="Numero di cellulare"
+       pattern="[0-9+ ]{6,15}"
+       title="Inserisci un numero valido"
+       required>
+
+<textarea name="messaggio"
+placeholder="Scrivi qui il tuo messaggio..."
+required></textarea>
 
 <button type="submit">Invia Messaggio</button>
 
 </form>
+
 
 </div>
 </section>
