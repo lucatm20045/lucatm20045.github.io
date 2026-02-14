@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RB Components</title>
+<title>RB components</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial,Helvetica,sans-serif;background:#f4f4f4;color:#111}
+body{font-family:Arial,Helvetica,sans-serif;background:#f5f5f5}
 a{text-decoration:none;color:inherit;cursor:pointer}
 
 header{
@@ -20,82 +20,71 @@ display:flex;justify-content:space-between;align-items:center;
 z-index:1000;transition:.3s}
 header.scrolled{background:#000;padding:10px 40px}
 
-.logo{font-weight:bold;font-size:22px;letter-spacing:1px}
-nav a{margin-left:25px;font-size:14px;font-weight:500}
+.logo{font-weight:bold;font-size:22px}
+nav a{margin-left:20px;font-size:14px}
+.cart-btn{cursor:pointer}
 
 section{padding:100px 40px}
 
 .hero{
-height:100vh;
-background:linear-gradient(135deg,#111,#333);
-color:white;
-display:flex;flex-direction:column;
+height:100vh;background:linear-gradient(135deg,#111,#333);
+color:white;display:flex;flex-direction:column;
 justify-content:center;align-items:center;text-align:center}
-.hero h1{font-size:50px;margin-bottom:20px;letter-spacing:2px}
-.hero button{
-padding:14px 35px;
-background:#ff3c3c;
-border:none;
-color:white;
-font-weight:bold;
-cursor:pointer;
-border-radius:6px;
-transition:.3s}
+.hero h1{font-size:48px;margin-bottom:20px}
+.hero button{padding:12px 30px;background:#ff3c3c;border:none;color:white;cursor:pointer;border-radius:6px;transition:.3s}
 .hero button:hover{background:#e03232}
 
-/* PRODUCTS */
 .products{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px}
+gap:25px}
 
 .card{
-background:white;border-radius:12px;
-box-shadow:0 8px 20px rgba(0,0,0,.08);
+background:white;border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
 overflow:hidden;transition:.3s}
-.card:hover{transform:translateY(-6px)}
-.card img{width:100%;height:220px;object-fit:cover}
-.card-content{padding:20px}
-.card-content h3{margin-bottom:10px}
-.card-content p{margin-bottom:15px;font-weight:bold}
+.card:hover{transform:translateY(-5px)}
+.card img{width:100%;height:200px;object-fit:cover}
+.card-content{padding:15px}
 .card-content button{
-width:100%;padding:12px;background:#111;color:white;border:none;border-radius:6px;cursor:pointer}
+width:100%;padding:10px;background:black;color:white;border:none;cursor:pointer;border-radius:6px}
 
-/* PRODUCT PAGE */
 .product-page{display:none;animation:fade .4s ease}
-.product-layout{display:flex;gap:50px;flex-wrap:wrap}
+.product-layout{
+display:flex;gap:40px;flex-wrap:wrap}
 .product-gallery{flex:1;min-width:300px}
 .product-gallery img{
-width:100%;height:450px;object-fit:cover;border-radius:12px}
+width:100%;height:400px;object-fit:cover;border-radius:10px}
 .slider-controls{
 display:flex;justify-content:space-between;margin-top:10px}
 .slider-controls button{
-padding:10px 18px;border:none;background:#111;color:white;border-radius:6px;cursor:pointer}
+padding:8px 15px;border:none;background:black;color:white;cursor:pointer;border-radius:6px}
 
 .product-info{flex:1;min-width:300px}
-.product-info h2{margin-bottom:15px;font-size:28px}
-.product-info p{margin-bottom:25px;color:#555}
+.product-info h2{margin-bottom:15px}
+.product-info p{margin-bottom:20px;color:#555}
 
 .price-box{
-background:white;padding:25px;border-radius:12px;
-box-shadow:0 8px 20px rgba(0,0,0,.08)}
-.price{font-size:28px;margin-bottom:15px;font-weight:bold}
+background:white;padding:20px;border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,.1)}
+.price{font-size:24px;margin-bottom:15px}
 .price-box button{
-width:100%;padding:14px;background:#28a745;border:none;color:white;font-size:16px;border-radius:6px;cursor:pointer}
+width:100%;padding:12px;background:#28a745;border:none;color:white;cursor:pointer;border-radius:6px}
 
-.back-btn{margin-bottom:20px;display:inline-block;font-weight:bold}
+.back-btn{margin-bottom:20px;display:inline-block}
 
-/* CART */
 .cart-sidebar{
 position:fixed;right:-400px;top:0;width:350px;height:100%;
 background:white;box-shadow:-5px 0 20px rgba(0,0,0,.2);
-padding:25px;transition:.4s;z-index:2000;overflow:auto}
+padding:20px;transition:.4s;z-index:2000;overflow:auto}
 .cart-sidebar.open{right:0}
-.cart-item{display:flex;justify-content:space-between;margin-bottom:15px}
+.cart-item{display:flex;justify-content:space-between;margin-bottom:10px;padding:10px;background:#f9f9f9;border-radius:6px}
+.cart-sidebar h3{margin-bottom:20px}
+.cart-sidebar h4{margin-top:20px;margin-bottom:15px;font-size:18px}
 .cart-sidebar button{
-margin-top:20px;padding:12px;background:#111;color:white;border:none;border-radius:6px;cursor:pointer}
+width:100%;padding:12px;background:#111;color:white;border:none;cursor:pointer;border-radius:6px;margin-top:10px}
 
-/* CONTACT */
+/* CONTACT SECTION */
 .contact-section{background:white}
 .contact-container{
 max-width:800px;margin:auto;
@@ -125,13 +114,44 @@ margin-top:15px;
 text-align:center;
 }
 
-footer{background:#111;color:white;text-align:center;padding:35px;margin-top:80px}
+/* CHECKOUT PAGE */
+.checkout-page{display:none;animation:fade .4s ease}
+.checkout-container{
+max-width:800px;margin:auto;
+background:white;padding:40px;border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,.1)}
+.checkout-container h2{margin-bottom:30px}
+.checkout-items{margin-bottom:30px}
+.checkout-item{
+display:flex;justify-content:space-between;align-items:center;
+padding:15px;background:#f9f9f9;border-radius:8px;margin-bottom:10px}
+.checkout-item-info{flex:1}
+.checkout-item-qty{
+display:flex;align-items:center;gap:10px;margin-right:20px}
+.checkout-item-qty button{
+padding:5px 12px;background:#111;color:white;border:none;border-radius:4px;cursor:pointer}
+.checkout-item-qty input{
+width:50px;text-align:center;border:1px solid #ccc;border-radius:4px;padding:5px}
+.remove-btn{
+padding:8px 12px;background:#ff3c3c;color:white;border:none;border-radius:4px;cursor:pointer}
+.checkout-total{
+font-size:24px;font-weight:bold;margin-bottom:30px;text-align:right}
+.checkout-form{
+display:flex;flex-direction:column;gap:15px}
+.checkout-form input,.checkout-form textarea{
+padding:14px;border-radius:8px;border:1px solid #ccc;font-size:14px}
+.checkout-form button{
+padding:14px;background:#28a745;color:white;border:none;border-radius:8px;font-weight:bold;cursor:pointer;font-size:16px}
+.checkout-form button:hover{background:#229339}
+
+footer{background:#111;color:white;text-align:center;padding:30px}
 
 @keyframes fade{from{opacity:0}to{opacity:1}}
 
 @media(max-width:900px){
 .product-layout{flex-direction:column}
 .hero h1{font-size:32px}
+section{padding:80px 20px}
 }
 </style>
 </head>
@@ -140,8 +160,9 @@ footer{background:#111;color:white;text-align:center;padding:35px;margin-top:80p
 <header id="header">
 <div class="logo" onclick="showHome()">RB COMPONENTS</div>
 <nav>
+<a onclick="showHome()">Prodotti</a>
 <a onclick="goToContacts()">Contatti</a>
-<a onclick="toggleCart()">Carrello (<span id="cart-count">0</span>)</a>
+<a class="cart-btn" onclick="toggleCart()">Carrello (<span id="cart-count">0</span>)</a>
 </nav>
 </header>
 
@@ -149,14 +170,15 @@ footer{background:#111;color:white;text-align:center;padding:35px;margin-top:80p
 <div id="home">
 <section class="hero">
 <h1>RB COMPONENTS</h1>
-<button onclick="scrollToProducts()">Scopri i prodotti</button>
+<button onclick="scrollToProducts()">Scopri ora tutti i nostri prodotti</button>
 </section>
 
 <section id="products">
-<h2 style="text-align:center;margin-bottom:50px">I Nostri Prodotti</h2>
+<h2 style="text-align:center;margin-bottom:40px">I Nostri Prodotti</h2>
 <div class="products" id="product-list"></div>
 </section>
 
+<!-- CONTACT SECTION -->
 <section id="contacts" class="contact-section">
 <h2 style="text-align:center;margin-bottom:40px">Contatti</h2>
 
@@ -209,6 +231,7 @@ Messaggio inviato con successo!
 <div class="product-info">
 <h2 id="product-title"></h2>
 <p id="product-description"></p>
+
 <div class="price-box">
 <div class="price" id="product-price"></div>
 <button onclick="addCurrentToCart()">Aggiungi al carrello</button>
@@ -217,31 +240,140 @@ Messaggio inviato con successo!
 </div>
 </section>
 
+<!-- CHECKOUT PAGE -->
+<section class="checkout-page" id="checkout-page">
+<a class="back-btn" onclick="showHome()">← Torna ai prodotti</a>
+<div class="checkout-container">
+<h2>Completa la Prenotazione</h2>
+<div class="checkout-items" id="checkout-items"></div>
+<div class="checkout-total" id="checkout-total"></div>
+
+<form id="checkoutForm" class="checkout-form"
+action="https://formspree.io/f/xzdaewla"
+method="POST">
+
+<input type="hidden" name="ordine" id="ordine-data">
+
+<input type="text" name="nome" placeholder="Nome" required>
+<input type="text" name="cognome" placeholder="Cognome" required>
+<input type="email" name="email" placeholder="Email" required>
+<input type="tel" name="telefono" placeholder="Numero di cellulare"
+pattern="[0-9+ ]{6,15}" required>
+<textarea name="note" placeholder="Note aggiuntive (opzionale)"></textarea>
+
+<button type="submit">Invia Prenotazione</button>
+
+<div class="success-message" id="checkoutSuccessMessage">
+Prenotazione inviata con successo! Riceverai una conferma via email.
+</div>
+
+</form>
+</div>
+</section>
+
 <!-- CART -->
 <div class="cart-sidebar" id="cart">
 <h3>Carrello</h3>
 <div id="cart-items"></div>
 <h4 id="cart-total"></h4>
-<button onclick="checkout()">Checkout</button>
+<button onclick="proceedToCheckout()">Procedi al Checkout</button>
 </div>
 
-<footer>RB Components © 2026</footer>
+<footer>RB components</footer>
 
 <script>
 
-/* PRODOTTI */
-const products=[
-{ id:1,name:"Tamponi perno ruota",price:35,description:"Tamponi CNC professionali.",images:["https://picsum.photos/600/400?1","https://picsum.photos/600/400?11","https://picsum.photos/600/400?12"]},
-{ id:2,name:"Tamponi stampa 3D",price:30,description:"Versione personalizzabile 3D.",images:["https://picsum.photos/600/400?2","https://picsum.photos/600/400?21","https://picsum.photos/600/400?22"]}
+/* =========================
+   ARRAY PRODOTTI MODIFICABILE
+   ========================= */
+
+const products = [
+
+{
+id: 1,
+name: "Tamponi perno ruota",
+price: 35,
+description: "Tamponi universali con filettatura m8 ricavati dal pieno con macchine CNC. Realizzati con materiali studiati apposta per resistere all'abrasione.",
+images: [
+"img/Tamponi CNC 0.jpeg",
+"img/Tamponi CNC 1.jpeg",
+"img/Tamponi CNC 2.jpeg"
+]
+},
+
+{
+id: 2,
+name: "Tamponi stampa 3D",
+price: 30,
+description: "Tamponi universali con filettatura m8 stampati in 3D. Possibilità di scelta del colore e su richesta è possibile anche inserire loghi o numeri sull'estremità del tampone.",
+images: [
+"https://picsum.photos/600/400?2",
+"https://picsum.photos/600/400?21",
+"https://picsum.photos/600/400?22"
+]
+},
+
+{
+id: 3,
+name: "Passacavi TM RACING",
+price: 6,
+description: "Passacavi per cavi del freno posteriore da sostituire a quelli già presenti fissati sul forcellone. Stampati in 3D e personalizzabili al 100% nella scelta dei colori. In privato è possibile richiedere anche altre modifiche su richiesta del cliente.",
+images: [
+"https://picsum.photos/600/400?3",
+"https://picsum.photos/600/400?31",
+"https://picsum.photos/600/400?32"
+]
+},
+
+{
+id: 4,
+name: "Kit Montaggio Advanced",
+price: 49.99,
+description: "Kit completo per installazioni professionali con componenti premium.",
+images: [
+"https://picsum.photos/600/400?4",
+"https://picsum.photos/600/400?41",
+"https://picsum.photos/600/400?42"
+]
+},
+
+{
+id: 5,
+name: "Clip Tecnica Ultra",
+price: 14.99,
+description: "Clip tecnica resistente a vibrazioni e alte temperature.",
+images: [
+"https://picsum.photos/600/400?5",
+"https://picsum.photos/600/400?51",
+"https://picsum.photos/600/400?52"
+]
+},
+
+{
+id: 6,
+name: "Struttura Performance X",
+price: 59.99,
+description: "Struttura stampata in 3D con design ottimizzato per performance.",
+images: [
+"https://picsum.photos/600/400?6",
+"https://picsum.photos/600/400?61",
+"https://picsum.photos/600/400?62"
+]
+}
+
 ];
 
-/* SHOP LOGIC */
-let cart=JSON.parse(localStorage.getItem("cart"))||[];
-let currentProduct=null;
-let currentImageIndex=0;
+/* =========================
+   LOGICA SITO
+   ========================= */
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let currentProduct = null;
+let currentImageIndex = 0;
 
 function renderProducts(){
 const container=document.getElementById("product-list");
+container.innerHTML = "";
 products.forEach(product=>{
 const div=document.createElement("div");
 div.className="card";
@@ -257,52 +389,81 @@ container.appendChild(div);
 }
 
 function openProduct(id){
-currentProduct=products.find(p=>p.id===id);
-currentImageIndex=0;
+currentProduct = products.find(p => p.id === id);
+currentImageIndex = 0;
+
 document.getElementById("home").style.display="none";
 document.getElementById("product-page").style.display="block";
-document.getElementById("product-title").innerText=currentProduct.name;
-document.getElementById("product-description").innerText=currentProduct.description;
-document.getElementById("product-price").innerText="€"+currentProduct.price.toFixed(2);
-document.getElementById("main-image").src=currentProduct.images[0];
+document.getElementById("checkout-page").style.display="none";
+
+document.getElementById("product-title").innerText = currentProduct.name;
+document.getElementById("product-description").innerText = currentProduct.description;
+document.getElementById("product-price").innerText = "€" + currentProduct.price.toFixed(2);
+document.getElementById("main-image").src = currentProduct.images[0];
+
 window.scrollTo(0,0);
 }
 
 function showHome(){
 document.getElementById("home").style.display="block";
 document.getElementById("product-page").style.display="none";
+document.getElementById("checkout-page").style.display="none";
 window.scrollTo({top:0,behavior:"smooth"});
 }
 
 function nextImage(){
-currentImageIndex=(currentImageIndex+1)%currentProduct.images.length;
-document.getElementById("main-image").src=currentProduct.images[currentImageIndex];
+currentImageIndex = (currentImageIndex + 1) % currentProduct.images.length;
+document.getElementById("main-image").src = currentProduct.images[currentImageIndex];
 }
+
 function prevImage(){
-currentImageIndex=(currentImageIndex-1+currentProduct.images.length)%currentProduct.images.length;
-document.getElementById("main-image").src=currentProduct.images[currentImageIndex];
+currentImageIndex--;
+if(currentImageIndex < 0)
+currentImageIndex = currentProduct.images.length - 1;
+document.getElementById("main-image").src = currentProduct.images[currentImageIndex];
 }
 
 function addCurrentToCart(){
-cart.push(currentProduct.id);
+cart.push({id: currentProduct.id, qty: 1});
 localStorage.setItem("cart",JSON.stringify(cart));
 updateCart();
-alert("Aggiunto al carrello");
+alert("Aggiunto al carrello!");
 }
 
 function updateCart(){
-document.getElementById("cart-count").innerText=cart.length;
+// Raggruppa gli articoli per id e somma le quantità
+let groupedCart = {};
+cart.forEach(item => {
+if(groupedCart[item.id]){
+groupedCart[item.id] += item.qty;
+} else {
+groupedCart[item.id] = item.qty;
+}
+});
+
+// Aggiorna il contatore
+let totalItems = Object.values(groupedCart).reduce((sum, qty) => sum + qty, 0);
+document.getElementById("cart-count").innerText = totalItems;
+
+// Aggiorna gli items nel carrello
 const items=document.getElementById("cart-items");
 items.innerHTML="";
 let total=0;
-cart.forEach(id=>{
-const product=products.find(p=>p.id===id);
-total+=product.price;
-items.innerHTML+=`<div class="cart-item">
-<span>${product.name}</span>
-<span>€${product.price.toFixed(2)}</span>
+
+for(let id in groupedCart){
+const product = products.find(p=>p.id==id);
+const qty = groupedCart[id];
+total += product.price * qty;
+items.innerHTML+=`
+<div class="cart-item">
+<div>
+<strong>${product.name}</strong><br>
+<small>Quantità: ${qty}</small>
+</div>
+<span>€${(product.price * qty).toFixed(2)}</span>
 </div>`;
-});
+}
+
 document.getElementById("cart-total").innerText="Totale: €"+total.toFixed(2);
 }
 
@@ -310,12 +471,126 @@ function toggleCart(){
 document.getElementById("cart").classList.toggle("open");
 }
 
-function checkout(){
-alert("Checkout simulato");
-cart=[];
-localStorage.removeItem("cart");
-updateCart();
+function proceedToCheckout(){
+if(cart.length === 0){
+alert("Il carrello è vuoto!");
+return;
+}
 toggleCart();
+showCheckout();
+}
+
+function showCheckout(){
+document.getElementById("home").style.display="none";
+document.getElementById("product-page").style.display="none";
+document.getElementById("checkout-page").style.display="block";
+
+// Raggruppa gli articoli per id
+let groupedCart = {};
+cart.forEach(item => {
+if(groupedCart[item.id]){
+groupedCart[item.id] += item.qty;
+} else {
+groupedCart[item.id] = item.qty;
+}
+});
+
+// Renderizza checkout items
+const container = document.getElementById("checkout-items");
+container.innerHTML = "";
+let total = 0;
+
+for(let id in groupedCart){
+const product = products.find(p=>p.id==id);
+const qty = groupedCart[id];
+total += product.price * qty;
+
+const div = document.createElement("div");
+div.className = "checkout-item";
+div.innerHTML = `
+<div class="checkout-item-info">
+<strong>${product.name}</strong><br>
+<small>€${product.price.toFixed(2)} cad.</small>
+</div>
+<div class="checkout-item-qty">
+<button onclick="updateQty(${id}, -1)">-</button>
+<input type="number" value="${qty}" min="1" onchange="setQty(${id}, this.value)" readonly>
+<button onclick="updateQty(${id}, 1)">+</button>
+</div>
+<span style="min-width:80px;text-align:right;margin-right:10px;">€${(product.price * qty).toFixed(2)}</span>
+<button class="remove-btn" onclick="removeFromCheckout(${id})">×</button>
+`;
+container.appendChild(div);
+}
+
+document.getElementById("checkout-total").innerText = "Totale: €" + total.toFixed(2);
+window.scrollTo(0,0);
+}
+
+function updateQty(productId, change){
+let groupedCart = {};
+cart.forEach(item => {
+if(groupedCart[item.id]){
+groupedCart[item.id] += item.qty;
+} else {
+groupedCart[item.id] = item.qty;
+}
+});
+
+let newQty = groupedCart[productId] + change;
+if(newQty < 1) return;
+
+// Ricostruisci il carrello
+cart = [];
+for(let id in groupedCart){
+if(id == productId){
+cart.push({id: parseInt(id), qty: newQty});
+} else {
+cart.push({id: parseInt(id), qty: groupedCart[id]});
+}
+}
+
+localStorage.setItem("cart", JSON.stringify(cart));
+updateCart();
+showCheckout();
+}
+
+function setQty(productId, value){
+let newQty = parseInt(value);
+if(newQty < 1) return;
+
+let groupedCart = {};
+cart.forEach(item => {
+if(groupedCart[item.id]){
+groupedCart[item.id] += item.qty;
+} else {
+groupedCart[item.id] = item.qty;
+}
+});
+
+cart = [];
+for(let id in groupedCart){
+if(id == productId){
+cart.push({id: parseInt(id), qty: newQty});
+} else {
+cart.push({id: parseInt(id), qty: groupedCart[id]});
+}
+}
+
+localStorage.setItem("cart", JSON.stringify(cart));
+updateCart();
+showCheckout();
+}
+
+function removeFromCheckout(productId){
+cart = cart.filter(item => item.id != productId);
+localStorage.setItem("cart", JSON.stringify(cart));
+updateCart();
+if(cart.length === 0){
+showHome();
+} else {
+showCheckout();
+}
 }
 
 function scrollToProducts(){
@@ -329,10 +604,54 @@ document.getElementById("contacts").scrollIntoView({behavior:"smooth"});
 },150);
 }
 
-/* FORM SUCCESS */
+/* FORM SUCCESS HANDLERS */
 document.getElementById("contactForm").addEventListener("submit",function(){
 setTimeout(()=>{
 document.getElementById("successMessage").style.display="block";
+setTimeout(()=>{
+document.getElementById("successMessage").style.display="none";
+document.getElementById("contactForm").reset();
+},3000);
+},300);
+});
+
+document.getElementById("checkoutForm").addEventListener("submit",function(e){
+// Prepara i dati dell'ordine
+let groupedCart = {};
+cart.forEach(item => {
+if(groupedCart[item.id]){
+groupedCart[item.id] += item.qty;
+} else {
+groupedCart[item.id] = item.qty;
+}
+});
+
+let orderDetails = "ORDINE:\n\n";
+for(let id in groupedCart){
+const product = products.find(p=>p.id==id);
+const qty = groupedCart[id];
+orderDetails += `${product.name} - Quantità: ${qty} - Prezzo unitario: €${product.price.toFixed(2)} - Totale: €${(product.price * qty).toFixed(2)}\n`;
+}
+
+let total = 0;
+for(let id in groupedCart){
+const product = products.find(p=>p.id==id);
+total += product.price * groupedCart[id];
+}
+orderDetails += `\nTOTALE ORDINE: €${total.toFixed(2)}`;
+
+document.getElementById("ordine-data").value = orderDetails;
+
+setTimeout(()=>{
+document.getElementById("checkoutSuccessMessage").style.display="block";
+cart = [];
+localStorage.removeItem("cart");
+updateCart();
+setTimeout(()=>{
+document.getElementById("checkoutSuccessMessage").style.display="none";
+document.getElementById("checkoutForm").reset();
+showHome();
+},3000);
 },300);
 });
 
