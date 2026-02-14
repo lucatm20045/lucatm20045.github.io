@@ -49,29 +49,48 @@ overflow:hidden;transition:.3s}
 .card-content button{
 width:100%;padding:10px;background:black;color:white;border:none;cursor:pointer;border-radius:6px}
 
+/* PRODUCT PAGE */
 .product-page{display:none;animation:fade .4s ease}
 .product-layout{
-display:flex;gap:40px;flex-wrap:wrap}
-.product-gallery{flex:1;min-width:300px}
+display:flex;gap:50px;flex-wrap:wrap;align-items:flex-start}
+.product-gallery{flex:1.2;min-width:350px}
 .product-gallery img{
-width:100%;height:400px;object-fit:cover;border-radius:10px}
+width:100%;height:500px;object-fit:cover;border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,.15)}
 .slider-controls{
-display:flex;justify-content:space-between;margin-top:10px}
+display:flex;justify-content:center;gap:15px;margin-top:15px}
 .slider-controls button{
-padding:8px 15px;border:none;background:black;color:white;cursor:pointer;border-radius:6px}
+padding:12px 20px;border:none;background:#111;color:white;cursor:pointer;border-radius:8px;
+font-size:18px;transition:.3s;box-shadow:0 3px 10px rgba(0,0,0,.1)}
+.slider-controls button:hover{background:#333;transform:translateY(-2px)}
 
-.product-info{flex:1;min-width:300px}
-.product-info h2{margin-bottom:15px}
-.product-info p{margin-bottom:20px;color:#555}
+.product-info{flex:1;min-width:320px;background:white;padding:35px;border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,.1)}
+.product-info h2{margin-bottom:20px;font-size:32px;color:#111;font-weight:bold}
+.product-info p{
+margin-bottom:30px;color:#666;font-size:16px;line-height:1.7;
+padding-bottom:25px;border-bottom:2px solid #f0f0f0}
 
 .price-box{
-background:white;padding:20px;border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,.1)}
-.price{font-size:24px;margin-bottom:15px}
+background:linear-gradient(135deg,#f8f9fa,#e9ecef);
+padding:30px;border-radius:12px;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+border:2px solid #28a745}
+.price{font-size:36px;margin-bottom:20px;font-weight:bold;color:#28a745;
+display:flex;align-items:center;gap:10px}
+.price::before{content:"€";font-size:28px;color:#666}
 .price-box button{
-width:100%;padding:12px;background:#28a745;border:none;color:white;cursor:pointer;border-radius:6px}
+width:100%;padding:16px;background:#28a745;border:none;color:white;cursor:pointer;
+border-radius:8px;font-size:18px;font-weight:bold;transition:.3s;
+box-shadow:0 5px 15px rgba(40,167,69,.3)}
+.price-box button:hover{background:#229339;transform:translateY(-2px);
+box-shadow:0 7px 20px rgba(40,167,69,.4)}
 
-.back-btn{margin-bottom:20px;display:inline-block}
+.back-btn{
+margin-bottom:25px;display:inline-block;font-weight:bold;
+color:#111;padding:10px 20px;background:#f0f0f0;border-radius:8px;
+transition:.3s}
+.back-btn:hover{background:#e0e0e0;transform:translateX(-5px)}
 
 .cart-sidebar{
 position:fixed;right:-400px;top:0;width:350px;height:100%;
@@ -160,7 +179,7 @@ section{padding:80px 20px}
 <header id="header">
 <div class="logo" onclick="showHome()">RB COMPONENTS</div>
 <nav>
-<a onclick="showHome()">Prodotti</a>
+<a onclick="scrollToProducts()">Prodotti</a>
 <a onclick="goToContacts()">Contatti</a>
 <a class="cart-btn" onclick="toggleCart()">Carrello (<span id="cart-count">0</span>)</a>
 </nav>
@@ -398,7 +417,7 @@ document.getElementById("checkout-page").style.display="none";
 
 document.getElementById("product-title").innerText = currentProduct.name;
 document.getElementById("product-description").innerText = currentProduct.description;
-document.getElementById("product-price").innerText = "€" + currentProduct.price.toFixed(2);
+document.getElementById("product-price").innerText = currentProduct.price.toFixed(2);
 document.getElementById("main-image").src = currentProduct.images[0];
 
 window.scrollTo(0,0);
@@ -594,7 +613,10 @@ showCheckout();
 }
 
 function scrollToProducts(){
+showHome();
+setTimeout(()=>{
 document.getElementById("products").scrollIntoView({behavior:"smooth"});
+},150);
 }
 
 function goToContacts(){
