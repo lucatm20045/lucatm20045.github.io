@@ -65,6 +65,9 @@ background:currentColor;
 transition:.3s}
 .logo:hover::after{width:100%}
 
+nav{
+display:flex;
+align-items:center}
 nav a{
 margin-left:35px;
 font-size:14px;
@@ -109,6 +112,69 @@ border:1px solid #000}
 header.white-header .cart-btn:hover{
 background:#222;
 box-shadow:0 5px 15px rgba(0,0,0,0.2)}
+
+/* Menu hamburger mobile */
+.mobile-menu-btn{
+display:none;
+flex-direction:column;
+gap:6px;
+cursor:pointer;
+padding:8px;
+z-index:1001}
+.mobile-menu-btn span{
+width:28px;
+height:3px;
+background:currentColor;
+transition:.3s;
+border-radius:2px}
+.mobile-menu-btn.active span:nth-child(1){
+transform:rotate(45deg) translate(8px, 8px)}
+.mobile-menu-btn.active span:nth-child(2){
+opacity:0}
+.mobile-menu-btn.active span:nth-child(3){
+transform:rotate(-45deg) translate(8px, -8px)}
+
+.mobile-nav{
+display:none;
+position:fixed;
+top:0;
+right:-100%;
+width:280px;
+height:100vh;
+background:rgba(0,0,0,0.98);
+backdrop-filter:blur(10px);
+padding:80px 30px 30px 30px;
+transition:right .4s cubic-bezier(0.4,0,0.2,1);
+z-index:999;
+box-shadow:-5px 0 30px rgba(0,0,0,0.3)}
+.mobile-nav.open{
+right:0}
+header.white-header .mobile-nav{
+background:rgba(255,255,255,0.98);
+border-left:1px solid rgba(0,0,0,0.1)}
+.mobile-nav a{
+display:block;
+padding:18px 0;
+font-size:16px;
+font-weight:600;
+text-transform:uppercase;
+letter-spacing:1px;
+border-bottom:1px solid rgba(255,255,255,0.1);
+color:white;
+transition:.3s}
+header.white-header .mobile-nav a{
+color:#111;
+border-bottom:1px solid rgba(0,0,0,0.1)}
+.mobile-nav a:hover{
+padding-left:10px;
+color:rgba(255,255,255,0.7)}
+header.white-header .mobile-nav a:hover{
+color:#666}
+.mobile-nav .cart-btn{
+display:block;
+margin-top:20px;
+text-align:center;
+width:100%}
 
 section{padding:120px 50px;position:relative}
 
@@ -738,17 +804,96 @@ to{opacity:1;transform:scale(1)}}
 0%,100%{opacity:1}
 50%{opacity:0.7}}
 
-/* RESPONSIVE */
-@media(max-width:900px){
-.product-layout{flex-direction:column}
-.hero h1{font-size:42px}
-section{padding:80px 25px}
-header{padding:15px 25px}
-.cart-sidebar{width:100%;right:-100%}
-.checkout-container{padding:30px}
-nav a{margin-left:20px;font-size:12px}
-.product-gallery{min-width:100%}
-.product-info{min-width:100%;padding:30px}}
+/* RESPONSIVE MOBILE */
+@media(max-width:768px){
+/* Header mobile */
+header{padding:15px 20px}
+header.scrolled{padding:12px 20px}
+.logo{font-size:18px;letter-spacing:2px}
+
+/* Nascondi menu desktop, mostra hamburger */
+nav{display:none}
+.mobile-menu-btn{display:flex}
+.mobile-nav{display:block}
+
+/* Hero mobile */
+.hero h1{font-size:36px;letter-spacing:3px;padding:0 20px}
+.hero button{padding:14px 30px;font-size:13px}
+
+/* Sezioni mobile */
+section{padding:80px 20px}
+#products,
+.contact-section{margin:0 15px}
+#products h2,
+.contact-section h2{font-size:28px;margin-bottom:30px}
+
+/* Grid prodotti mobile */
+.products{
+grid-template-columns:1fr;
+gap:25px}
+.card img{height:200px}
+
+/* Product page mobile */
+.product-layout{
+flex-direction:column;
+gap:30px}
+.product-gallery{
+min-width:100%}
+.product-gallery img{height:350px}
+.slider-controls button{
+padding:12px 20px;
+font-size:18px}
+.product-info{
+min-width:100%;
+padding:30px 25px}
+.product-info h2{font-size:28px}
+.price-box{padding:25px}
+.price{font-size:36px}
+
+/* Checkout mobile */
+.checkout-container{
+padding:30px 20px}
+.checkout-container h2{font-size:26px}
+.checkout-item{
+flex-wrap:wrap;
+gap:15px}
+.checkout-item-qty{
+margin-right:0;
+width:100%;
+justify-content:space-between}
+.checkout-total{font-size:24px}
+
+/* Cart sidebar mobile */
+.cart-sidebar{
+width:100%;
+right:-100%}
+
+/* Contact mobile */
+.contact-item{
+padding:20px;
+font-size:16px}
+.contact-item i{font-size:24px}
+
+/* Footer mobile */
+footer{
+padding:30px 20px;
+font-size:11px}
+}
+
+@media(min-width:769px) and (max-width:1024px){
+/* Tablet adjustments */
+header{padding:20px 35px}
+.logo{font-size:20px}
+nav a{margin-left:25px;font-size:13px}
+section{padding:100px 35px}
+.hero h1{font-size:56px}
+#products,.contact-section{margin:0 20px}
+.products{grid-template-columns:repeat(2,1fr);gap:30px}
+.product-gallery{min-width:350px}
+.product-gallery img{height:450px}
+.product-info{padding:40px}
+.checkout-container{padding:45px}
+}
 </style>
 </head>
 <body>
@@ -760,7 +905,20 @@ nav a{margin-left:20px;font-size:12px}
 <a onclick="goToContacts()">Contatti</a>
 <a class="cart-btn" onclick="toggleCart()">Carrello (<span id="cart-count">0</span>)</a>
 </nav>
+<!-- Menu hamburger mobile -->
+<div class="mobile-menu-btn" onclick="toggleMobileMenu()">
+<span></span>
+<span></span>
+<span></span>
+</div>
 </header>
+
+<!-- Menu mobile -->
+<div class="mobile-nav" id="mobile-nav">
+<a onclick="scrollToProducts(); closeMobileMenu()">Prodotti</a>
+<a onclick="goToContacts(); closeMobileMenu()">Contatti</a>
+<a class="cart-btn" onclick="toggleCart(); closeMobileMenu()">Carrello (<span id="mobile-cart-count">0</span>)</a>
+</div>
 
 <!-- HOME -->
 <div id="home">
@@ -1097,6 +1255,7 @@ groupedCart[item.id] = item.qty;
 // Aggiorna il contatore
 let totalItems = Object.values(groupedCart).reduce((sum, qty) => sum + qty, 0);
 document.getElementById("cart-count").innerText = totalItems;
+document.getElementById("mobile-cart-count").innerText = totalItems;
 
 // Aggiorna gli items nel carrello
 const items=document.getElementById("cart-items");
@@ -1122,6 +1281,20 @@ document.getElementById("cart-total").innerText="Totale: €"+total.toFixed(2);
 
 function toggleCart(){
 document.getElementById("cart").classList.toggle("open");
+}
+
+function toggleMobileMenu(){
+const mobileNav = document.getElementById("mobile-nav");
+const menuBtn = document.querySelector(".mobile-menu-btn");
+mobileNav.classList.toggle("open");
+menuBtn.classList.toggle("active");
+}
+
+function closeMobileMenu(){
+const mobileNav = document.getElementById("mobile-nav");
+const menuBtn = document.querySelector(".mobile-menu-btn");
+mobileNav.classList.remove("open");
+menuBtn.classList.remove("active");
 }
 
 function proceedToCheckout(){
