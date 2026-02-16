@@ -18,17 +18,31 @@ a{text-decoration:none;color:inherit;cursor:pointer}
 /* HEADER */
 header{
 position:fixed;top:0;left:0;width:100%;
-background:rgba(255,255,255,0.98);
-backdrop-filter:blur(10px);
-color:#111;
-padding:20px 50px;
+background:transparent;
+backdrop-filter:blur(0px);
+color:rgba(255,255,255,0.9);
+padding:25px 50px;
 display:flex;justify-content:space-between;align-items:center;
 z-index:1000;
 transition:all .4s cubic-bezier(0.4,0,0.2,1);
+border-bottom:1px solid rgba(255,255,255,0.1)}
+header.scrolled{
+background:rgba(0,0,0,0.85);
+backdrop-filter:blur(10px);
+padding:18px 50px;
+box-shadow:0 2px 30px rgba(0,0,0,0.3);
+border-bottom:1px solid rgba(255,255,255,0.05)}
+
+/* Header bianco per pagine interne */
+header.white-header{
+background:rgba(255,255,255,0.98);
+backdrop-filter:blur(10px);
+color:#111;
 border-bottom:1px solid rgba(0,0,0,0.05);
 box-shadow:0 2px 20px rgba(0,0,0,0.03)}
-header.scrolled{
-padding:15px 50px;
+header.white-header.scrolled{
+background:rgba(255,255,255,0.98);
+color:#111;
 box-shadow:0 2px 30px rgba(0,0,0,0.08);
 border-bottom:1px solid rgba(0,0,0,0.1)}
 
@@ -36,10 +50,10 @@ border-bottom:1px solid rgba(0,0,0,0.1)}
 font-weight:800;
 font-size:24px;
 letter-spacing:3px;
-color:#000;
 transition:.3s;
 cursor:pointer;
 position:relative}
+header.white-header .logo{color:#000}
 .logo::after{
 content:'';
 position:absolute;
@@ -47,7 +61,7 @@ bottom:-5px;
 left:0;
 width:0;
 height:2px;
-background:#000;
+background:currentColor;
 transition:.3s}
 .logo:hover::after{width:100%}
 
@@ -58,9 +72,10 @@ position:relative;
 padding:8px 0;
 transition:.3s;
 font-weight:500;
-color:#444;
 text-transform:uppercase;
 letter-spacing:1px}
+header.white-header nav a{color:#444}
+header.white-header nav a:hover{color:#000}
 nav a::after{
 content:'';
 position:absolute;
@@ -68,24 +83,31 @@ bottom:0;
 left:50%;
 width:0;
 height:1px;
-background:#000;
+background:currentColor;
 transition:.3s;
 transform:translateX(-50%)}
-nav a:hover{color:#000}
 nav a:hover::after{width:100%}
 
 .cart-btn{
 cursor:pointer;
-background:#000;
+background:rgba(255,255,255,0.15);
 color:white;
 padding:10px 20px;
 border-radius:4px;
 transition:.3s;
 font-weight:600;
-letter-spacing:0.5px}
+letter-spacing:0.5px;
+border:1px solid rgba(255,255,255,0.2)}
 .cart-btn:hover{
-background:#222;
+background:rgba(255,255,255,0.25);
 transform:translateY(-2px);
+box-shadow:0 5px 15px rgba(255,255,255,0.1)}
+header.white-header .cart-btn{
+background:#000;
+color:white;
+border:1px solid #000}
+header.white-header .cart-btn:hover{
+background:#222;
 box-shadow:0 5px 15px rgba(0,0,0,0.2)}
 
 section{padding:120px 50px;position:relative}
@@ -93,7 +115,7 @@ section{padding:120px 50px;position:relative}
 /* HERO SECTION */
 .hero{
 height:100vh;
-background:linear-gradient(135deg,#000 0%,#1a1a1a 100%);
+background:#000;
 position:relative;
 color:white;display:flex;flex-direction:column;
 justify-content:center;align-items:center;text-align:center;
@@ -102,14 +124,16 @@ overflow:hidden}
 content:'';
 position:absolute;
 top:0;left:0;right:0;bottom:0;
-background:url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="1" fill="white" opacity="0.05"/></svg>');
-animation:float 30s linear infinite}
+background-image:url('data:image/svg+xml;utf8,<svg width="1200" height="800" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:rgb(40,40,40);stop-opacity:1" /><stop offset="100%" style="stop-color:rgb(0,0,0);stop-opacity:1" /></linearGradient></defs><rect width="1200" height="800" fill="url(%23grad1)"/><g opacity="0.15"><circle cx="200" cy="150" r="80" fill="none" stroke="white" stroke-width="2"/><circle cx="200" cy="150" r="60" fill="none" stroke="white" stroke-width="1.5"/><rect x="170" y="120" width="60" height="60" fill="none" stroke="white" stroke-width="2" transform="rotate(45 200 150)"/><line x1="160" y1="150" x2="240" y2="150" stroke="white" stroke-width="1"/><line x1="200" y1="110" x2="200" y2="190" stroke="white" stroke-width="1"/><path d="M 900 600 L 950 550 L 1000 600 L 950 650 Z" fill="none" stroke="white" stroke-width="2"/><circle cx="950" cy="600" r="30" fill="none" stroke="white" stroke-width="1.5"/><rect x="920" y="570" width="60" height="60" fill="none" stroke="white" stroke-width="2"/><line x1="910" y1="600" x2="990" y2="600" stroke="white" stroke-width="1"/><circle cx="600" cy="400" r="50" fill="none" stroke="white" stroke-width="2"/><path d="M 570 400 L 600 370 L 630 400 L 600 430 Z" fill="none" stroke="white" stroke-width="1.5"/><rect x="580" y="380" width="40" height="40" fill="none" stroke="white" stroke-width="1"/><circle cx="350" cy="650" r="40" fill="none" stroke="white" stroke-width="2"/><circle cx="350" cy="650" r="25" fill="none" stroke="white" stroke-width="1"/><line x1="325" y1="650" x2="375" y2="650" stroke="white" stroke-width="1"/><line x1="350" y1="625" x2="350" y2="675" stroke="white" stroke-width="1"/><rect x="750" y="150" width="60" height="60" fill="none" stroke="white" stroke-width="2" rx="5"/><circle cx="780" cy="180" r="20" fill="none" stroke="white" stroke-width="1.5"/><path d="M 100 500 L 130 470 L 160 500 L 130 530 Z" fill="none" stroke="white" stroke-width="2"/><rect x="110" y="480" width="40" height="40" fill="none" stroke="white" stroke-width="1" transform="rotate(45 130 500)"/><circle cx="1050" cy="250" r="45" fill="none" stroke="white" stroke-width="2"/><circle cx="1050" cy="250" r="30" fill="none" stroke="white" stroke-width="1"/><line x1="1020" y1="250" x2="1080" y2="250" stroke="white" stroke-width="1"/></g><g opacity="0.08"><circle cx="450" cy="200" r="3" fill="white"/><circle cx="800" cy="450" r="3" fill="white"/><circle cx="300" cy="350" r="2" fill="white"/><circle cx="1000" cy="150" r="2" fill="white"/><circle cx="150" cy="300" r="3" fill="white"/><circle cx="650" cy="650" r="2" fill="white"/><circle cx="500" cy="550" r="3" fill="white"/><circle cx="900" cy="300" r="2" fill="white"/></g></svg>');
+background-size:cover;
+background-position:center;
+opacity:1}
 .hero::after{
 content:'';
 position:absolute;
 top:50%;left:50%;
-width:800px;height:800px;
-background:radial-gradient(circle,rgba(255,255,255,0.03),transparent);
+width:1000px;height:1000px;
+background:radial-gradient(circle,rgba(255,255,255,0.02),transparent);
 transform:translate(-50%,-50%);
 animation:pulse 4s ease-in-out infinite}
 .hero h1{
@@ -710,10 +734,6 @@ to{opacity:1;transform:translateY(0)}}
 from{opacity:0;transform:scale(0.95)}
 to{opacity:1;transform:scale(1)}}
 
-@keyframes float{
-from{transform:translateY(0px)}
-to{transform:translateY(-2000px)}}
-
 @keyframes pulse{
 0%,100%{opacity:1}
 50%{opacity:0.7}}
@@ -972,6 +992,9 @@ document.getElementById("home").style.display="none";
 document.getElementById("product-page").style.display="block";
 document.getElementById("checkout-page").style.display="none";
 
+// Cambia header a bianco
+document.getElementById("header").classList.add("white-header");
+
 document.getElementById("product-title").innerText = currentProduct.name;
 document.getElementById("product-description").innerText = currentProduct.description;
 document.getElementById("product-price").innerText = currentProduct.price.toFixed(2);
@@ -984,7 +1007,61 @@ function showHome(){
 document.getElementById("home").style.display="block";
 document.getElementById("product-page").style.display="none";
 document.getElementById("checkout-page").style.display="none";
+
+// Rimuovi header bianco
+document.getElementById("header").classList.remove("white-header");
+
 window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function showCheckout(){
+document.getElementById("home").style.display="none";
+document.getElementById("product-page").style.display="none";
+document.getElementById("checkout-page").style.display="block";
+
+// Cambia header a bianco
+document.getElementById("header").classList.add("white-header");
+
+// Raggruppa gli articoli per id
+let groupedCart = {};
+cart.forEach(item => {
+if(groupedCart[item.id]){
+groupedCart[item.id] += item.qty;
+} else {
+groupedCart[item.id] = item.qty;
+}
+});
+
+// Renderizza checkout items
+const container = document.getElementById("checkout-items");
+container.innerHTML = "";
+let total = 0;
+
+for(let id in groupedCart){
+const product = products.find(p=>p.id==id);
+const qty = groupedCart[id];
+total += product.price * qty;
+
+const div = document.createElement("div");
+div.className = "checkout-item";
+div.innerHTML = `
+<div class="checkout-item-info">
+<strong>${product.name}</strong><br>
+<small>€${product.price.toFixed(2)} cad.</small>
+</div>
+<div class="checkout-item-qty">
+<button onclick="updateQty(${id}, -1)">-</button>
+<input type="number" value="${qty}" min="1" onchange="setQty(${id}, this.value)" readonly>
+<button onclick="updateQty(${id}, 1)">+</button>
+</div>
+<span style="min-width:80px;text-align:right;margin-right:10px;font-weight:700">€${(product.price * qty).toFixed(2)}</span>
+<button class="remove-btn" onclick="removeFromCheckout(${id})">×</button>
+`;
+container.appendChild(div);
+}
+
+document.getElementById("checkout-total").innerText = "Totale: €" + total.toFixed(2);
+window.scrollTo(0,0);
 }
 
 function nextImage(){
@@ -1054,53 +1131,6 @@ return;
 }
 toggleCart();
 showCheckout();
-}
-
-function showCheckout(){
-document.getElementById("home").style.display="none";
-document.getElementById("product-page").style.display="none";
-document.getElementById("checkout-page").style.display="block";
-
-// Raggruppa gli articoli per id
-let groupedCart = {};
-cart.forEach(item => {
-if(groupedCart[item.id]){
-groupedCart[item.id] += item.qty;
-} else {
-groupedCart[item.id] = item.qty;
-}
-});
-
-// Renderizza checkout items
-const container = document.getElementById("checkout-items");
-container.innerHTML = "";
-let total = 0;
-
-for(let id in groupedCart){
-const product = products.find(p=>p.id==id);
-const qty = groupedCart[id];
-total += product.price * qty;
-
-const div = document.createElement("div");
-div.className = "checkout-item";
-div.innerHTML = `
-<div class="checkout-item-info">
-<strong>${product.name}</strong><br>
-<small>€${product.price.toFixed(2)} cad.</small>
-</div>
-<div class="checkout-item-qty">
-<button onclick="updateQty(${id}, -1)">-</button>
-<input type="number" value="${qty}" min="1" onchange="setQty(${id}, this.value)" readonly>
-<button onclick="updateQty(${id}, 1)">+</button>
-</div>
-<span style="min-width:80px;text-align:right;margin-right:10px;font-weight:700">€${(product.price * qty).toFixed(2)}</span>
-<button class="remove-btn" onclick="removeFromCheckout(${id})">×</button>
-`;
-container.appendChild(div);
-}
-
-document.getElementById("checkout-total").innerText = "Totale: €" + total.toFixed(2);
-window.scrollTo(0,0);
 }
 
 function updateQty(productId, change){
