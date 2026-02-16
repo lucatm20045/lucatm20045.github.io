@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RB components</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+background:#fafafa;
+overflow-x:hidden}
+a{text-decoration:none;color:inherit;cursor:pointer}
+
+/* HEADER */
+header{
+position:fixed;top:0;left:0;width:100%;
+background:transparent;
+backdrop-filter:blur(0px);
+color:rgba(255,255,255,0.9);
+padding:25px 50px;
+display:flex;justify-content:space-between;align-items:center;
+z-index:1000;
+transition:all .4s cubic-bezier(0.4,0,0.2,1);
+border-bottom:1px solid rgba(255,255,255,0.1)}
+header.scrolled{
+background:rgba(0,0,0,0.85);
+backdrop-filter:blur(10px);
+padding:18px 50px;
+box-shadow:0 2px 30px rgba(0,0,0,0.3);
+border-bottom:1px solid rgba(255,255,255,0.05)}
+
+/* Header bianco per pagine interne */
+header.white-header{
+background:rgba(255,255,255,0.98);
+backdrop-filter:blur(10px);
+color:#111;
+border-bottom:1px solid rgba(0,0,0,0.05);
+box-shadow:0 2px 20px rgba(0,0,0,0.03)}
+header.white-header.scrolled{
+background:rgba(255,255,255,0.98);
+color:#111;
+box-shadow:0 2px 30px rgba(0,0,0,0.08);
+border-bottom:1px solid rgba(0,0,0,0.1)}
+
+.logo{
+font-weight:800;
+font-size:24px;
+letter-spacing:3px;
+transition:.3s;
+cursor:pointer;
+position:relative}
+header.white-header .logo{color:#000}
+.logo::after{
+content:'';
+position:absolute;
+bottom:-5px;
+left:0;
+width:0;
+height:2px;
+background:currentColor;
+transition:.3s}
+.logo:hover::after{width:100%}
+
+nav{
+display:flex;
+align-items:center}
+nav a{
+margin-left:35px;
+font-size:14px;
+position:relative;
+padding:8px 0;
+transition:.3s;
+font-weight:500;
+text-transform:uppercase;
+letter-spacing:1px}
+header.white-header nav a{color:#444}
+header.white-header nav a:hover{color:#000}
+nav a::after{
+content:'';
+position:absolute;
+bottom:0;
+left:50%;
+width:0;
+height:1px;
+background:currentColor;
+transition:.3s;
+transform:translateX(-50%)}
+nav a:hover::after{width:100%}
+
+.cart-btn{
+cursor:pointer;
+background:rgba(255,255,255,0.15);
+color:white;
+padding:10px 20px;
+border-radius:4px;
+transition:.3s;
+font-weight:600;
+letter-spacing:0.5px;
+border:1px solid rgba(255,255,255,0.2)}
+.cart-btn:hover{
+background:rgba(255,255,255,0.25);
+transform:translateY(-2px);
+box-shadow:0 5px 15px rgba(255,255,255,0.1)}
+header.white-header .cart-btn{
+background:#000;
+color:white;
+border:1px solid #000}
+header.white-header .cart-btn:hover{
+background:#222;
+box-shadow:0 5px 15px rgba(0,0,0,0.2)}
+
+/* Menu hamburger mobile */
+.mobile-menu-btn{
+display:none;
+flex-direction:column;
+gap:6px;
+cursor:pointer;
+padding:8px;
+z-index:1001}
+.mobile-menu-btn span{
+width:28px;
+height:3px;
+background:currentColor;
+transition:.3s;
+border-radius:2px}
+.mobile-menu-btn.active span:nth-child(1){
+transform:rotate(45deg) translate(8px, 8px)}
+.mobile-menu-btn.active span:nth-child(2){
+opacity:0}
+.mobile-menu-btn.active span:nth-child(3){
+transform:rotate(-45deg) translate(8px, -8px)}
+
+.mobile-nav{
+display:none;
+position:fixed;
+top:0;
+right:-100%;
+width:280px;
+height:100vh;
+background:rgba(0,0,0,0.98);
+backdrop-filter:blur(10px);
+padding:80px 30px 30px 30px;
+transition:right .4s cubic-bezier(0.4,0,0.2,1);
+z-index:999;
+box-shadow:-5px 0 30px rgba(0,0,0,0.3)}
+.mobile-nav.open{
+right:0}
+header.white-header .mobile-nav{
+background:rgba(255,255,255,0.98);
+border-left:1px solid rgba(0,0,0,0.1)}
+.mobile-nav a{
+display:block;
+padding:18px 0;
+font-size:16px;
+font-weight:600;
+text-transform:uppercase;
+letter-spacing:1px;
+border-bottom:1px solid rgba(255,255,255,0.1);
+color:white;
+transition:.3s}
+header.white-header .mobile-nav a{
+color:#111;
+border-bottom:1px solid rgba(0,0,0,0.1)}
+.mobile-nav a:hover{
+padding-left:10px;
+color:rgba(255,255,255,0.7)}
+header.white-header .mobile-nav a:hover{
+color:#666}
+.mobile-nav .cart-btn{
+display:block;
+margin-top:20px;
+text-align:center;
+width:100%}
+
+section{padding:120px 50px;position:relative}
+
+/* HERO SECTION */
+.hero{
+height:100vh;
+background:#000;
+position:relative;
+color:white;display:flex;flex-direction:column;
+justify-content:center;align-items:center;text-align:center;
+overflow:hidden}
+.hero::before{
+content:'';
+position:absolute;
+top:0;left:0;right:0;bottom:0;
+background-image:url('img/Gemini_Generated_Image_kwy0r7kwy0r7kwy0.png');
+background-size:cover;
+background-position:center;
+opacity:0.6;
+filter:brightness(0.8)}
+.hero::after{
+content:'';
+position:absolute;
+top:0;left:0;right:0;bottom:0;
+background:linear-gradient(135deg,rgba(0,0,0,0.7),rgba(0,0,0,0.5))}
+.hero h1{
+font-size:72px;
+margin-bottom:30px;
+font-weight:900;
+letter-spacing:5px;
+animation:slideDown .8s ease-out;
+position:relative;
+z-index:1;
+text-shadow:0 4px 20px rgba(0,0,0,0.8)}
+.hero button{
+padding:18px 45px;
+background:white;
+border:none;
+color:#000;
+cursor:pointer;
+border-radius:4px;
+transition:.4s;
+font-size:15px;
+font-weight:700;
+letter-spacing:1px;
+text-transform:uppercase;
+animation:slideUp .8s ease-out .2s backwards;
+position:relative;
+z-index:1;
+overflow:hidden}
+.hero button::before{
+content:'';
+position:absolute;
+top:50%;left:50%;
+width:0;height:0;
+border-radius:50%;
+background:rgba(0,0,0,0.1);
+transform:translate(-50%,-50%);
+transition:.5s}
+.hero button:hover::before{
+width:300px;
+height:300px}
+.hero button:hover{
+transform:translateY(-3px);
+box-shadow:0 10px 30px rgba(255,255,255,0.3)}
+
+/* PRODUCTS GRID */
+#products{
+background:white;
+margin:0 30px;
+border-radius:8px;
+box-shadow:0 5px 30px rgba(0,0,0,0.05)}
+#products h2{
+color:#000;
+font-size:42px;
+font-weight:800;
+letter-spacing:2px}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:40px;
+animation:fadeIn .6s ease-out}
+
+.card{
+background:white;
+border-radius:8px;
+border:1px solid rgba(0,0,0,0.08);
+overflow:hidden;
+transition:all .4s cubic-bezier(0.4,0,0.2,1);
+position:relative;
+cursor:pointer;
+animation:scaleIn .5s ease-out backwards}
+.card:nth-child(1){animation-delay:.1s}
+.card:nth-child(2){animation-delay:.2s}
+.card:nth-child(3){animation-delay:.3s}
+.card:nth-child(4){animation-delay:.4s}
+.card:nth-child(5){animation-delay:.5s}
+.card:nth-child(6){animation-delay:.6s}
+.card::before{
+content:'';
+position:absolute;
+top:0;left:0;right:0;bottom:0;
+background:linear-gradient(135deg,rgba(0,0,0,0.03),rgba(0,0,0,0.01));
+opacity:0;
+transition:.4s}
+.card:hover::before{opacity:1}
+.card:hover{
+transform:translateY(-8px);
+border-color:rgba(0,0,0,0.15);
+box-shadow:0 15px 40px rgba(0,0,0,0.12)}
+.card img{
+width:100%;
+height:240px;
+object-fit:cover;
+transition:.4s;
+filter:grayscale(0.2)}
+.card:hover img{
+transform:scale(1.05);
+filter:grayscale(0)}
+.card-content{padding:25px}
+.card-content h3{
+margin-bottom:12px;
+font-size:18px;
+color:#000;
+font-weight:700;
+letter-spacing:0.5px}
+.card-content p{
+margin-bottom:18px;
+font-size:22px;
+color:#111;
+font-weight:800}
+.card-content button{
+width:100%;
+padding:14px;
+background:#000;
+color:white;
+border:none;
+cursor:pointer;
+border-radius:4px;
+font-weight:600;
+letter-spacing:0.5px;
+text-transform:uppercase;
+font-size:12px;
+transition:.3s;
+position:relative;
+overflow:hidden}
+.card-content button::before{
+content:'';
+position:absolute;
+top:50%;left:50%;
+width:0;height:0;
+background:rgba(255,255,255,0.15);
+border-radius:50%;
+transform:translate(-50%,-50%);
+transition:.5s}
+.card-content button:hover::before{
+width:300px;
+height:300px}
+.card-content button:hover{
+background:#222;
+transform:translateY(-2px);
+box-shadow:0 5px 15px rgba(0,0,0,0.3)}
+
+/* PRODUCT PAGE */
+.product-page{
+display:none;
+animation:slideInRight .5s cubic-bezier(0.4,0,0.2,1)}
+.product-layout{
+display:flex;
+gap:60px;
+flex-wrap:wrap;
+align-items:flex-start;
+animation:fadeIn .6s ease-out}
+.product-gallery{
+flex:1.2;
+min-width:400px;
+animation:slideInLeft .6s ease-out}
+.product-gallery img{
+width:100%;
+height:600px;
+object-fit:cover;
+border-radius:8px;
+border:1px solid rgba(0,0,0,0.1);
+transition:.4s}
+.product-gallery img:hover{
+transform:scale(1.02);
+box-shadow:0 20px 50px rgba(0,0,0,0.15)}
+.slider-controls{
+display:flex;
+justify-content:center;
+gap:20px;
+margin-top:25px}
+.slider-controls button{
+padding:15px 28px;
+border:1px solid rgba(0,0,0,0.15);
+background:white;
+color:#000;
+cursor:pointer;
+border-radius:4px;
+font-size:20px;
+font-weight:700;
+transition:.3s}
+.slider-controls button:hover{
+background:#000;
+color:white;
+border-color:#000;
+transform:translateY(-3px);
+box-shadow:0 5px 15px rgba(0,0,0,0.2)}
+.slider-controls button:active{
+transform:translateY(-1px)}
+
+.product-info{
+flex:1;
+min-width:350px;
+background:white;
+padding:50px;
+border-radius:8px;
+border:1px solid rgba(0,0,0,0.08);
+animation:slideInRight .6s ease-out;
+position:relative}
+.product-info h2{
+margin-bottom:25px;
+font-size:42px;
+color:#000;
+font-weight:900;
+letter-spacing:1px}
+.product-info p{
+margin-bottom:35px;
+color:#444;
+font-size:16px;
+line-height:1.9;
+padding-bottom:30px;
+border-bottom:1px solid rgba(0,0,0,0.08)}
+
+.price-box{
+background:#fafafa;
+padding:40px;
+border-radius:6px;
+border:2px solid #000;
+position:relative;
+overflow:hidden;
+transition:.3s}
+.price-box:hover{
+transform:translateY(-3px);
+box-shadow:0 10px 30px rgba(0,0,0,0.1)}
+.price{
+font-size:48px;
+margin-bottom:28px;
+font-weight:900;
+color:#000;
+display:flex;
+align-items:center;
+gap:8px;
+letter-spacing:-1px}
+.price::before{
+content:"€";
+font-size:36px;
+color:#666;
+font-weight:800}
+.price-box button{
+width:100%;
+padding:20px;
+background:#000;
+border:none;
+color:white;
+cursor:pointer;
+border-radius:4px;
+font-size:15px;
+font-weight:700;
+letter-spacing:1px;
+text-transform:uppercase;
+transition:.4s;
+position:relative;
+overflow:hidden}
+.price-box button::before{
+content:'';
+position:absolute;
+top:50%;
+left:50%;
+width:0;
+height:0;
+background:rgba(255,255,255,0.15);
+border-radius:50%;
+transform:translate(-50%,-50%);
+transition:.5s}
+.price-box button:hover::before{
+width:400px;
+height:400px}
+.price-box button:hover{
+background:#222;
+transform:translateY(-3px);
+box-shadow:0 10px 30px rgba(0,0,0,0.3)}
+
+.back-btn{
+margin-bottom:35px;
+display:inline-block;
+font-weight:700;
+color:#000;
+padding:12px 28px;
+background:white;
+border:1px solid rgba(0,0,0,0.15);
+border-radius:4px;
+transition:.3s;
+letter-spacing:0.5px;
+text-transform:uppercase;
+font-size:12px}
+.back-btn:hover{
+background:#000;
+color:white;
+transform:translateX(-8px);
+box-shadow:0 5px 15px rgba(0,0,0,0.15)}
+
+/* CART SIDEBAR */
+.cart-sidebar{
+position:fixed;
+right:-420px;
+top:0;
+width:400px;
+height:100%;
+background:white;
+border-left:1px solid rgba(0,0,0,0.1);
+box-shadow:-5px 0 30px rgba(0,0,0,0.1);
+padding:30px;
+transition:all .4s cubic-bezier(0.4,0,0.2,1);
+z-index:2000;
+overflow:auto}
+.cart-sidebar.open{
+right:0;
+animation:slideInRight .4s ease-out}
+.cart-sidebar h3{
+margin-bottom:30px;
+font-size:26px;
+font-weight:900;
+color:#000;
+letter-spacing:1px;
+border-bottom:2px solid #000;
+padding-bottom:20px}
+.cart-item{
+display:flex;
+justify-content:space-between;
+margin-bottom:18px;
+padding:18px;
+background:#fafafa;
+border:1px solid rgba(0,0,0,0.05);
+border-radius:4px;
+transition:.3s;
+animation:scaleIn .3s ease-out backwards}
+.cart-item:hover{
+transform:translateX(-5px);
+border-color:rgba(0,0,0,0.1);
+box-shadow:0 5px 15px rgba(0,0,0,0.05)}
+.cart-sidebar h4{
+margin-top:30px;
+margin-bottom:25px;
+font-size:22px;
+font-weight:900;
+color:#000;
+text-align:right;
+letter-spacing:0.5px}
+.cart-sidebar button{
+width:100%;
+padding:18px;
+background:#000;
+color:white;
+border:none;
+cursor:pointer;
+border-radius:4px;
+margin-top:20px;
+font-weight:700;
+font-size:14px;
+letter-spacing:1px;
+text-transform:uppercase;
+transition:.3s}
+.cart-sidebar button:hover{
+background:#222;
+transform:translateY(-3px);
+box-shadow:0 8px 25px rgba(0,0,0,0.3)}
+
+/* CONTACT SECTION */
+.contact-section{
+background:white;
+position:relative;
+overflow:hidden;
+margin:0 30px;
+border-radius:8px;
+box-shadow:0 5px 30px rgba(0,0,0,0.05)}
+.contact-container{
+max-width:900px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:35px;
+position:relative;
+z-index:1}
+
+.contact-item{
+display:flex;
+align-items:center;
+gap:25px;
+padding:28px;
+background:#fafafa;
+border:1px solid rgba(0,0,0,0.08);
+border-radius:6px;
+font-size:18px;
+transition:.3s;
+animation:slideInLeft .5s ease-out backwards}
+.contact-item:nth-child(2){animation-delay:.1s}
+.contact-item:hover{
+transform:translateX(10px);
+border-color:rgba(0,0,0,0.15);
+box-shadow:0 5px 20px rgba(0,0,0,0.08)}
+.contact-item i{
+color:#000;
+font-size:28px;
+transition:.3s}
+.contact-item:hover i{
+transform:scale(1.15)}
+
+.contact-form{
+display:flex;
+flex-direction:column;
+gap:20px;
+margin-top:30px;
+animation:fadeIn .6s ease-out .2s backwards}
+.contact-form input,.contact-form textarea{
+padding:18px;
+border-radius:4px;
+border:1px solid rgba(0,0,0,0.15);
+font-size:15px;
+transition:.3s;
+background:white;
+font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
+.contact-form input:focus,.contact-form textarea:focus{
+outline:none;
+border-color:#000;
+box-shadow:0 0 0 3px rgba(0,0,0,0.05);
+transform:translateY(-2px)}
+.contact-form textarea{min-height:150px}
+.contact-form button{
+padding:18px;
+background:#000;
+color:white;
+border:none;
+border-radius:4px;
+font-weight:700;
+font-size:14px;
+letter-spacing:1px;
+text-transform:uppercase;
+cursor:pointer;
+transition:.3s}
+.contact-form button:hover{
+background:#222;
+transform:translateY(-3px);
+box-shadow:0 8px 25px rgba(0,0,0,0.3)}
+.success-message{
+display:none;
+padding:20px;
+background:#000;
+color:white;
+border-radius:4px;
+margin-top:25px;
+text-align:center;
+font-weight:700;
+letter-spacing:0.5px;
+animation:slideInUp .4s ease-out}
+
+/* CHECKOUT PAGE */
+.checkout-page{
+display:none;
+animation:slideInRight .5s cubic-bezier(0.4,0,0.2,1)}
+.checkout-container{
+max-width:1000px;
+margin:auto;
+background:white;
+padding:60px;
+border-radius:8px;
+border:1px solid rgba(0,0,0,0.08);
+box-shadow:0 10px 40px rgba(0,0,0,0.08);
+animation:fadeIn .6s ease-out}
+.checkout-container h2{
+margin-bottom:40px;
+font-size:38px;
+font-weight:900;
+color:#000;
+letter-spacing:1px}
+.checkout-items{margin-bottom:40px}
+.checkout-item{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:22px;
+background:#fafafa;
+border:1px solid rgba(0,0,0,0.06);
+border-radius:4px;
+margin-bottom:18px;
+transition:.3s;
+animation:scaleIn .4s ease-out backwards}
+.checkout-item:hover{
+transform:translateX(5px);
+border-color:rgba(0,0,0,0.12);
+box-shadow:0 5px 15px rgba(0,0,0,0.05)}
+.checkout-item-info{flex:1}
+.checkout-item-qty{
+display:flex;
+align-items:center;
+gap:15px;
+margin-right:25px}
+.checkout-item-qty button{
+padding:10px 18px;
+background:#000;
+color:white;
+border:none;
+border-radius:3px;
+cursor:pointer;
+font-weight:700;
+font-size:14px;
+transition:.3s}
+.checkout-item-qty button:hover{
+background:#222;
+transform:scale(1.1)}
+.checkout-item-qty input{
+width:65px;
+text-align:center;
+border:1px solid rgba(0,0,0,0.15);
+border-radius:3px;
+padding:10px;
+font-weight:700;
+font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
+.remove-btn{
+padding:10px 18px;
+background:#000;
+color:white;
+border:none;
+border-radius:3px;
+cursor:pointer;
+font-weight:700;
+transition:.3s}
+.remove-btn:hover{
+background:#222;
+transform:scale(1.1)}
+.checkout-total{
+font-size:32px;
+font-weight:900;
+margin-bottom:40px;
+text-align:right;
+color:#000;
+letter-spacing:0.5px}
+.checkout-form{
+display:flex;
+flex-direction:column;
+gap:20px}
+.checkout-form input,.checkout-form textarea{
+padding:18px;
+border-radius:4px;
+border:1px solid rgba(0,0,0,0.15);
+font-size:15px;
+transition:.3s;
+font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
+.checkout-form input:focus,.checkout-form textarea:focus{
+outline:none;
+border-color:#000;
+box-shadow:0 0 0 3px rgba(0,0,0,0.05);
+transform:translateY(-2px)}
+.checkout-form button{
+padding:20px;
+background:#000;
+color:white;
+border:none;
+border-radius:4px;
+font-weight:700;
+letter-spacing:1px;
+text-transform:uppercase;
+cursor:pointer;
+font-size:15px;
+transition:.4s}
+.checkout-form button:hover{
+background:#222;
+transform:translateY(-3px);
+box-shadow:0 10px 30px rgba(0,0,0,0.3)}
+
+footer{
+background:#000;
+color:white;
+text-align:center;
+padding:50px;
+font-size:13px;
+letter-spacing:2px;
+text-transform:uppercase;
+font-weight:600}
+
+/* ANIMATIONS */
+@keyframes fade{
+from{opacity:0}
+to{opacity:1}}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(20px)}
+to{opacity:1;transform:translateY(0)}}
+
+@keyframes slideInLeft{
+from{opacity:0;transform:translateX(-50px)}
+to{opacity:1;transform:translateX(0)}}
+
+@keyframes slideInRight{
+from{opacity:0;transform:translateX(50px)}
+to{opacity:1;transform:translateX(0)}}
+
+@keyframes slideInUp{
+from{opacity:0;transform:translateY(30px)}
+to{opacity:1;transform:translateY(0)}}
+
+@keyframes slideDown{
+from{opacity:0;transform:translateY(-30px)}
+to{opacity:1;transform:translateY(0)}}
+
+@keyframes slideUp{
+from{opacity:0;transform:translateY(30px)}
+to{opacity:1;transform:translateY(0)}}
+
+@keyframes scaleIn{
+from{opacity:0;transform:scale(0.95)}
+to{opacity:1;transform:scale(1)}}
+
+@keyframes pulse{
+0%,100%{opacity:1}
+50%{opacity:0.7}}
+
+/* RESPONSIVE MOBILE */
+@media(max-width:768px){
+/* Header mobile */
+header{padding:15px 20px}
+header.scrolled{padding:12px 20px}
+.logo{font-size:18px;letter-spacing:2px}
+
+/* Nascondi menu desktop, mostra hamburger */
+nav{display:none}
+.mobile-menu-btn{display:flex}
+.mobile-nav{display:block}
+
+/* Hero mobile */
+.hero h1{font-size:36px;letter-spacing:3px;padding:0 20px}
+.hero button{padding:14px 30px;font-size:13px}
+
+/* Sezioni mobile */
+section{padding:80px 20px}
+#products,
+.contact-section{margin:0 15px}
+#products h2,
+.contact-section h2{font-size:28px;margin-bottom:30px}
+
+/* Grid prodotti mobile */
+.products{
+grid-template-columns:1fr;
+gap:25px}
+.card img{height:200px}
+
+/* Product page mobile */
+.product-layout{
+flex-direction:column;
+gap:30px}
+.product-gallery{
+min-width:100%}
+.product-gallery img{height:350px}
+.slider-controls button{
+padding:12px 20px;
+font-size:18px}
+.product-info{
+min-width:100%;
+padding:30px 25px}
+.product-info h2{font-size:28px}
+.price-box{padding:25px}
+.price{font-size:36px}
+
+/* Checkout mobile */
+.checkout-container{
+padding:30px 20px}
+.checkout-container h2{font-size:26px}
+.checkout-item{
+flex-wrap:wrap;
+gap:15px}
+.checkout-item-qty{
+margin-right:0;
+width:100%;
+justify-content:space-between}
+.checkout-total{font-size:24px}
+
+/* Cart sidebar mobile */
+.cart-sidebar{
+width:100%;
+right:-100%}
+
+/* Contact mobile */
+.contact-item{
+padding:20px;
+font-size:16px}
+.contact-item i{font-size:24px}
+
+/* Footer mobile */
+footer{
+padding:30px 20px;
+font-size:11px}
+}
+
+@media(min-width:769px) and (max-width:1024px){
+/* Tablet adjustments */
+header{padding:20px 35px}
+.logo{font-size:20px}
+nav a{margin-left:25px;font-size:13px}
+section{padding:100px 35px}
+.hero h1{font-size:56px}
+#products,.contact-section{margin:0 20px}
+.products{grid-template-columns:repeat(2,1fr);gap:30px}
+.product-gallery{min-width:350px}
+.product-gallery img{height:450px}
+.product-info{padding:40px}
+.checkout-container{padding:45px}
+}
+</style>
+</head>
+<body>
+
+<header id="header">
+<div class="logo" onclick="showHome()">RB COMPONENTS</div>
+<nav>
+<a onclick="scrollToProducts()">Prodotti</a>
+<a onclick="goToContacts()">Contatti</a>
+<a class="cart-btn" onclick="toggleCart()">Carrello (<span id="cart-count">0</span>)</a>
+</nav>
+<!-- Menu hamburger mobile -->
+<div class="mobile-menu-btn" onclick="toggleMobileMenu()">
+<span></span>
+<span></span>
+<span></span>
+</div>
+</header>
+
+<!-- Menu mobile -->
+<div class="mobile-nav" id="mobile-nav">
+<a onclick="scrollToProducts(); closeMobileMenu()">Prodotti</a>
+<a onclick="goToContacts(); closeMobileMenu()">Contatti</a>
+<a class="cart-btn" onclick="toggleCart(); closeMobileMenu()">Carrello (<span id="mobile-cart-count">0</span>)</a>
+</div>
+
+<!-- HOME -->
+<div id="home">
+<section class="hero">
+<h1>RB COMPONENTS</h1>
+<button onclick="scrollToProducts()">Scopri ora tutti i nostri prodotti</button>
+</section>
+
+<section id="products">
+<h2 style="text-align:center;margin-bottom:50px">I Nostri Prodotti</h2>
+<div class="products" id="product-list"></div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section id="contacts" class="contact-section">
+<h2 style="text-align:center;margin-bottom:50px;font-size:42px;font-weight:800;letter-spacing:2px">Contatti</h2>
+
+<div class="contact-container">
+
+<div class="contact-item">
+<i class="fas fa-envelope"></i>
+<a href="mailto:email@rbcomponents.com">email@rbcomponents.com</a>
+</div>
+
+<div class="contact-item">
+<i class="fab fa-instagram"></i>
+<a href="https://instagram.com/rbcomponents" target="_blank">@rbcomponents</a>
+</div>
+
+<form id="contactForm" class="contact-form"
+action="https://formspree.io/f/xzdaewla"
+method="POST">
+
+<input type="text" name="nome" placeholder="Nome" required>
+<input type="text" name="cognome" placeholder="Cognome" required>
+<input type="email" name="email" placeholder="Email" required>
+<input type="tel" name="telefono" placeholder="Numero di cellulare"
+pattern="[0-9+ ]{6,15}" required>
+<textarea name="messaggio" placeholder="Scrivi il tuo messaggio..." required></textarea>
+
+<button type="submit">Invia Messaggio</button>
+
+<div class="success-message" id="successMessage">
+Messaggio inviato con successo!
+</div>
+
+</form>
+</div>
+</section>
+</div>
+
+<!-- PRODUCT PAGE -->
+<section class="product-page" id="product-page">
+<a class="back-btn" onclick="showHome()">← Torna ai prodotti</a>
+<div class="product-layout">
+<div class="product-gallery">
+<img id="main-image">
+<div class="slider-controls">
+<button onclick="prevImage()">←</button>
+<button onclick="nextImage()">→</button>
+</div>
+</div>
+
+<div class="product-info">
+<h2 id="product-title"></h2>
+<p id="product-description"></p>
+
+<div class="price-box">
+<div class="price" id="product-price"></div>
+<button onclick="addCurrentToCart()">Aggiungi al carrello</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CHECKOUT PAGE -->
+<section class="checkout-page" id="checkout-page">
+<a class="back-btn" onclick="showHome()">← Torna ai prodotti</a>
+<div class="checkout-container">
+<h2>Completa la Prenotazione</h2>
+<div class="checkout-items" id="checkout-items"></div>
+<div class="checkout-total" id="checkout-total"></div>
+
+<form id="checkoutForm" class="checkout-form"
+action="https://formspree.io/f/xzdaewla"
+method="POST">
+
+<input type="hidden" name="ordine" id="ordine-data">
+
+<input type="text" name="nome" placeholder="Nome" required>
+<input type="text" name="cognome" placeholder="Cognome" required>
+<input type="email" name="email" placeholder="Email" required>
+<input type="tel" name="telefono" placeholder="Numero di cellulare"
+pattern="[0-9+ ]{6,15}" required>
+<textarea name="note" placeholder="Note aggiuntive (opzionale)"></textarea>
+
+<button type="submit">Invia Prenotazione</button>
+
+<div class="success-message" id="checkoutSuccessMessage">
+Prenotazione inviata con successo! Riceverai una conferma via email.
+</div>
+
+</form>
+</div>
+</section>
+
+<!-- CART -->
+<div class="cart-sidebar" id="cart">
+<h3>Carrello</h3>
+<div id="cart-items"></div>
+<h4 id="cart-total"></h4>
+<button onclick="proceedToCheckout()">Procedi al Checkout</button>
+</div>
+
+<footer>RB components</footer>
+
+<script>
+
+/* =========================
+   ARRAY PRODOTTI MODIFICABILE
+   ========================= */
+
+const products = [
+
+{
+id: 1,
+name: "Tamponi perno ruota",
+price: 35,
+description: "Tamponi universali con filettatura m8 ricavati dal pieno con macchine CNC. Realizzati con materiali studiati apposta per resistere all'abrasione.",
+images: [
+"img/Tamponi CNC 0.jpeg",
+"img/Tamponi CNC 1.jpeg",
+"img/Tamponi CNC 2.jpeg"
+]
+},
+
+{
+id: 2,
+name: "Tamponi stampa 3D",
+price: 30,
+description: "Tamponi universali con filettatura m8 stampati in 3D. Possibilità di scelta del colore e su richesta è possibile anche inserire loghi o numeri sull'estremità del tampone. Per le personalizzazioni e la scelta dei colori bisogna specificare scrivendo le proprie preferenze nel messaggio di checkout nella sezione carrello.",
+images: [
+"https://picsum.photos/600/400?2",
+"https://picsum.photos/600/400?21",
+"https://picsum.photos/600/400?22"
+]
+},
+
+{
+id: 3,
+name: "Passacavi TM",
+price: 5,
+description: "Passacavi per cavi del freno posteriore da sostituire a quelli già presenti fissati sul forcellone. Stampati in 3D e personalizzabili al 100% nella scelta dei colori. Per le personalizzazioni e la scelta dei colori bisogna specificare scrivendo le proprie preferenze nel messaggio di checkout nella sezione carrello.",
+images: [
+"https://picsum.photos/600/400?3",
+"https://picsum.photos/600/400?31",
+"https://picsum.photos/600/400?32"
+]
+},
+
+{
+id: 4,
+name: "Portachiavi personalizzati",
+price: 4,
+description: "Portachiavi personalizzabili a piacimento. Disponibili sia quelli classici delle marche già esistenti sul mercato, ma c'è anche la possibilità di progettare e realizzare il proprio portachiavi unico. Per le personalizzazioni e la scelta dei colori bisogna specificare scrivendo le proprie preferenze nel messaggio di checkout nella sezione carrello.",
+images: [
+"https://picsum.photos/600/400?4",
+"https://picsum.photos/600/400?41",
+"https://picsum.photos/600/400?42"
+]
+},
+
+{
+id: 5,
+name: "Coperchio corpo farfallato TM",
+price: 12,
+description: "Coperchio corpo farfallato TM da sostituire a quello originale. Possibilità di scrivere sul proprio pezzo scritte, nomi e numeri. Per le personalizzazioni e la scelta dei colori bisogna specificare scrivendo le proprie preferenze nel messaggio di checkout nella sezione carrello.",
+images: [
+"https://picsum.photos/600/400?5",
+"https://picsum.photos/600/400?51",
+"https://picsum.photos/600/400?52"
+]
+},
+
+{
+id: 6,
+name: "Para Pignone TM",
+price: 20,
+description: "Para Pignone TM. Per le personalizzazioni e la scelta dei colori bisogna specificare scrivendo le proprie preferenze nel messaggio di checkout nella sezione carrello.",
+images: [
+"https://picsum.photos/600/400?6",
+"https://picsum.photos/600/400?61",
+"https://picsum.photos/600/400?62"
+]
+}
+
+];
+
+/* =========================
+   LOGICA SITO
+   ========================= */
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let currentProduct = null;
+let currentImageIndex = 0;
+
+function renderProducts(){
+const container=document.getElementById("product-list");
+container.innerHTML = "";
+products.forEach(product=>{
+const div=document.createElement("div");
+div.className="card";
+div.innerHTML=`
+<img src="${product.images[0]}">
+<div class="card-content">
+<h3>${product.name}</h3>
+<p>€${product.price.toFixed(2)}</p>
+<button onclick="openProduct(${product.id})">Visualizza</button>
+</div>`;
+container.appendChild(div);
+});
+}
+
+function openProduct(id){
+currentProduct = products.find(p => p.id === id);
+currentImageIndex = 0;
+
+document.getElementById("home").style.display="none";
+document.getElementById("product-page").style.display="block";
+document.getElementById("checkout-page").style.display="none";
+
+// Cambia header a bianco
+document.getElementById("header").classList.add("white-header");
+
+document.getElementById("product-title").innerText = currentProduct.name;
+document.getElementById("product-description").innerText = currentProduct.description;
+document.getElementById("product-price").innerText = currentProduct.price.toFixed(2);
+document.getElementById("main-image").src = currentProduct.images[0];
+
+window.scrollTo(0,0);
+}
+
+function showHome(){
+document.getElementById("home").style.display="block";
+document.getElementById("product-page").style.display="none";
+document.getElementById("checkout-page").style.display="none";
+
+// Rimuovi header bianco
+document.getElementById("header").classList.remove("white-header");
+
+window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function showCheckout(){
+document.getElementById("home").style.display="none";
+document.getElementById("product-page").style.display="none";
+document.getElementById("checkout-page").style.display="block";
+
+// Cambia header a bianco
+document.getElementById("header").classList.add("white-header");
+
+// Raggruppa gli articoli per id
+let groupedCart = {};
+cart.forEach(item => {
+if(groupedCart[item.id]){
+groupedCart[item.id] += item.qty;
+} else {
+groupedCart[item.id] = item.qty;
+}
+});
+
+// Renderizza checkout items
+const container = document.getElementById("checkout-items");
+container.innerHTML = "";
+let total = 0;
+
+for(let id in groupedCart){
+const product = products.find(p=>p.id==id);
+const qty = groupedCart[id];
+total += product.price * qty;
+
+const div = document.createElement("div");
+div.className = "checkout-item";
+div.innerHTML = `
+<div class="checkout-item-info">
+<strong>${product.name}</strong><br>
+<small>€${product.price.toFixed(2)} cad.</small>
+</div>
+<div class="checkout-item-qty">
+<button onclick="updateQty(${id}, -1)">-</button>
+<input type="number" value="${qty}" min="1" onchange="setQty(${id}, this.value)" readonly>
+<button onclick="updateQty(${id}, 1)">+</button>
+</div>
+<span style="min-width:80px;text-align:right;margin-right:10px;font-weight:700">€${(product.price * qty).toFixed(2)}</span>
+<button class="remove-btn" onclick="removeFromCheckout(${id})">×</button>
+`;
+container.appendChild(div);
+}
+
+document.getElementById("checkout-total").innerText = "Totale: €" + total.toFixed(2);
+window.scrollTo(0,0);
+}
+
+function nextImage(){
+currentImageIndex = (currentImageIndex + 1) % currentProduct.images.length;
+document.getElementById("main-image").src = currentProduct.images[currentImageIndex];
+}
+
+function prevImage(){
+currentImageIndex--;
+if(currentImageIndex < 0)
+currentImageIndex = currentProduct.images.length - 1;
+document.getElementById("main-image").src = currentProduct.images[currentImageIndex];
+}
+
+function addCurrentToCart(){
+cart.push({id: currentProduct.id, qty: 1});
+localStorage.setItem("cart",JSON.stringify(cart));
+updateCart();
+alert("Aggiunto al carrello!");
+}
+
+function updateCart(){
+// Raggruppa gli articoli per id e somma le quantità
+let groupedCart = {};
+cart.forEach(item => {
+if(groupedCart[item.id]){
+groupedCart[item.id] += item.qty;
+} else {
+groupedCart[item.id] = item.qty;
+}
+});
+
+// Aggiorna il contatore
+let totalItems = Object.values(groupedCart).reduce((sum, qty) => sum + qty, 0);
+document.getElementById("cart-count").innerText = totalItems;
+document.getElementById("mobile-cart-count").innerText = totalItems;
+
+// Aggiorna gli items nel carrello
+const items=document.getElementById("cart-items");
+items.innerHTML="";
+let total=0;
+
+for(let id in groupedCart){
+const product = products.find(p=>p.id==id);
+const qty = groupedCart[id];
+total += product.price * qty;
+items.innerHTML+=`
+<div class="cart-item">
+<div>
+<strong>${product.name}</strong><br>
+<small>Quantità: ${qty}</small>
+</div>
+<span>€${(product.price * qty).toFixed(2)}</span>
+</div>`;
+}
+
+document.getElementById("cart-total").innerText="Totale: €"+total.toFixed(2);
+}
+
+function toggleCart(){
+document.getElementById("cart").classList.toggle("open");
+}
+
+function toggleMobileMenu(){
+const mobileNav = document.getElementById("mobile-nav");
+const menuBtn = document.querySelector(".mobile-menu-btn");
+mobileNav.classList.toggle("open");
+menuBtn.classList.toggle("active");
+}
+
+function closeMobileMenu(){
+const mobileNav = document.getElementById("mobile-nav");
+const menuBtn = document.querySelector(".mobile-menu-btn");
+mobileNav.classList.remove("open");
+menuBtn.classList.remove("active");
+}
+
+function proceedToCheckout(){
+if(cart.length === 0){
+alert("Il carrello è vuoto!");
+return;
+}
+toggleCart();
+showCheckout();
+}
+
+function updateQty(productId, change){
+let groupedCart = {};
+cart.forEach(item => {
+if(groupedCart[item.id]){
+groupedCart[item.id] += item.qty;
+} else {
+groupedCart[item.id] = item.qty;
+}
+});
+
+let newQty = groupedCart[productId] + change;
+if(newQty < 1) return;
+
+// Ricostruisci il carrello
+cart = [];
+for(let id in groupedCart){
+if(id == productId){
+cart.push({id: parseInt(id), qty: newQty});
+} else {
+cart.push({id: parseInt(id), qty: groupedCart[id]});
+}
+}
+
+localStorage.setItem("cart", JSON.stringify(cart));
+updateCart();
+showCheckout();
+}
+
+function setQty(productId, value){
+let newQty = parseInt(value);
+if(newQty < 1) return;
+
+let groupedCart = {};
+cart.forEach(item => {
+if(groupedCart[item.id]){
+groupedCart[item.id] += item.qty;
+} else {
+groupedCart[item.id] = item.qty;
+}
+});
+
+cart = [];
+for(let id in groupedCart){
+if(id == productId){
+cart.push({id: parseInt(id), qty: newQty});
+} else {
+cart.push({id: parseInt(id), qty: groupedCart[id]});
+}
+}
+
+localStorage.setItem("cart", JSON.stringify(cart));
+updateCart();
+showCheckout();
+}
+
+function removeFromCheckout(productId){
+cart = cart.filter(item => item.id != productId);
+localStorage.setItem("cart", JSON.stringify(cart));
+updateCart();
+if(cart.length === 0){
+showHome();
+} else {
+showCheckout();
+}
+}
+
+function scrollToProducts(){
+showHome();
+setTimeout(()=>{
+document.getElementById("products").scrollIntoView({behavior:"smooth"});
+},150);
+}
+
+function goToContacts(){
+showHome();
+setTimeout(()=>{
+document.getElementById("contacts").scrollIntoView({behavior:"smooth"});
+},150);
+}
+
+/* FORM SUCCESS HANDLERS */
+document.getElementById("contactForm").addEventListener("submit",function(){
+setTimeout(()=>{
+document.getElementById("successMessage").style.display="block";
+setTimeout(()=>{
+document.getElementById("successMessage").style.display="none";
+document.getElementById("contactForm").reset();
+},3000);
+},300);
+});
+
+document.getElementById("checkoutForm").addEventListener("submit",function(e){
+// Prepara i dati dell'ordine
+let groupedCart = {};
+cart.forEach(item => {
+if(groupedCart[item.id]){
+groupedCart[item.id] += item.qty;
+} else {
+groupedCart[item.id] = item.qty;
+}
+});
+
+let orderDetails = "ORDINE:\n\n";
+for(let id in groupedCart){
+const product = products.find(p=>p.id==id);
+const qty = groupedCart[id];
+orderDetails += `${product.name} - Quantità: ${qty} - Prezzo unitario: €${product.price.toFixed(2)} - Totale: €${(product.price * qty).toFixed(2)}\n`;
+}
+
+let total = 0;
+for(let id in groupedCart){
+const product = products.find(p=>p.id==id);
+total += product.price * groupedCart[id];
+}
+orderDetails += `\nTOTALE ORDINE: €${total.toFixed(2)}`;
+
+document.getElementById("ordine-data").value = orderDetails;
+
+setTimeout(()=>{
+document.getElementById("checkoutSuccessMessage").style.display="block";
+cart = [];
+localStorage.removeItem("cart");
+updateCart();
+setTimeout(()=>{
+document.getElementById("checkoutSuccessMessage").style.display="none";
+document.getElementById("checkoutForm").reset();
+showHome();
+},3000);
+},300);
+});
+
+window.addEventListener("scroll",()=>{
+if(window.scrollY>50)
+document.getElementById("header").classList.add("scrolled");
+else
+document.getElementById("header").classList.remove("scrolled");
+});
+
+renderProducts();
+updateCart();
+
+</script>
+</body>
+</html>
