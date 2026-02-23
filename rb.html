@@ -45,13 +45,17 @@ box-shadow:0 2px 30px rgba(0,0,0,0.08);
 border-bottom:1px solid rgba(0,0,0,0.1)}
 
 .logo{
-font-weight:800;
-font-size:24px;
-letter-spacing:3px;
+display:flex;
+align-items:center;
+gap:10px;
 transition:.3s;
 cursor:pointer;
 position:relative;
 color:white}
+.logo img{
+height:40px;
+width:auto;
+object-fit:contain}
 header.white-header .logo{color:#000}
 .logo::after{
 content:'';
@@ -836,7 +840,7 @@ section{padding:100px 35px}
 <body>
 
 <header id="header">
-<div class="logo" onclick="navigateTo('home')">RB PARTS</div>
+<div class="logo" onclick="navigateTo('home')"><img src="img/logo rb.jpeg" alt="RB Parts logo">RB PARTS</div>
 <nav>
 <a onclick="scrollToProducts()">Prodotti</a>
 <a onclick="goToContacts()">Contatti</a>
