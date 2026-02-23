@@ -1324,5 +1324,27 @@ renderProducts();
 updateCart();
 
 </script>
+   
+<!-- COOKIE BANNER -->
+<div id="cookie-banner" style="position:fixed;bottom:0;left:0;right:0;background:#000;color:#fff;padding:20px;text-align:center;display:none;z-index:9999">
+Questo sito utilizza cookie tecnici necessari al funzionamento.
+<a href="cookie.html" style="color:#fff;text-decoration:underline">Cookie Policy</a>
+<br><br>
+<button onclick="acceptCookies()" style="padding:8px 20px;margin-right:10px">Accetta</button>
+<button onclick="rejectCookies()" style="padding:8px 20px">Rifiuta</button>
+</div>
+
+<script>
+function setConsent(value){
+localStorage.setItem("cookieConsent", value);
+document.getElementById("cookie-banner").style.display="none";
+}
+function acceptCookies(){ setConsent("accepted"); }
+function rejectCookies(){ setConsent("rejected"); }
+if(!localStorage.getItem("cookieConsent")){
+document.getElementById("cookie-banner").style.display="block";
+}
+</script>
+
 </body>
 </html>
