@@ -1394,14 +1394,23 @@ document.getElementById("contacts").scrollIntoView({behavior:"smooth"});
 }
 
 /* FORM SUCCESS HANDLERS */
-document.getElementById("contactForm").addEventListener("submit",function(){
-setTimeout(()=>{
-document.getElementById("successMessage").style.display="block";
-setTimeout(()=>{
-document.getElementById("successMessage").style.display="none";
-document.getElementById("contactForm").reset();
-},3000);
-},300);
+document.getElementById("contactForm").addEventListener("submit", function(e){
+    e.preventDefault(); // blocca il redirect
+    
+    fetch("https://formspree.io/f/xgolpnvp", {
+        method: "POST",
+        body: new FormData(this),
+        headers: { "Accept": "application/json" }
+    })
+    .then(response => {
+        if(response.ok){
+            document.getElementById("successMessage").style.display = "block";
+            document.getElementById("contactForm").reset();
+            setTimeout(()=>{
+                document.getElementById("successMessage").style.display = "none";
+            }, 3000);
+        }
+    });
 });
 
 document.getElementById("checkoutForm").addEventListener("submit",function(e){
