@@ -1005,10 +1005,20 @@ function showPage(page, productId){
 
 window.addEventListener('popstate', function(e){
   if(e.state){
-    if(e.state.page === 'home') showPage('home');
-    else if(e.state.page === 'product') showPage('product', e.state.id);
-    else if(e.state.page === 'checkout') showPage('checkout');
+    if(e.state.page === 'cart'){
+      closeCart();
+    } else if(e.state.page === 'home'){
+      closeCart();
+      showPage('home');
+    } else if(e.state.page === 'product'){
+      closeCart();
+      showPage('product', e.state.id);
+    } else if(e.state.page === 'checkout'){
+      closeCart();
+      showPage('checkout');
+    }
   } else {
+    closeCart();
     showPage('home');
   }
 });
@@ -1133,7 +1143,19 @@ function cartRemove(productId){
 }
 
 function toggleCart(){
-  document.getElementById("cart").classList.toggle("open");
+  const cartEl = document.getElementById("cart");
+  const isOpen = cartEl.classList.contains("open");
+  if(!isOpen){
+    cartEl.classList.add("open");
+    history.pushState({page:'cart'}, '', '#cart');
+  } else {
+    cartEl.classList.remove("open");
+    history.back();
+  }
+}
+
+function closeCart(){
+  document.getElementById("cart").classList.remove("open");
 }
 
 function toggleMobileMenu(){
