@@ -52,7 +52,7 @@ transition:.3s;
 cursor:pointer;
 position:relative;
 color:white;
-<br>font-size:20px</br>}
+font-size:20px}
 .logo img{
 height:40px;
 width:40px;
@@ -667,7 +667,7 @@ animation:slideInUp .4s ease-out}
 /* CHECKOUT PAGE */
 .checkout-page{display:none;animation:slideInRight .5s cubic-bezier(0.4,0,0.2,1)}
 .checkout-container{
-max-width:1000px;
+max-width:700px;
 margin:auto;
 background:white;
 padding:60px;
@@ -676,69 +676,48 @@ border:1px solid rgba(0,0,0,0.08);
 box-shadow:0 10px 40px rgba(0,0,0,0.08);
 animation:fadeIn .6s ease-out}
 .checkout-container h2{
-margin-bottom:40px;
+margin-bottom:12px;
 font-size:38px;
 font-weight:900;
 color:#000;
 letter-spacing:1px}
-.checkout-items{margin-bottom:40px}
-.checkout-item{
+.checkout-container .checkout-subtitle{
+margin-bottom:40px;
+color:#666;
+font-size:15px;
+line-height:1.6;
+padding-bottom:30px;
+border-bottom:1px solid rgba(0,0,0,0.08)}
+.checkout-order-summary{
+background:#fafafa;
+border:1px solid rgba(0,0,0,0.08);
+border-radius:6px;
+padding:25px;
+margin-bottom:35px}
+.checkout-order-summary h3{
+font-size:16px;
+font-weight:700;
+text-transform:uppercase;
+letter-spacing:1px;
+margin-bottom:18px;
+color:#000}
+.checkout-order-row{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:22px;
-background:#fafafa;
-border:1px solid rgba(0,0,0,0.06);
-border-radius:4px;
-margin-bottom:18px;
-transition:.3s;
-animation:scaleIn .4s ease-out backwards}
-.checkout-item:hover{
-transform:translateX(5px);
-border-color:rgba(0,0,0,0.12);
-box-shadow:0 5px 15px rgba(0,0,0,0.05)}
-.checkout-item-info{flex:1}
-.checkout-item-qty{
-display:flex;
-align-items:center;
-gap:15px;
-margin-right:25px}
-.checkout-item-qty button{
-padding:10px 18px;
-background:#000;
-color:white;
-border:none;
-border-radius:3px;
-cursor:pointer;
-font-weight:700;
+padding:10px 0;
+border-bottom:1px solid rgba(0,0,0,0.06);
 font-size:14px;
-transition:.3s}
-.checkout-item-qty button:hover{background:#222;transform:scale(1.1)}
-.checkout-item-qty input{
-width:65px;
-text-align:center;
-border:1px solid rgba(0,0,0,0.15);
-border-radius:3px;
-padding:10px;
-font-weight:700;
-font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
-.remove-btn{
-padding:10px 18px;
-background:#000;
-color:white;
-border:none;
-border-radius:3px;
-cursor:pointer;
-font-weight:700;
-transition:.3s}
-.remove-btn:hover{background:#222;transform:scale(1.1)}
-.checkout-total{
-font-size:32px;
+color:#444}
+.checkout-order-row:last-child{border-bottom:none}
+.checkout-order-row.total-row{
 font-weight:900;
-margin-bottom:40px;
-text-align:right;
+font-size:18px;
 color:#000;
-letter-spacing:0.5px}
+padding-top:15px;
+margin-top:5px;
+border-top:2px solid #000;
+border-bottom:none}
 .checkout-form{display:flex;flex-direction:column;gap:20px}
 .checkout-form input,.checkout-form textarea{
 padding:18px;
@@ -752,6 +731,7 @@ outline:none;
 border-color:#000;
 box-shadow:0 0 0 3px rgba(0,0,0,0.05);
 transform:translateY(-2px)}
+.checkout-form textarea{min-height:130px;resize:vertical}
 .checkout-form button{
 padding:20px;
 background:#000;
@@ -815,9 +795,6 @@ section{padding:80px 20px}
 .price{font-size:36px}
 .checkout-container{padding:30px 20px}
 .checkout-container h2{font-size:26px}
-.checkout-item{flex-wrap:wrap;gap:15px}
-.checkout-item-qty{margin-right:0;width:100%;justify-content:space-between}
-.checkout-total{font-size:24px}
 .cart-sidebar{width:100%;right:-100%}
 .contact-item{padding:20px;font-size:16px}
 .contact-item i{font-size:24px}
@@ -890,7 +867,7 @@ section{padding:100px 35px}
 <textarea name="messaggio" placeholder="Compila i campi dati sopra e scrivi qui la tua richiesta per essere ricontattato da noi..." required></textarea>
 <label style="font-size:14px;margin-top:10px;display:block">
 <input type="checkbox" required>
-Dichiaro di aver letto e accettato la 
+Dichiaro di aver letto e accettato la
 <a href="privacy.html" target="_blank">Privacy Policy</a>
 </label>
 <button type="submit">Invia richiesta</button>
@@ -927,18 +904,18 @@ Dichiaro di aver letto e accettato la
 <a class="back-btn" onclick="goBack()">← Torna al carrello</a>
 <div class="checkout-container">
 <h2>Completa la Prenotazione</h2>
-<div class="checkout-items" id="checkout-items"></div>
-<div class="checkout-total" id="checkout-total"></div>
+<p class="checkout-subtitle">Inserisci i tuoi dati per prenotare i pezzi. Ti contatteremo via email per confermare l'ordine e concordare i dettagli di pagamento e spedizione.</p>
+<div class="checkout-order-summary" id="checkout-order-summary"></div>
 <form id="checkoutForm" class="checkout-form" action="https://formspree.io/f/xgolpnvp" method="POST">
 <input type="hidden" name="ordine" id="ordine-data">
 <input type="text" name="nome" placeholder="Nome" required>
 <input type="text" name="cognome" placeholder="Cognome" required>
 <input type="email" name="email" placeholder="Email" required>
 <input type="tel" name="telefono" placeholder="Numero di cellulare" pattern="[0-9+ ]{6,15}" required>
-<textarea name="note" placeholder="Note aggiuntive (opzionale)"></textarea>
+<textarea name="note" placeholder="Richieste aggiuntive, personalizzazioni o note per l'ordine (opzionale)"></textarea>
 <label style="font-size:14px;margin-top:10px;display:block">
 <input type="checkbox" required>
-Dichiaro di aver letto e accettato la 
+Dichiaro di aver letto e accettato la
 <a href="privacy.html" target="_blank">Privacy Policy</a>
 </label>
 <button type="submit">Invia Prenotazione</button>
@@ -978,10 +955,6 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let currentProduct = null;
 let currentImageIndex = 0;
 
-/* =====================
-   NAVIGAZIONE CON HISTORY
-   ===================== */
-
 function navigateTo(page, productId){
   if(page === 'home'){
     history.pushState({page:'home'}, '', '#');
@@ -1019,7 +992,7 @@ function showPage(page, productId){
   } else if(page === 'checkout'){
     document.getElementById("checkout-page").style.display = "block";
     document.getElementById("header").classList.add("white-header");
-    renderCheckout();
+    renderCheckoutSummary();
     window.scrollTo(0,0);
   }
 }
@@ -1049,10 +1022,6 @@ history.replaceState({page:'home'}, '', '#');
 function goBack(){
   history.back();
 }
-
-/* =====================
-   PRODOTTI
-   ===================== */
 
 function renderProducts(){
   const container = document.getElementById("product-list");
@@ -1091,10 +1060,6 @@ function addCurrentToCart(){
   updateCart();
   alert("Aggiunto al carrello!");
 }
-
-/* =====================
-   CARRELLO
-   ===================== */
 
 function getGroupedCart(){
   let grouped = {};
@@ -1195,59 +1160,27 @@ function proceedToCheckout(){
   navigateTo('checkout');
 }
 
-/* =====================
-   CHECKOUT
-   ===================== */
-
-function renderCheckout(){
+function renderCheckoutSummary(){
   const grouped = getGroupedCart();
-  const container = document.getElementById("checkout-items");
-  container.innerHTML = "";
+  const container = document.getElementById("checkout-order-summary");
+  container.innerHTML = '<h3>Riepilogo ordine</h3>';
   let total = 0;
 
   for(let id in grouped){
     const product = products.find(p=>p.id==id);
     const qty = grouped[id];
-    total += product.price * qty;
-    const div = document.createElement("div");
-    div.className = "checkout-item";
-    div.innerHTML = `
-      <div class="checkout-item-info">
-        <strong>${product.name}</strong><br>
-        <small>€${product.price.toFixed(2)} cad.</small>
-      </div>
-      <div class="checkout-item-qty">
-        <button onclick="updateQty(${id}, -1)">-</button>
-        <input type="number" value="${qty}" min="1" readonly>
-        <button onclick="updateQty(${id}, 1)">+</button>
-      </div>
-      <span style="min-width:80px;text-align:right;margin-right:10px;font-weight:700">€${(product.price*qty).toFixed(2)}</span>
-      <button class="remove-btn" onclick="removeFromCheckout(${id})">×</button>`;
-    container.appendChild(div);
+    const subtotal = product.price * qty;
+    total += subtotal;
+    const row = document.createElement("div");
+    row.className = "checkout-order-row";
+    row.innerHTML = `<span>${product.name} × ${qty}</span><span>€${subtotal.toFixed(2)}</span>`;
+    container.appendChild(row);
   }
 
-  document.getElementById("checkout-total").innerText = "Totale: €" + total.toFixed(2);
-}
-
-function updateQty(productId, change){
-  const grouped = getGroupedCart();
-  const newQty = (grouped[productId] || 0) + change;
-  if(newQty < 1) return;
-  cart = [];
-  for(let id in grouped){
-    cart.push({id: parseInt(id), qty: id == productId ? newQty : grouped[id]});
-  }
-  localStorage.setItem("cart", JSON.stringify(cart));
-  updateCart();
-  renderCheckout();
-}
-
-function removeFromCheckout(productId){
-  cart = cart.filter(item => item.id != productId);
-  localStorage.setItem("cart", JSON.stringify(cart));
-  updateCart();
-  if(cart.length === 0) navigateTo('home');
-  else renderCheckout();
+  const totalRow = document.createElement("div");
+  totalRow.className = "checkout-order-row total-row";
+  totalRow.innerHTML = `<span>Totale</span><span>€${total.toFixed(2)}</span>`;
+  container.appendChild(totalRow);
 }
 
 function scrollToProducts(){
@@ -1267,10 +1200,6 @@ function goToContacts(){
     document.getElementById("contacts").scrollIntoView({behavior:"smooth"});
   }
 }
-
-/* =====================
-   FORM HANDLERS
-   ===================== */
 
 document.getElementById("contactForm").addEventListener("submit", function(e){
   e.preventDefault();
@@ -1324,7 +1253,7 @@ renderProducts();
 updateCart();
 
 </script>
-   
+
 <!-- COOKIE BANNER -->
 <div id="cookie-banner" style="position:fixed;bottom:0;left:0;right:0;background:#000;color:#fff;padding:20px;text-align:center;display:none;z-index:9999">
 Questo sito utilizza cookie tecnici necessari al funzionamento.
