@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RB components</title>
+<title>RB parts</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -17,12 +17,11 @@ a{text-decoration:none;color:inherit;cursor:pointer}
 
 /* HEADER */
 header{
-position:fixed;top:0;left:0;width:100%;
-background:transparent;
-backdrop-filter:blur(0px);
-color:rgba(255,255,255,0.9);
+background:rgba(0,0,0,0.55);
 padding:25px 50px;
 display:flex;justify-content:space-between;align-items:center;
+position:fixed;
+top:0;left:0;right:0;
 z-index:1000;
 transition:all .4s cubic-bezier(0.4,0,0.2,1);
 border-bottom:1px solid rgba(255,255,255,0.1)}
@@ -33,7 +32,6 @@ padding:18px 50px;
 box-shadow:0 2px 30px rgba(0,0,0,0.3);
 border-bottom:1px solid rgba(255,255,255,0.05)}
 
-/* Header bianco per pagine interne */
 header.white-header{
 background:rgba(255,255,255,0.98);
 backdrop-filter:blur(10px);
@@ -47,12 +45,19 @@ box-shadow:0 2px 30px rgba(0,0,0,0.08);
 border-bottom:1px solid rgba(0,0,0,0.1)}
 
 .logo{
-font-weight:800;
-font-size:24px;
-letter-spacing:3px;
+display:flex;
+align-items:center;
+gap:10px;
 transition:.3s;
 cursor:pointer;
-position:relative}
+position:relative;
+color:white;
+font-size:20px}
+.logo img{
+height:40px;
+width:40px;
+object-fit:cover;
+border-radius:50%}
 header.white-header .logo{color:#000}
 .logo::after{
 content:'';
@@ -76,7 +81,8 @@ padding:8px 0;
 transition:.3s;
 font-weight:500;
 text-transform:uppercase;
-letter-spacing:1px}
+letter-spacing:1px;
+color:white}
 header.white-header nav a{color:#444}
 header.white-header nav a:hover{color:#000}
 nav a::after{
@@ -94,7 +100,7 @@ nav a:hover::after{width:100%}
 .cart-btn{
 cursor:pointer;
 background:rgba(255,255,255,0.15);
-color:white;
+color:white !important;
 padding:10px 20px;
 border-radius:4px;
 transition:.3s;
@@ -107,20 +113,21 @@ transform:translateY(-2px);
 box-shadow:0 5px 15px rgba(255,255,255,0.1)}
 header.white-header .cart-btn{
 background:#000;
-color:white;
+color:white !important;
 border:1px solid #000}
 header.white-header .cart-btn:hover{
 background:#222;
 box-shadow:0 5px 15px rgba(0,0,0,0.2)}
 
-/* Menu hamburger mobile */
 .mobile-menu-btn{
 display:none;
 flex-direction:column;
 gap:6px;
 cursor:pointer;
 padding:8px;
-z-index:1001}
+z-index:1001;
+color:white}
+header.white-header .mobile-menu-btn{color:#000}
 .mobile-menu-btn span{
 width:28px;
 height:3px;
@@ -147,8 +154,7 @@ padding:80px 30px 30px 30px;
 transition:right .4s cubic-bezier(0.4,0,0.2,1);
 z-index:999;
 box-shadow:-5px 0 30px rgba(0,0,0,0.3)}
-.mobile-nav.open{
-right:0}
+.mobile-nav.open{right:0}
 header.white-header .mobile-nav{
 background:rgba(255,255,255,0.98);
 border-left:1px solid rgba(0,0,0,0.1)}
@@ -165,11 +171,8 @@ transition:.3s}
 header.white-header .mobile-nav a{
 color:#111;
 border-bottom:1px solid rgba(0,0,0,0.1)}
-.mobile-nav a:hover{
-padding-left:10px;
-color:rgba(255,255,255,0.7)}
-header.white-header .mobile-nav a:hover{
-color:#666}
+.mobile-nav a:hover{padding-left:10px;color:rgba(255,255,255,0.7)}
+header.white-header .mobile-nav a:hover{color:#666}
 .mobile-nav .cart-btn{
 display:block;
 margin-top:20px;
@@ -178,12 +181,13 @@ width:100%}
 
 section{padding:120px 50px;position:relative}
 
-/* HERO SECTION */
+/* HERO */
 .hero{
 height:100vh;
 background:#000;
 position:relative;
-color:white;display:flex;flex-direction:column;
+color:white;
+display:flex;flex-direction:column;
 justify-content:center;align-items:center;text-align:center;
 overflow:hidden}
 .hero::before{
@@ -193,7 +197,7 @@ top:0;left:0;right:0;bottom:0;
 background-image:url('img/Gemini_Generated_Image_kwy0r7kwy0r7kwy0.png');
 background-size:cover;
 background-position:center;
-opacity:0.4;
+opacity:0.6;
 filter:brightness(0.8)}
 .hero::after{
 content:'';
@@ -234,9 +238,7 @@ border-radius:50%;
 background:rgba(0,0,0,0.1);
 transform:translate(-50%,-50%);
 transition:.5s}
-.hero button:hover::before{
-width:300px;
-height:300px}
+.hero button:hover::before{width:300px;height:300px}
 .hero button:hover{
 transform:translateY(-3px);
 box-shadow:0 10px 30px rgba(255,255,255,0.3)}
@@ -252,13 +254,11 @@ color:#000;
 font-size:42px;
 font-weight:800;
 letter-spacing:2px}
-
 .products{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
 gap:40px;
 animation:fadeIn .6s ease-out}
-
 .card{
 background:white;
 border-radius:8px;
@@ -292,9 +292,7 @@ height:240px;
 object-fit:cover;
 transition:.4s;
 filter:grayscale(0.2)}
-.card:hover img{
-transform:scale(1.05);
-filter:grayscale(0)}
+.card:hover img{transform:scale(1.05);filter:grayscale(0)}
 .card-content{padding:25px}
 .card-content h3{
 margin-bottom:12px;
@@ -331,18 +329,14 @@ background:rgba(255,255,255,0.15);
 border-radius:50%;
 transform:translate(-50%,-50%);
 transition:.5s}
-.card-content button:hover::before{
-width:300px;
-height:300px}
+.card-content button:hover::before{width:300px;height:300px}
 .card-content button:hover{
 background:#222;
 transform:translateY(-2px);
 box-shadow:0 5px 15px rgba(0,0,0,0.3)}
 
 /* PRODUCT PAGE */
-.product-page{
-display:none;
-animation:slideInRight .5s cubic-bezier(0.4,0,0.2,1)}
+.product-page{display:none;animation:slideInRight .5s cubic-bezier(0.4,0,0.2,1)}
 .product-layout{
 display:flex;
 gap:60px;
@@ -384,9 +378,7 @@ color:white;
 border-color:#000;
 transform:translateY(-3px);
 box-shadow:0 5px 15px rgba(0,0,0,0.2)}
-.slider-controls button:active{
-transform:translateY(-1px)}
-
+.slider-controls button:active{transform:translateY(-1px)}
 .product-info{
 flex:1;
 min-width:350px;
@@ -409,7 +401,6 @@ font-size:16px;
 line-height:1.9;
 padding-bottom:30px;
 border-bottom:1px solid rgba(0,0,0,0.08)}
-
 .price-box{
 background:#fafafa;
 padding:40px;
@@ -453,22 +444,17 @@ overflow:hidden}
 .price-box button::before{
 content:'';
 position:absolute;
-top:50%;
-left:50%;
-width:0;
-height:0;
+top:50%;left:50%;
+width:0;height:0;
 background:rgba(255,255,255,0.15);
 border-radius:50%;
 transform:translate(-50%,-50%);
 transition:.5s}
-.price-box button:hover::before{
-width:400px;
-height:400px}
+.price-box button:hover::before{width:400px;height:400px}
 .price-box button:hover{
 background:#222;
 transform:translateY(-3px);
 box-shadow:0 10px 30px rgba(0,0,0,0.3)}
-
 .back-btn{
 margin-bottom:35px;
 display:inline-block;
@@ -502,9 +488,7 @@ padding:30px;
 transition:all .4s cubic-bezier(0.4,0,0.2,1);
 z-index:2000;
 overflow:auto}
-.cart-sidebar.open{
-right:0;
-animation:slideInRight .4s ease-out}
+.cart-sidebar.open{right:0;animation:slideInRight .4s ease-out}
 .cart-sidebar h3{
 margin-bottom:30px;
 font-size:26px;
@@ -515,7 +499,7 @@ border-bottom:2px solid #000;
 padding-bottom:20px}
 .cart-item{
 display:flex;
-justify-content:space-between;
+flex-direction:column;
 margin-bottom:18px;
 padding:18px;
 background:#fafafa;
@@ -524,18 +508,49 @@ border-radius:4px;
 transition:.3s;
 animation:scaleIn .3s ease-out backwards}
 .cart-item:hover{
-transform:translateX(-5px);
 border-color:rgba(0,0,0,0.1);
 box-shadow:0 5px 15px rgba(0,0,0,0.05)}
-.cart-sidebar h4{
-margin-top:30px;
-margin-bottom:25px;
-font-size:22px;
-font-weight:900;
-color:#000;
-text-align:right;
-letter-spacing:0.5px}
-.cart-sidebar button{
+.cart-item-top{
+display:flex;
+justify-content:space-between;
+margin-bottom:12px}
+.cart-item-controls{
+display:flex;
+align-items:center;
+justify-content:space-between}
+.cart-item-qty{
+display:flex;
+align-items:center;
+gap:10px}
+.cart-item-qty button{
+width:30px;height:30px;
+background:#000;
+color:white;
+border:none;
+border-radius:3px;
+cursor:pointer;
+font-weight:700;
+font-size:16px;
+transition:.3s;
+display:flex;align-items:center;justify-content:center}
+.cart-item-qty button:hover{background:#444}
+.cart-item-qty span{
+font-weight:700;
+font-size:15px;
+min-width:25px;
+text-align:center}
+.cart-item-remove{
+background:none;
+border:none;
+color:#999;
+cursor:pointer;
+font-size:20px;
+padding:0 5px;
+transition:.3s;
+width:auto !important;
+margin-top:0 !important}
+.cart-item-remove:hover{color:#000}
+.cart-sidebar > button{
 width:100%;
 padding:18px;
 background:#000;
@@ -549,10 +564,23 @@ font-size:14px;
 letter-spacing:1px;
 text-transform:uppercase;
 transition:.3s}
-.cart-sidebar button:hover{
+.cart-sidebar > button:hover{
 background:#222;
 transform:translateY(-3px);
 box-shadow:0 8px 25px rgba(0,0,0,0.3)}
+.cart-sidebar h4{
+margin-top:30px;
+margin-bottom:25px;
+font-size:22px;
+font-weight:900;
+color:#000;
+text-align:right;
+letter-spacing:0.5px}
+.cart-empty{
+text-align:center;
+color:#999;
+padding:40px 0;
+font-size:15px}
 
 /* CONTACT SECTION */
 .contact-section{
@@ -570,7 +598,6 @@ flex-direction:column;
 gap:35px;
 position:relative;
 z-index:1}
-
 .contact-item{
 display:flex;
 align-items:center;
@@ -587,13 +614,8 @@ animation:slideInLeft .5s ease-out backwards}
 transform:translateX(10px);
 border-color:rgba(0,0,0,0.15);
 box-shadow:0 5px 20px rgba(0,0,0,0.08)}
-.contact-item i{
-color:#000;
-font-size:28px;
-transition:.3s}
-.contact-item:hover i{
-transform:scale(1.15)}
-
+.contact-item i{color:#000;font-size:28px;transition:.3s}
+.contact-item:hover i{transform:scale(1.15)}
 .contact-form{
 display:flex;
 flex-direction:column;
@@ -643,11 +665,9 @@ letter-spacing:0.5px;
 animation:slideInUp .4s ease-out}
 
 /* CHECKOUT PAGE */
-.checkout-page{
-display:none;
-animation:slideInRight .5s cubic-bezier(0.4,0,0.2,1)}
+.checkout-page{display:none;animation:slideInRight .5s cubic-bezier(0.4,0,0.2,1)}
 .checkout-container{
-max-width:1000px;
+max-width:700px;
 margin:auto;
 background:white;
 padding:60px;
@@ -656,77 +676,49 @@ border:1px solid rgba(0,0,0,0.08);
 box-shadow:0 10px 40px rgba(0,0,0,0.08);
 animation:fadeIn .6s ease-out}
 .checkout-container h2{
-margin-bottom:40px;
+margin-bottom:12px;
 font-size:38px;
 font-weight:900;
 color:#000;
 letter-spacing:1px}
-.checkout-items{margin-bottom:40px}
-.checkout-item{
+.checkout-container .checkout-subtitle{
+margin-bottom:40px;
+color:#666;
+font-size:15px;
+line-height:1.6;
+padding-bottom:30px;
+border-bottom:1px solid rgba(0,0,0,0.08)}
+.checkout-order-summary{
+background:#fafafa;
+border:1px solid rgba(0,0,0,0.08);
+border-radius:6px;
+padding:25px;
+margin-bottom:35px}
+.checkout-order-summary h3{
+font-size:16px;
+font-weight:700;
+text-transform:uppercase;
+letter-spacing:1px;
+margin-bottom:18px;
+color:#000}
+.checkout-order-row{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:22px;
-background:#fafafa;
-border:1px solid rgba(0,0,0,0.06);
-border-radius:4px;
-margin-bottom:18px;
-transition:.3s;
-animation:scaleIn .4s ease-out backwards}
-.checkout-item:hover{
-transform:translateX(5px);
-border-color:rgba(0,0,0,0.12);
-box-shadow:0 5px 15px rgba(0,0,0,0.05)}
-.checkout-item-info{flex:1}
-.checkout-item-qty{
-display:flex;
-align-items:center;
-gap:15px;
-margin-right:25px}
-.checkout-item-qty button{
-padding:10px 18px;
-background:#000;
-color:white;
-border:none;
-border-radius:3px;
-cursor:pointer;
-font-weight:700;
+padding:10px 0;
+border-bottom:1px solid rgba(0,0,0,0.06);
 font-size:14px;
-transition:.3s}
-.checkout-item-qty button:hover{
-background:#222;
-transform:scale(1.1)}
-.checkout-item-qty input{
-width:65px;
-text-align:center;
-border:1px solid rgba(0,0,0,0.15);
-border-radius:3px;
-padding:10px;
-font-weight:700;
-font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
-.remove-btn{
-padding:10px 18px;
-background:#000;
-color:white;
-border:none;
-border-radius:3px;
-cursor:pointer;
-font-weight:700;
-transition:.3s}
-.remove-btn:hover{
-background:#222;
-transform:scale(1.1)}
-.checkout-total{
-font-size:32px;
+color:#444}
+.checkout-order-row:last-child{border-bottom:none}
+.checkout-order-row.total-row{
 font-weight:900;
-margin-bottom:40px;
-text-align:right;
+font-size:18px;
 color:#000;
-letter-spacing:0.5px}
-.checkout-form{
-display:flex;
-flex-direction:column;
-gap:20px}
+padding-top:15px;
+margin-top:5px;
+border-top:2px solid #000;
+border-bottom:none}
+.checkout-form{display:flex;flex-direction:column;gap:20px}
 .checkout-form input,.checkout-form textarea{
 padding:18px;
 border-radius:4px;
@@ -739,6 +731,7 @@ outline:none;
 border-color:#000;
 box-shadow:0 0 0 3px rgba(0,0,0,0.05);
 transform:translateY(-2px)}
+.checkout-form textarea{min-height:130px;resize:vertical}
 .checkout-form button{
 padding:20px;
 background:#000;
@@ -767,120 +760,48 @@ text-transform:uppercase;
 font-weight:600}
 
 /* ANIMATIONS */
-@keyframes fade{
-from{opacity:0}
-to{opacity:1}}
-
-@keyframes fadeIn{
-from{opacity:0;transform:translateY(20px)}
-to{opacity:1;transform:translateY(0)}}
-
-@keyframes slideInLeft{
-from{opacity:0;transform:translateX(-50px)}
-to{opacity:1;transform:translateX(0)}}
-
-@keyframes slideInRight{
-from{opacity:0;transform:translateX(50px)}
-to{opacity:1;transform:translateX(0)}}
-
-@keyframes slideInUp{
-from{opacity:0;transform:translateY(30px)}
-to{opacity:1;transform:translateY(0)}}
-
-@keyframes slideDown{
-from{opacity:0;transform:translateY(-30px)}
-to{opacity:1;transform:translateY(0)}}
-
-@keyframes slideUp{
-from{opacity:0;transform:translateY(30px)}
-to{opacity:1;transform:translateY(0)}}
-
-@keyframes scaleIn{
-from{opacity:0;transform:scale(0.95)}
-to{opacity:1;transform:scale(1)}}
-
-@keyframes pulse{
-0%,100%{opacity:1}
-50%{opacity:0.7}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideInLeft{from{opacity:0;transform:translateX(-50px)}to{opacity:1;transform:translateX(0)}}
+@keyframes slideInRight{from{opacity:0;transform:translateX(50px)}to{opacity:1;transform:translateX(0)}}
+@keyframes slideInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideDown{from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scaleIn{from{opacity:0;transform:scale(0.95)}to{opacity:1;transform:scale(1)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.7}}
 
 /* RESPONSIVE MOBILE */
 @media(max-width:768px){
-/* Header mobile */
 header{padding:15px 20px}
 header.scrolled{padding:12px 20px}
 .logo{font-size:18px;letter-spacing:2px}
-
-/* Nascondi menu desktop, mostra hamburger */
 nav{display:none}
 .mobile-menu-btn{display:flex}
 .mobile-nav{display:block}
-
-/* Hero mobile */
 .hero h1{font-size:36px;letter-spacing:3px;padding:0 20px}
 .hero button{padding:14px 30px;font-size:13px}
-
-/* Sezioni mobile */
 section{padding:80px 20px}
-#products,
-.contact-section{margin:0 15px}
-#products h2,
-.contact-section h2{font-size:28px;margin-bottom:30px}
-
-/* Grid prodotti mobile */
-.products{
-grid-template-columns:1fr;
-gap:25px}
+#products,.contact-section{margin:0 15px}
+#products h2,.contact-section h2{font-size:28px;margin-bottom:30px}
+.products{grid-template-columns:1fr;gap:25px}
 .card img{height:200px}
-
-/* Product page mobile */
-.product-layout{
-flex-direction:column;
-gap:30px}
-.product-gallery{
-min-width:100%}
+.product-layout{flex-direction:column;gap:30px}
+.product-gallery{min-width:100%}
 .product-gallery img{height:350px}
-.slider-controls button{
-padding:12px 20px;
-font-size:18px}
-.product-info{
-min-width:100%;
-padding:30px 25px}
+.slider-controls button{padding:12px 20px;font-size:18px}
+.product-info{min-width:100%;padding:30px 25px}
 .product-info h2{font-size:28px}
 .price-box{padding:25px}
 .price{font-size:36px}
-
-/* Checkout mobile */
-.checkout-container{
-padding:30px 20px}
+.checkout-container{padding:30px 20px}
 .checkout-container h2{font-size:26px}
-.checkout-item{
-flex-wrap:wrap;
-gap:15px}
-.checkout-item-qty{
-margin-right:0;
-width:100%;
-justify-content:space-between}
-.checkout-total{font-size:24px}
-
-/* Cart sidebar mobile */
-.cart-sidebar{
-width:100%;
-right:-100%}
-
-/* Contact mobile */
-.contact-item{
-padding:20px;
-font-size:16px}
+.cart-sidebar{width:100%;right:-100%}
+.contact-item{padding:20px;font-size:16px}
 .contact-item i{font-size:24px}
-
-/* Footer mobile */
-footer{
-padding:30px 20px;
-font-size:11px}
+footer{padding:30px 20px;font-size:11px}
 }
 
 @media(min-width:769px) and (max-width:1024px){
-/* Tablet adjustments */
 header{padding:20px 35px}
 .logo{font-size:20px}
 nav a{margin-left:25px;font-size:13px}
@@ -898,21 +819,17 @@ section{padding:100px 35px}
 <body>
 
 <header id="header">
-<div class="logo" onclick="showHome()">RB COMPONENTS</div>
+<div class="logo" onclick="navigateTo('home')"><img src="img/logo rb.jpeg" alt="RB Parts logo">RB PARTS</div>
 <nav>
 <a onclick="scrollToProducts()">Prodotti</a>
 <a onclick="goToContacts()">Contatti</a>
 <a class="cart-btn" onclick="toggleCart()">Carrello (<span id="cart-count">0</span>)</a>
 </nav>
-<!-- Menu hamburger mobile -->
 <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
-<span></span>
-<span></span>
-<span></span>
+<span></span><span></span><span></span>
 </div>
 </header>
 
-<!-- Menu mobile -->
 <div class="mobile-nav" id="mobile-nav">
 <a onclick="scrollToProducts(); closeMobileMenu()">Prodotti</a>
 <a onclick="goToContacts(); closeMobileMenu()">Contatti</a>
@@ -922,8 +839,8 @@ section{padding:100px 35px}
 <!-- HOME -->
 <div id="home">
 <section class="hero">
-<h1>RB COMPONENTS</h1>
-<button onclick="scrollToProducts()">Scopri ora tutti i nostri prodotti</button>
+<h1>RB PARTS</h1>
+<button onclick="scrollToProducts()">Scopri ora i nostri prodotti</button>
 </section>
 
 <section id="products">
@@ -931,39 +848,30 @@ section{padding:100px 35px}
 <div class="products" id="product-list"></div>
 </section>
 
-<!-- CONTACT SECTION -->
 <section id="contacts" class="contact-section">
 <h2 style="text-align:center;margin-bottom:50px;font-size:42px;font-weight:800;letter-spacing:2px">Contatti</h2>
-
 <div class="contact-container">
-
 <div class="contact-item">
 <i class="fas fa-envelope"></i>
-<a href="mailto:email@rbcomponents.com">email@rbcomponents.com</a>
+<a href="mailto:rb.parts25@gmail.com">Contattaci tramite mail</a>
 </div>
-
 <div class="contact-item">
 <i class="fab fa-instagram"></i>
-<a href="https://instagram.com/rbcomponents" target="_blank">@rbcomponents</a>
+<a href="https://instagram.com/rb.parts" target="_blank">Resta aggiornato con instagram</a>
 </div>
-
-<form id="contactForm" class="contact-form"
-action="https://formspree.io/f/xzdaewla"
-method="POST">
-
+<form id="contactForm" class="contact-form" action="https://formspree.io/f/xgolpnvp" method="POST">
 <input type="text" name="nome" placeholder="Nome" required>
 <input type="text" name="cognome" placeholder="Cognome" required>
 <input type="email" name="email" placeholder="Email" required>
-<input type="tel" name="telefono" placeholder="Numero di cellulare"
-pattern="[0-9+ ]{6,15}" required>
-<textarea name="messaggio" placeholder="Scrivi il tuo messaggio..." required></textarea>
-
-<button type="submit">Invia Messaggio</button>
-
-<div class="success-message" id="successMessage">
-Messaggio inviato con successo!
-</div>
-
+<input type="tel" name="telefono" placeholder="Numero di cellulare" pattern="[0-9+ ]{6,15}" required>
+<textarea name="messaggio" placeholder="Compila i campi dati sopra e scrivi qui la tua richiesta per essere ricontattato da noi..." required></textarea>
+<label style="font-size:14px;margin-top:10px;display:block">
+<input type="checkbox" required>
+Dichiaro di aver letto e accettato la
+<a href="privacy.html" target="_blank">Privacy Policy</a>
+</label>
+<button type="submit">Invia richiesta</button>
+<div class="success-message" id="successMessage">Richiesta inviata con successo!</div>
 </form>
 </div>
 </section>
@@ -971,7 +879,7 @@ Messaggio inviato con successo!
 
 <!-- PRODUCT PAGE -->
 <section class="product-page" id="product-page">
-<a class="back-btn" onclick="showHome()">← Torna ai prodotti</a>
+<a class="back-btn" onclick="goBack()">← Torna ai prodotti</a>
 <div class="product-layout">
 <div class="product-gallery">
 <img id="main-image">
@@ -980,11 +888,9 @@ Messaggio inviato con successo!
 <button onclick="nextImage()">→</button>
 </div>
 </div>
-
 <div class="product-info">
 <h2 id="product-title"></h2>
 <p id="product-description"></p>
-
 <div class="price-box">
 <div class="price" id="product-price"></div>
 <button onclick="addCurrentToCart()">Aggiungi al carrello</button>
@@ -995,31 +901,25 @@ Messaggio inviato con successo!
 
 <!-- CHECKOUT PAGE -->
 <section class="checkout-page" id="checkout-page">
-<a class="back-btn" onclick="showHome()">← Torna ai prodotti</a>
+<a class="back-btn" onclick="goBack()">← Torna al carrello</a>
 <div class="checkout-container">
 <h2>Completa la Prenotazione</h2>
-<div class="checkout-items" id="checkout-items"></div>
-<div class="checkout-total" id="checkout-total"></div>
-
-<form id="checkoutForm" class="checkout-form"
-action="https://formspree.io/f/xzdaewla"
-method="POST">
-
+<p class="checkout-subtitle">Inserisci i tuoi dati per prenotare i pezzi. Ti contatteremo via email per confermare l'ordine e concordare i dettagli di pagamento e spedizione.</p>
+<div class="checkout-order-summary" id="checkout-order-summary"></div>
+<form id="checkoutForm" class="checkout-form" action="https://formspree.io/f/xgolpnvp" method="POST">
 <input type="hidden" name="ordine" id="ordine-data">
-
 <input type="text" name="nome" placeholder="Nome" required>
 <input type="text" name="cognome" placeholder="Cognome" required>
 <input type="email" name="email" placeholder="Email" required>
-<input type="tel" name="telefono" placeholder="Numero di cellulare"
-pattern="[0-9+ ]{6,15}" required>
-<textarea name="note" placeholder="Note aggiuntive (opzionale)"></textarea>
-
+<input type="tel" name="telefono" placeholder="Numero di cellulare" pattern="[0-9+ ]{6,15}" required>
+<textarea name="note" placeholder="Richieste aggiuntive, personalizzazioni o note per l'ordine (opzionale)"></textarea>
+<label style="font-size:14px;margin-top:10px;display:block">
+<input type="checkbox" required>
+Dichiaro di aver letto e accettato la
+<a href="privacy.html" target="_blank">Privacy Policy</a>
+</label>
 <button type="submit">Invia Prenotazione</button>
-
-<div class="success-message" id="checkoutSuccessMessage">
-Prenotazione inviata con successo! Riceverai una conferma via email.
-</div>
-
+<div class="success-message" id="checkoutSuccessMessage">Prenotazione inviata con successo! Riceverai una conferma via email.</div>
 </form>
 </div>
 </section>
@@ -1032,420 +932,348 @@ Prenotazione inviata con successo! Riceverai una conferma via email.
 <button onclick="proceedToCheckout()">Procedi al Checkout</button>
 </div>
 
-<footer>RB components</footer>
+<footer style="background:#000;color:white;text-align:center;padding:40px">
+RB Components © 2026 |
+<a href="privacy.html" style="color:white">Privacy Policy</a> |
+<a href="cookie.html" style="color:white">Cookie Policy</a> |
+<a href="termini.html" style="color:white">Termini e Condizioni</a>
+</footer>
 
 <script>
 
-/* =========================
-   ARRAY PRODOTTI MODIFICABILE
-   ========================= */
-
 const products = [
-
-{
-id: 1,
-name: "Tamponi perno ruota",
-price: 35,
-description: "Tamponi universali con filettatura m8 ricavati dal pieno con macchine CNC. Realizzati con materiali studiati apposta per resistere all'abrasione.",
-images: [
-"img/Tamponi CNC 0.jpeg",
-"img/Tamponi CNC 1.jpeg",
-"img/Tamponi CNC 2.jpeg"
-]
-},
-
-{
-id: 2,
-name: "Tamponi stampa 3D",
-price: 30,
-description: "Tamponi universali con filettatura m8 stampati in 3D. Possibilità di scelta del colore e su richesta è possibile anche inserire loghi o numeri sull'estremità del tampone.",
-images: [
-"https://picsum.photos/600/400?2",
-"https://picsum.photos/600/400?21",
-"https://picsum.photos/600/400?22"
-]
-},
-
-{
-id: 3,
-name: "Passacavi TM RACING",
-price: 6,
-description: "Passacavi per cavi del freno posteriore da sostituire a quelli già presenti fissati sul forcellone. Stampati in 3D e personalizzabili al 100% nella scelta dei colori. In privato è possibile richiedere anche altre modifiche su richiesta del cliente.",
-images: [
-"https://picsum.photos/600/400?3",
-"https://picsum.photos/600/400?31",
-"https://picsum.photos/600/400?32"
-]
-},
-
-{
-id: 4,
-name: "Kit Montaggio Advanced",
-price: 49.99,
-description: "Kit completo per installazioni professionali con componenti premium.",
-images: [
-"https://picsum.photos/600/400?4",
-"https://picsum.photos/600/400?41",
-"https://picsum.photos/600/400?42"
-]
-},
-
-{
-id: 5,
-name: "Clip Tecnica Ultra",
-price: 14.99,
-description: "Clip tecnica resistente a vibrazioni e alte temperature.",
-images: [
-"https://picsum.photos/600/400?5",
-"https://picsum.photos/600/400?51",
-"https://picsum.photos/600/400?52"
-]
-},
-
-{
-id: 6,
-name: "Struttura Performance X",
-price: 59.99,
-description: "Struttura stampata in 3D con design ottimizzato per performance.",
-images: [
-"https://picsum.photos/600/400?6",
-"https://picsum.photos/600/400?61",
-"https://picsum.photos/600/400?62"
-]
-}
-
+{id:1,name:"Tamponi perno ruota",price:35,description:"Tamponi universali con filettatura m8 ricavati dal pieno con macchine CNC. Realizzati con materiali studiati apposta per resistere all'abrasione.",images:["img/Tamponi CNC 0.jpeg","img/Tamponi CNC 1.jpeg","img/Tamponi CNC 2.jpeg"]},
+{id:2,name:"Parapignone Minaretti 4t",price:11,description:"Parapignone compatibile con motori Minarelli 4t. Pezzo plug and play. Per le personalizzazioni e la scelta dei colori bisogna specificare scrivendo le proprie preferenze nel messaggio di checkout nella sezione finale del carrello.",images:["https://picsum.photos/600/400?2","https://picsum.photos/600/400?21","https://picsum.photos/600/400?22"]},
+{id:3,name:"Passacavi TM",price:3,description:"Passacavi per cavi del freno posteriore da sostituire a quelli già presenti fissati sul forcellone. Stampati in 3D e personalizzabili al 100% nella scelta dei colori. Per le personalizzazioni e la scelta dei colori bisogna specificare scrivendo le proprie preferenze nel messaggio di checkout nella sezione finale del carrello.",images:["img/passacavi 0.jpeg","img/passacavi 1.jpeg","img/fermo cavo posteriore tm 0.jpeg","img/fermo cavo posteriore tm 1.jpeg"]},
+{id:4,name:"Portachiavi personalizzati",price:2,description:"Portachiavi personalizzabili a piacimento. Disponibili sia quelli classici delle marche già esistenti sul mercato, ma c'è anche la possibilità di progettare e realizzare il proprio portachiavi unico. Per le personalizzazioni e la scelta dei colori bisogna specificare scrivendo le proprie preferenze nel messaggio di checkout nella sezione finale del carrello.",images:["https://picsum.photos/600/400?4","https://picsum.photos/600/400?41","https://picsum.photos/600/400?42"]},
+{id:5,name:"Coperchio corpo farfallato TM",price:11,description:"Coperchio corpo farfallato TM da sostituire a quello originale. Possibilità di scrivere sul proprio pezzo scritte, nomi e numeri. Per le personalizzazioni e la scelta dei colori bisogna specificare scrivendo le proprie preferenze nel messaggio di checkout nella sezione finale del carrello.",images:["img/farfalla tm 0.jpeg","img/farfalla tm 1.jpeg","img/tommi.jpeg"]},
+{id:6,name:"Para Pignone TM",price:11,description:"Para Pignone TM. Per le personalizzazioni e la scelta dei colori bisogna specificare scrivendo le proprie preferenze nel messaggio di checkout nella sezione finale del carrello.",images:["https://picsum.photos/600/400?6","https://picsum.photos/600/400?61","img/tommi.jpeg"]},
+{id:7,name:"Slider pedane",price:10,description:"Slider pedane personalizzabili. Si prega di indicare il tipo delle pedane installate sulla moto nel messaggio di checkout nella sezione finale del carrello.",images:["https://picsum.photos/600/400?7","https://picsum.photos/600/400?71","https://picsum.photos/600/400?72"]}
 ];
-
-/* =========================
-   LOGICA SITO
-   ========================= */
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let currentProduct = null;
 let currentImageIndex = 0;
 
+function navigateTo(page, productId){
+  if(page === 'home'){
+    history.pushState({page:'home'}, '', '#');
+    showPage('home');
+  } else if(page === 'product'){
+    history.pushState({page:'product', id: productId}, '', '#product-'+productId);
+    showPage('product', productId);
+  } else if(page === 'checkout'){
+    history.pushState({page:'checkout'}, '', '#checkout');
+    showPage('checkout');
+  }
+}
+
+function showPage(page, productId){
+  document.getElementById("home").style.display = "none";
+  document.getElementById("product-page").style.display = "none";
+  document.getElementById("checkout-page").style.display = "none";
+  document.getElementById("header").classList.remove("white-header");
+
+  if(page === 'home'){
+    document.getElementById("home").style.display = "block";
+    window.scrollTo({top:0,behavior:"smooth"});
+  } else if(page === 'product'){
+    if(productId){
+      currentProduct = products.find(p => p.id === productId);
+      currentImageIndex = 0;
+      document.getElementById("product-title").innerText = currentProduct.name;
+      document.getElementById("product-description").innerText = currentProduct.description;
+      document.getElementById("product-price").innerText = currentProduct.price.toFixed(2);
+      document.getElementById("main-image").src = currentProduct.images[0];
+    }
+    document.getElementById("product-page").style.display = "block";
+    document.getElementById("header").classList.add("white-header");
+    window.scrollTo(0,0);
+  } else if(page === 'checkout'){
+    document.getElementById("checkout-page").style.display = "block";
+    document.getElementById("header").classList.add("white-header");
+    renderCheckoutSummary();
+    window.scrollTo(0,0);
+  }
+}
+
+window.addEventListener('popstate', function(e){
+  if(e.state){
+    if(e.state.page === 'cart'){
+      closeCart();
+    } else if(e.state.page === 'home'){
+      closeCart();
+      showPage('home');
+    } else if(e.state.page === 'product'){
+      closeCart();
+      showPage('product', e.state.id);
+    } else if(e.state.page === 'checkout'){
+      closeCart();
+      showPage('checkout');
+    }
+  } else {
+    closeCart();
+    showPage('home');
+  }
+});
+
+history.replaceState({page:'home'}, '', '#');
+
+function goBack(){
+  history.back();
+}
+
 function renderProducts(){
-const container=document.getElementById("product-list");
-container.innerHTML = "";
-products.forEach(product=>{
-const div=document.createElement("div");
-div.className="card";
-div.innerHTML=`
-<img src="${product.images[0]}">
-<div class="card-content">
-<h3>${product.name}</h3>
-<p>€${product.price.toFixed(2)}</p>
-<button onclick="openProduct(${product.id})">Visualizza</button>
-</div>`;
-container.appendChild(div);
-});
+  const container = document.getElementById("product-list");
+  container.innerHTML = "";
+  products.forEach(product => {
+    const div = document.createElement("div");
+    div.className = "card";
+    div.innerHTML = `
+      <img src="${product.images[0]}">
+      <div class="card-content">
+        <h3>${product.name}</h3>
+        <p>€${product.price.toFixed(2)}</p>
+        <button onclick="navigateTo('product', ${product.id})">Visualizza</button>
+      </div>`;
+    container.appendChild(div);
+  });
 }
 
-function openProduct(id){
-currentProduct = products.find(p => p.id === id);
-currentImageIndex = 0;
-
-document.getElementById("home").style.display="none";
-document.getElementById("product-page").style.display="block";
-document.getElementById("checkout-page").style.display="none";
-
-// Cambia header a bianco
-document.getElementById("header").classList.add("white-header");
-
-document.getElementById("product-title").innerText = currentProduct.name;
-document.getElementById("product-description").innerText = currentProduct.description;
-document.getElementById("product-price").innerText = currentProduct.price.toFixed(2);
-document.getElementById("main-image").src = currentProduct.images[0];
-
-window.scrollTo(0,0);
-}
-
-function showHome(){
-document.getElementById("home").style.display="block";
-document.getElementById("product-page").style.display="none";
-document.getElementById("checkout-page").style.display="none";
-
-// Rimuovi header bianco
-document.getElementById("header").classList.remove("white-header");
-
-window.scrollTo({top:0,behavior:"smooth"});
-}
-
-function showCheckout(){
-document.getElementById("home").style.display="none";
-document.getElementById("product-page").style.display="none";
-document.getElementById("checkout-page").style.display="block";
-
-// Cambia header a bianco
-document.getElementById("header").classList.add("white-header");
-
-// Raggruppa gli articoli per id
-let groupedCart = {};
-cart.forEach(item => {
-if(groupedCart[item.id]){
-groupedCart[item.id] += item.qty;
-} else {
-groupedCart[item.id] = item.qty;
-}
-});
-
-// Renderizza checkout items
-const container = document.getElementById("checkout-items");
-container.innerHTML = "";
-let total = 0;
-
-for(let id in groupedCart){
-const product = products.find(p=>p.id==id);
-const qty = groupedCart[id];
-total += product.price * qty;
-
-const div = document.createElement("div");
-div.className = "checkout-item";
-div.innerHTML = `
-<div class="checkout-item-info">
-<strong>${product.name}</strong><br>
-<small>€${product.price.toFixed(2)} cad.</small>
-</div>
-<div class="checkout-item-qty">
-<button onclick="updateQty(${id}, -1)">-</button>
-<input type="number" value="${qty}" min="1" onchange="setQty(${id}, this.value)" readonly>
-<button onclick="updateQty(${id}, 1)">+</button>
-</div>
-<span style="min-width:80px;text-align:right;margin-right:10px;font-weight:700">€${(product.price * qty).toFixed(2)}</span>
-<button class="remove-btn" onclick="removeFromCheckout(${id})">×</button>
-`;
-container.appendChild(div);
-}
-
-document.getElementById("checkout-total").innerText = "Totale: €" + total.toFixed(2);
-window.scrollTo(0,0);
-}
+function showHome(){ navigateTo('home'); }
+function showCheckout(){ navigateTo('checkout'); }
 
 function nextImage(){
-currentImageIndex = (currentImageIndex + 1) % currentProduct.images.length;
-document.getElementById("main-image").src = currentProduct.images[currentImageIndex];
+  currentImageIndex = (currentImageIndex + 1) % currentProduct.images.length;
+  document.getElementById("main-image").src = currentProduct.images[currentImageIndex];
 }
 
 function prevImage(){
-currentImageIndex--;
-if(currentImageIndex < 0)
-currentImageIndex = currentProduct.images.length - 1;
-document.getElementById("main-image").src = currentProduct.images[currentImageIndex];
+  currentImageIndex--;
+  if(currentImageIndex < 0) currentImageIndex = currentProduct.images.length - 1;
+  document.getElementById("main-image").src = currentProduct.images[currentImageIndex];
 }
 
 function addCurrentToCart(){
-cart.push({id: currentProduct.id, qty: 1});
-localStorage.setItem("cart",JSON.stringify(cart));
-updateCart();
-alert("Aggiunto al carrello!");
+  cart.push({id: currentProduct.id, qty: 1});
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCart();
+  alert("Aggiunto al carrello!");
+}
+
+function getGroupedCart(){
+  let grouped = {};
+  cart.forEach(item => {
+    grouped[item.id] = (grouped[item.id] || 0) + item.qty;
+  });
+  return grouped;
 }
 
 function updateCart(){
-// Raggruppa gli articoli per id e somma le quantità
-let groupedCart = {};
-cart.forEach(item => {
-if(groupedCart[item.id]){
-groupedCart[item.id] += item.qty;
-} else {
-groupedCart[item.id] = item.qty;
+  const grouped = getGroupedCart();
+  let totalItems = Object.values(grouped).reduce((s,q)=>s+q,0);
+  document.getElementById("cart-count").innerText = totalItems;
+  document.getElementById("mobile-cart-count").innerText = totalItems;
+
+  const items = document.getElementById("cart-items");
+  items.innerHTML = "";
+  let total = 0;
+
+  if(Object.keys(grouped).length === 0){
+    items.innerHTML = '<div class="cart-empty">Il carrello è vuoto</div>';
+    document.getElementById("cart-total").innerText = "";
+    return;
+  }
+
+  for(let id in grouped){
+    const product = products.find(p=>p.id==id);
+    const qty = grouped[id];
+    total += product.price * qty;
+    const div = document.createElement("div");
+    div.className = "cart-item";
+    div.innerHTML = `
+      <div class="cart-item-top">
+        <strong>${product.name}</strong>
+        <span>€${(product.price * qty).toFixed(2)}</span>
+      </div>
+      <div class="cart-item-controls">
+        <div class="cart-item-qty">
+          <button onclick="cartChangeQty(${id}, -1)">−</button>
+          <span>${qty}</span>
+          <button onclick="cartChangeQty(${id}, 1)">+</button>
+        </div>
+        <button class="cart-item-remove" onclick="cartRemove(${id})">×</button>
+      </div>`;
+    items.appendChild(div);
+  }
+
+  document.getElementById("cart-total").innerText = "Totale: €" + total.toFixed(2);
 }
-});
 
-// Aggiorna il contatore
-let totalItems = Object.values(groupedCart).reduce((sum, qty) => sum + qty, 0);
-document.getElementById("cart-count").innerText = totalItems;
-document.getElementById("mobile-cart-count").innerText = totalItems;
-
-// Aggiorna gli items nel carrello
-const items=document.getElementById("cart-items");
-items.innerHTML="";
-let total=0;
-
-for(let id in groupedCart){
-const product = products.find(p=>p.id==id);
-const qty = groupedCart[id];
-total += product.price * qty;
-items.innerHTML+=`
-<div class="cart-item">
-<div>
-<strong>${product.name}</strong><br>
-<small>Quantità: ${qty}</small>
-</div>
-<span>€${(product.price * qty).toFixed(2)}</span>
-</div>`;
+function cartChangeQty(productId, change){
+  const grouped = getGroupedCart();
+  const newQty = (grouped[productId] || 0) + change;
+  if(newQty < 1){ cartRemove(productId); return; }
+  cart = [];
+  for(let id in grouped){
+    cart.push({id: parseInt(id), qty: id == productId ? newQty : grouped[id]});
+  }
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCart();
 }
 
-document.getElementById("cart-total").innerText="Totale: €"+total.toFixed(2);
+function cartRemove(productId){
+  cart = cart.filter(item => item.id != productId);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCart();
 }
 
 function toggleCart(){
-document.getElementById("cart").classList.toggle("open");
+  const cartEl = document.getElementById("cart");
+  const isOpen = cartEl.classList.contains("open");
+  if(!isOpen){
+    cartEl.classList.add("open");
+    history.pushState({page:'cart'}, '', '#cart');
+  } else {
+    cartEl.classList.remove("open");
+    history.back();
+  }
+}
+
+function closeCart(){
+  document.getElementById("cart").classList.remove("open");
 }
 
 function toggleMobileMenu(){
-const mobileNav = document.getElementById("mobile-nav");
-const menuBtn = document.querySelector(".mobile-menu-btn");
-mobileNav.classList.toggle("open");
-menuBtn.classList.toggle("active");
+  document.getElementById("mobile-nav").classList.toggle("open");
+  document.querySelector(".mobile-menu-btn").classList.toggle("active");
 }
 
 function closeMobileMenu(){
-const mobileNav = document.getElementById("mobile-nav");
-const menuBtn = document.querySelector(".mobile-menu-btn");
-mobileNav.classList.remove("open");
-menuBtn.classList.remove("active");
+  document.getElementById("mobile-nav").classList.remove("open");
+  document.querySelector(".mobile-menu-btn").classList.remove("active");
 }
 
 function proceedToCheckout(){
-if(cart.length === 0){
-alert("Il carrello è vuoto!");
-return;
-}
-toggleCart();
-showCheckout();
+  if(cart.length === 0){ alert("Il carrello è vuoto!"); return; }
+  toggleCart();
+  navigateTo('checkout');
 }
 
-function updateQty(productId, change){
-let groupedCart = {};
-cart.forEach(item => {
-if(groupedCart[item.id]){
-groupedCart[item.id] += item.qty;
-} else {
-groupedCart[item.id] = item.qty;
-}
-});
+function renderCheckoutSummary(){
+  const grouped = getGroupedCart();
+  const container = document.getElementById("checkout-order-summary");
+  container.innerHTML = '<h3>Riepilogo ordine</h3>';
+  let total = 0;
 
-let newQty = groupedCart[productId] + change;
-if(newQty < 1) return;
+  for(let id in grouped){
+    const product = products.find(p=>p.id==id);
+    const qty = grouped[id];
+    const subtotal = product.price * qty;
+    total += subtotal;
+    const row = document.createElement("div");
+    row.className = "checkout-order-row";
+    row.innerHTML = `<span>${product.name} × ${qty}</span><span>€${subtotal.toFixed(2)}</span>`;
+    container.appendChild(row);
+  }
 
-// Ricostruisci il carrello
-cart = [];
-for(let id in groupedCart){
-if(id == productId){
-cart.push({id: parseInt(id), qty: newQty});
-} else {
-cart.push({id: parseInt(id), qty: groupedCart[id]});
-}
-}
-
-localStorage.setItem("cart", JSON.stringify(cart));
-updateCart();
-showCheckout();
-}
-
-function setQty(productId, value){
-let newQty = parseInt(value);
-if(newQty < 1) return;
-
-let groupedCart = {};
-cart.forEach(item => {
-if(groupedCart[item.id]){
-groupedCart[item.id] += item.qty;
-} else {
-groupedCart[item.id] = item.qty;
-}
-});
-
-cart = [];
-for(let id in groupedCart){
-if(id == productId){
-cart.push({id: parseInt(id), qty: newQty});
-} else {
-cart.push({id: parseInt(id), qty: groupedCart[id]});
-}
-}
-
-localStorage.setItem("cart", JSON.stringify(cart));
-updateCart();
-showCheckout();
-}
-
-function removeFromCheckout(productId){
-cart = cart.filter(item => item.id != productId);
-localStorage.setItem("cart", JSON.stringify(cart));
-updateCart();
-if(cart.length === 0){
-showHome();
-} else {
-showCheckout();
-}
+  const totalRow = document.createElement("div");
+  totalRow.className = "checkout-order-row total-row";
+  totalRow.innerHTML = `<span>Totale</span><span>€${total.toFixed(2)}</span>`;
+  container.appendChild(totalRow);
 }
 
 function scrollToProducts(){
-showHome();
-setTimeout(()=>{
-document.getElementById("products").scrollIntoView({behavior:"smooth"});
-},150);
+  if(document.getElementById("home").style.display === "none"){
+    navigateTo('home');
+    setTimeout(()=>document.getElementById("products").scrollIntoView({behavior:"smooth"}),200);
+  } else {
+    document.getElementById("products").scrollIntoView({behavior:"smooth"});
+  }
 }
 
 function goToContacts(){
-showHome();
-setTimeout(()=>{
-document.getElementById("contacts").scrollIntoView({behavior:"smooth"});
-},150);
+  if(document.getElementById("home").style.display === "none"){
+    navigateTo('home');
+    setTimeout(()=>document.getElementById("contacts").scrollIntoView({behavior:"smooth"}),200);
+  } else {
+    document.getElementById("contacts").scrollIntoView({behavior:"smooth"});
+  }
 }
 
-/* FORM SUCCESS HANDLERS */
-document.getElementById("contactForm").addEventListener("submit",function(){
-setTimeout(()=>{
-document.getElementById("successMessage").style.display="block";
-setTimeout(()=>{
-document.getElementById("successMessage").style.display="none";
-document.getElementById("contactForm").reset();
-},3000);
-},300);
+document.getElementById("contactForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  fetch("https://formspree.io/f/xgolpnvp", {
+    method: "POST",
+    body: new FormData(this),
+    headers: {"Accept": "application/json"}
+  }).then(response => {
+    if(response.ok){
+      document.getElementById("successMessage").style.display = "block";
+      document.getElementById("contactForm").reset();
+      setTimeout(()=>{
+        document.getElementById("successMessage").style.display = "none";
+      }, 3000);
+    }
+  });
 });
 
-document.getElementById("checkoutForm").addEventListener("submit",function(e){
-// Prepara i dati dell'ordine
-let groupedCart = {};
-cart.forEach(item => {
-if(groupedCart[item.id]){
-groupedCart[item.id] += item.qty;
-} else {
-groupedCart[item.id] = item.qty;
-}
+document.getElementById("checkoutForm").addEventListener("submit", function(e){
+  const grouped = getGroupedCart();
+  let orderDetails = "ORDINE:\n\n";
+  let total = 0;
+  for(let id in grouped){
+    const product = products.find(p=>p.id==id);
+    const qty = grouped[id];
+    orderDetails += `${product.name} - Quantità: ${qty} - €${product.price.toFixed(2)} cad. - Totale: €${(product.price*qty).toFixed(2)}\n`;
+    total += product.price * qty;
+  }
+  orderDetails += `\nTOTALE ORDINE: €${total.toFixed(2)}`;
+  document.getElementById("ordine-data").value = orderDetails;
+
+  setTimeout(()=>{
+    document.getElementById("checkoutSuccessMessage").style.display = "block";
+    cart = [];
+    localStorage.removeItem("cart");
+    updateCart();
+    setTimeout(()=>{
+      document.getElementById("checkoutSuccessMessage").style.display = "none";
+      document.getElementById("checkoutForm").reset();
+      navigateTo('home');
+    }, 3000);
+  }, 300);
 });
 
-let orderDetails = "ORDINE:\n\n";
-for(let id in groupedCart){
-const product = products.find(p=>p.id==id);
-const qty = groupedCart[id];
-orderDetails += `${product.name} - Quantità: ${qty} - Prezzo unitario: €${product.price.toFixed(2)} - Totale: €${(product.price * qty).toFixed(2)}\n`;
-}
-
-let total = 0;
-for(let id in groupedCart){
-const product = products.find(p=>p.id==id);
-total += product.price * groupedCart[id];
-}
-orderDetails += `\nTOTALE ORDINE: €${total.toFixed(2)}`;
-
-document.getElementById("ordine-data").value = orderDetails;
-
-setTimeout(()=>{
-document.getElementById("checkoutSuccessMessage").style.display="block";
-cart = [];
-localStorage.removeItem("cart");
-updateCart();
-setTimeout(()=>{
-document.getElementById("checkoutSuccessMessage").style.display="none";
-document.getElementById("checkoutForm").reset();
-showHome();
-},3000);
-},300);
-});
-
-window.addEventListener("scroll",()=>{
-if(window.scrollY>50)
-document.getElementById("header").classList.add("scrolled");
-else
-document.getElementById("header").classList.remove("scrolled");
+window.addEventListener("scroll", ()=>{
+  if(window.scrollY > 50) document.getElementById("header").classList.add("scrolled");
+  else document.getElementById("header").classList.remove("scrolled");
 });
 
 renderProducts();
 updateCart();
 
 </script>
+
+<!-- COOKIE BANNER -->
+<div id="cookie-banner" style="position:fixed;bottom:0;left:0;right:0;background:#000;color:#fff;padding:20px;text-align:center;display:none;z-index:9999">
+Questo sito utilizza cookie tecnici necessari al funzionamento.
+<a href="cookie.html" style="color:#fff;text-decoration:underline">Cookie Policy</a>
+<br><br>
+<button onclick="acceptCookies()" style="padding:8px 20px;margin-right:10px">Accetta</button>
+<button onclick="rejectCookies()" style="padding:8px 20px">Rifiuta</button>
+</div>
+
+<script>
+function setConsent(value){
+localStorage.setItem("cookieConsent", value);
+document.getElementById("cookie-banner").style.display="none";
+}
+function acceptCookies(){ setConsent("accepted"); }
+function rejectCookies(){ setConsent("rejected"); }
+if(!localStorage.getItem("cookieConsent")){
+document.getElementById("cookie-banner").style.display="block";
+}
+</script>
+
 </body>
 </html>
