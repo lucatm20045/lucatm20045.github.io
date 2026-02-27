@@ -15,7 +15,6 @@ background:#fafafa;
 overflow-x:hidden}
 a{text-decoration:none;color:inherit;cursor:pointer}
 
-/* HEADER */
 header{
 background:rgba(0,0,0,0.55);
 padding:25px 50px;
@@ -31,7 +30,6 @@ backdrop-filter:blur(10px);
 padding:18px 50px;
 box-shadow:0 2px 30px rgba(0,0,0,0.3);
 border-bottom:1px solid rgba(255,255,255,0.05)}
-
 header.white-header{
 background:rgba(255,255,255,0.98);
 backdrop-filter:blur(10px);
@@ -70,9 +68,7 @@ background:currentColor;
 transition:.3s}
 .logo:hover::after{width:100%}
 
-nav{
-display:flex;
-align-items:center}
+nav{display:flex;align-items:center}
 nav a{
 margin-left:35px;
 font-size:14px;
@@ -134,12 +130,9 @@ height:3px;
 background:currentColor;
 transition:.3s;
 border-radius:2px}
-.mobile-menu-btn.active span:nth-child(1){
-transform:rotate(45deg) translate(8px, 8px)}
-.mobile-menu-btn.active span:nth-child(2){
-opacity:0}
-.mobile-menu-btn.active span:nth-child(3){
-transform:rotate(-45deg) translate(8px, -8px)}
+.mobile-menu-btn.active span:nth-child(1){transform:rotate(45deg) translate(8px, 8px)}
+.mobile-menu-btn.active span:nth-child(2){opacity:0}
+.mobile-menu-btn.active span:nth-child(3){transform:rotate(-45deg) translate(8px, -8px)}
 
 .mobile-nav{
 display:none;
@@ -181,7 +174,6 @@ width:100%}
 
 section{padding:120px 50px;position:relative}
 
-/* HERO */
 .hero{
 height:100vh;
 background:#000;
@@ -243,7 +235,6 @@ transition:.5s}
 transform:translateY(-3px);
 box-shadow:0 10px 30px rgba(255,255,255,0.3)}
 
-/* PRODUCTS GRID */
 #products{
 background:white;
 margin:0 30px;
@@ -335,7 +326,6 @@ background:#222;
 transform:translateY(-2px);
 box-shadow:0 5px 15px rgba(0,0,0,0.3)}
 
-/* PRODUCT PAGE */
 .product-page{display:none;animation:slideInRight .5s cubic-bezier(0.4,0,0.2,1)}
 .product-layout{
 display:flex;
@@ -474,7 +464,6 @@ color:white;
 transform:translateX(-8px);
 box-shadow:0 5px 15px rgba(0,0,0,0.15)}
 
-/* CART SIDEBAR */
 .cart-sidebar{
 position:fixed;
 right:-420px;
@@ -582,7 +571,6 @@ color:#999;
 padding:40px 0;
 font-size:15px}
 
-/* CONTACT SECTION */
 .contact-section{
 background:white;
 position:relative;
@@ -664,7 +652,6 @@ font-weight:700;
 letter-spacing:0.5px;
 animation:slideInUp .4s ease-out}
 
-/* CHECKOUT PAGE */
 .checkout-page{display:none;animation:slideInRight .5s cubic-bezier(0.4,0,0.2,1)}
 .checkout-container{
 max-width:700px;
@@ -759,7 +746,6 @@ letter-spacing:2px;
 text-transform:uppercase;
 font-weight:600}
 
-/* ANIMATIONS */
 @keyframes fade{from{opacity:0}to{opacity:1}}
 @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @keyframes slideInLeft{from{opacity:0;transform:translateX(-50px)}to{opacity:1;transform:translateX(0)}}
@@ -770,7 +756,6 @@ font-weight:600}
 @keyframes scaleIn{from{opacity:0;transform:scale(0.95)}to{opacity:1;transform:scale(1)}}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.7}}
 
-/* RESPONSIVE MOBILE */
 @media(max-width:768px){
 header{padding:15px 20px}
 header.scrolled{padding:12px 20px}
@@ -836,7 +821,6 @@ section{padding:100px 35px}
 <a class="cart-btn" onclick="toggleCart(); closeMobileMenu()">Carrello (<span id="mobile-cart-count">0</span>)</a>
 </div>
 
-<!-- HOME -->
 <div id="home">
 <section class="hero">
 <h1>RB PARTS</h1>
@@ -877,7 +861,6 @@ Dichiaro di aver letto e accettato la
 </section>
 </div>
 
-<!-- PRODUCT PAGE -->
 <section class="product-page" id="product-page">
 <a class="back-btn" onclick="goBack()">← Torna ai prodotti</a>
 <div class="product-layout">
@@ -899,14 +882,13 @@ Dichiaro di aver letto e accettato la
 </div>
 </section>
 
-<!-- CHECKOUT PAGE -->
 <section class="checkout-page" id="checkout-page">
 <a class="back-btn" onclick="goBack()">← Torna al carrello</a>
 <div class="checkout-container">
 <h2>Completa la Prenotazione</h2>
 <p class="checkout-subtitle">Inserisci i tuoi dati per prenotare i pezzi. Ti contatteremo via email per confermare l'ordine e concordare i dettagli di pagamento e spedizione.</p>
 <div class="checkout-order-summary" id="checkout-order-summary"></div>
-<form id="checkoutForm" class="checkout-form" action="https://formspree.io/f/xgolpnvp" method="POST">
+<form id="checkoutForm" class="checkout-form">
 <input type="hidden" name="ordine" id="ordine-data">
 <input type="text" name="nome" placeholder="Nome" required>
 <input type="text" name="cognome" placeholder="Cognome" required>
@@ -924,7 +906,6 @@ Dichiaro di aver letto e accettato la
 </div>
 </section>
 
-<!-- CART -->
 <div class="cart-sidebar" id="cart">
 <h3>Carrello</h3>
 <div id="cart-items"></div>
@@ -1040,9 +1021,6 @@ function renderProducts(){
   });
 }
 
-function showHome(){ navigateTo('home'); }
-function showCheckout(){ navigateTo('checkout'); }
-
 function nextImage(){
   currentImageIndex = (currentImageIndex + 1) % currentProduct.images.length;
   document.getElementById("main-image").src = currentProduct.images[currentImageIndex];
@@ -1156,7 +1134,7 @@ function closeMobileMenu(){
 
 function proceedToCheckout(){
   if(cart.length === 0){ alert("Il carrello è vuoto!"); return; }
-  toggleCart();
+  closeCart();
   navigateTo('checkout');
 }
 
@@ -1219,6 +1197,8 @@ document.getElementById("contactForm").addEventListener("submit", function(e){
 });
 
 document.getElementById("checkoutForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
   const grouped = getGroupedCart();
   let orderDetails = "ORDINE:\n\n";
   let total = 0;
@@ -1231,17 +1211,27 @@ document.getElementById("checkoutForm").addEventListener("submit", function(e){
   orderDetails += `\nTOTALE ORDINE: €${total.toFixed(2)}`;
   document.getElementById("ordine-data").value = orderDetails;
 
-  setTimeout(()=>{
-    document.getElementById("checkoutSuccessMessage").style.display = "block";
-    cart = [];
-    localStorage.removeItem("cart");
-    updateCart();
-    setTimeout(()=>{
-      document.getElementById("checkoutSuccessMessage").style.display = "none";
-      document.getElementById("checkoutForm").reset();
-      navigateTo('home');
-    }, 3000);
-  }, 300);
+  fetch("https://formspree.io/f/xgolpnvp", {
+    method: "POST",
+    body: new FormData(this),
+    headers: {"Accept": "application/json"}
+  }).then(response => {
+    if(response.ok){
+      document.getElementById("checkoutSuccessMessage").style.display = "block";
+      cart = [];
+      localStorage.removeItem("cart");
+      updateCart();
+      setTimeout(()=>{
+        document.getElementById("checkoutSuccessMessage").style.display = "none";
+        document.getElementById("checkoutForm").reset();
+        navigateTo('home');
+      }, 3000);
+    } else {
+      alert("Errore nell'invio. Riprova.");
+    }
+  }).catch(()=>{
+    alert("Errore di connessione. Riprova.");
+  });
 });
 
 window.addEventListener("scroll", ()=>{
@@ -1254,7 +1244,6 @@ updateCart();
 
 </script>
 
-<!-- COOKIE BANNER -->
 <div id="cookie-banner" style="position:fixed;bottom:0;left:0;right:0;background:#000;color:#fff;padding:20px;text-align:center;display:none;z-index:9999">
 Questo sito utilizza cookie tecnici necessari al funzionamento.
 <a href="cookie.html" style="color:#fff;text-decoration:underline">Cookie Policy</a>
